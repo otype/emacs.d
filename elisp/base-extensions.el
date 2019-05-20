@@ -90,7 +90,12 @@
   :config
   (hlinum-activate))
 
-;; This package includes Emacs minor modes (iedit-mode and iedit-rectangle-mode)
+(use-package linum
+  :config
+  (setq linum-format "%4d")
+  (global-linum-mode nil))
+
+;; this package includes Emacs minor modes (iedit-mode and iedit-rectangle-mode)
 ;; based on a API library (iedit-lib) and allows you to edit one occurrence of some
 ;; text in a buffer (possibly narrowed) or region, and simultaneously have other
 ;; occurrences edited in the same way, with visual feedback as you type.
@@ -196,11 +201,6 @@
 ;;
 ;; TO BE EVALUATED
 ;;
-
-;; (use-package linum
-;;   :config
-;;   (setq linum-format "%4d")
-;;   (global-linum-mode nil))
 
 ;; (use-package multiple-cursors
 ;;   :bind
