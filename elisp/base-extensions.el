@@ -78,6 +78,9 @@
 ;; https://github.com/bbatsov/helm-projectile
 (use-package helm-projectile)
 
+;; List match lines to another buffer, which is able to squeeze by any words you input.
+;; At the same time, the original buffer's cursor is jumping line to line according
+;; to moving up and down the line list.
 ;; https://github.com/ShingoFukuyama/helm-swoop
 (use-package helm-swoop
   :bind
@@ -127,6 +130,9 @@
   ("C-a" . mwim-beginning)
   ("C-e" . mwim-end))
 
+;; Org mode is for keeping notes, maintaining TODO lists, planning projects, and
+;; authoring documents with a fast and effective plain-text system.
+;; https://orgmode.org/
 (use-package org
   :config
   (setq org-directory "~/org"
@@ -135,12 +141,17 @@
   ("C-c l" . org-store-link)
   ("C-c a" . org-agenda))
 
+;; org-projectile provides functions for the creation of org-mode TODOs that are
+;; associated with projectile projects.
+;; https://github.com/IvanMalison/org-projectile
 (use-package org-projectile
   :config
   (org-projectile-per-project)
   (setq org-projectile-per-project-filepath "todo.org"
 	org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
 
+;; utf-8 bullets for org-mode
+;; https://github.com/sabof/org-bullets
 (use-package org-bullets
   :config
   (setq org-hide-leading-stars t)
@@ -148,8 +159,15 @@
             (lambda ()
               (org-bullets-mode t))))
 
+;; This Emacs library provides a global mode which displays ugly form feed
+;; characters as tidy horizontal rules.
+;; https://github.com/purcell/page-break-lines
 (use-package page-break-lines)
 
+;; Projectile is a project interaction library for Emacs. Its goal is to provide
+;; a nice set of features operating on a project level without introducing external
+;; dependencies (when feasible).
+;; https://github.com/bbatsov/projectile
 (use-package projectile
   :ensure t
   :config
@@ -163,29 +181,46 @@
   :bind-keymap
   ("C-c p" . projectile-command-map))
 
+;; Recentf is a minor mode that builds a list of recently opened files. This list
+;; is is automatically saved across sessions on exiting Emacs - you can then access
+;; this list through a command or the menu.
+;; https://www.emacswiki.org/emacs/RecentFiles
 (use-package recentf
   :config
   (setq recentf-save-file (recentf-expand-file-name "~/.emacs.d/private/cache/recentf"))
   (recentf-mode 1))
 
+;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it.
+;; https://github.com/Fuco1/smartparens
 (use-package smartparens)
 
+;; Smex is a M-x enhancement for Emacs. Built on top of Ido, it provides a convenient
+;; interface to your recently and most frequently used commands. And to all the other
+;; commands, too.
+;; https://github.com/nonsequitur/smex
 (use-package smex)
 
+;; Emacs’s undo system allows you to recover any past state of a buffer.
+;; https://www.emacswiki.org/emacs/UndoTree
 (use-package undo-tree
   :config
-  ;; Remember undo history
   (setq
    undo-tree-auto-save-history nil
    undo-tree-history-directory-alist `(("." . ,(concat temp-dir "/undo/"))))
   (global-undo-tree-mode 1))
 
+;; Emacs package that displays available keybindings in popup
+;; https://github.com/justbur/emacs-which-key
 (use-package which-key
   :config
   (which-key-mode))
 
+;; wgrep allows you to edit a grep buffer and apply those changes to the file buffer.
+;; https://github.com/mhayashi1120/Emacs-wgrep
 (use-package wgrep)
 
+;; Simple major mode to edit YAML file for emacs
+;; https://github.com/yoshiki/yaml-mode
 (use-package yaml-mode
   :defer t
   :config
@@ -193,6 +228,9 @@
         (lambda ()
             (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
+;; YASnippet is a template system for Emacs. It allows you to type an abbreviation
+;; and automatically expand it into function templates.
+;; https://github.com/joaotavora/yasnippet
 (use-package yasnippet
   :config
   (yas-global-mode 1))
