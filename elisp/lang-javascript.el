@@ -17,20 +17,21 @@
 (use-package js2-mode
   :defer t
   :init
-  (setq-default js2-basic-indent 2
+  (setq-default tab-width 2
+                js2-basic-indent 2
                 js2-basic-offset 2
                 js2-auto-indent-p t
                 js2-cleanup-whitespace t
-		js2-concat-multiline-strings 'eol
+                js2-concat-multiline-strings 'eol
                 js2-enter-indents-newline t
-		js2-indent-on-enter-key t
-		indent-tabs-mode nil
+                js2-indent-on-enter-key t
+                indent-tabs-mode nil
                 js2-global-externs (list "window" "module" "require" "buster" "sinon" "assert" "refute"
-					 "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location"
-					 "__dirname" "console" "JSON" "jQuery" "$")
-		js2-strict-trailing-comma-warning t
-		js2-strict-inconsistent-return-warning nil
-		js2-strict-missing-semi-warning nil)
+                                         "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location"
+                                         "__dirname" "console" "JSON" "jQuery" "$")
+                js2-strict-trailing-comma-warning t
+                js2-strict-inconsistent-return-warning nil
+                js2-strict-missing-semi-warning nil)
   :config
   (use-package json-mode :ensure t)
   (use-package prettier-js :ensure t)
@@ -46,12 +47,12 @@
 
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
   (add-hook 'js2-mode-hook
-          (lambda () (flycheck-select-checker "javascript-eslint"))))
+            (lambda () (flycheck-select-checker "javascript-eslint"))))
 
 (use-package color-identifiers-mode
-    :ensure t
-    :init
-      (add-hook 'js2-mode-hook 'color-identifiers-mode))
+  :ensure t
+  :init
+  (add-hook 'js2-mode-hook 'color-identifiers-mode))
 
 (use-package prettier-js
   :defer t

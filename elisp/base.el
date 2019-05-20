@@ -41,9 +41,6 @@
 	  highlight-nonselected-windows      nil
 	  ;; PATH
 	  exec-path                          (append exec-path '("/usr/local/bin/"))
-	  ;; indent-tabs-mode                   nil
-	  ;; c-basic-indent                     4
-	  tab-width                          4
 	  inhibit-startup-message            t
 	  fringes-outside-margins            t
 	  x-select-enable-clipboard          t
