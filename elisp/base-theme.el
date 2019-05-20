@@ -1,3 +1,6 @@
+;; Font settings
+(set-frame-font "Monaco 13")
+
 (use-package farmhouse-theme
   :ensure t
   :load-path "~/.emacs.d/elpa/farmhouse-theme-20160713.2244"
@@ -9,7 +12,6 @@
   :ensure t
   :init
   (powerline-center-theme)
-  (setq powerline-default-separator 'utf-8)
-  )
+  (setq powerline-default-separator 'utf-8))
 
 (provide 'base-theme)

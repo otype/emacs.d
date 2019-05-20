@@ -37,31 +37,31 @@
 	  '(read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)
 
 	  ;; Disable non selected window highlight
-	  cursor-in-non-selected-windows     nil
-	  highlight-nonselected-windows      nil
+	  cursor-in-non-selected-windows      nil
+	  highlight-nonselected-windows       nil
 	  ;; PATH
-	  exec-path                          (append exec-path '("/usr/local/bin/"))
-	  inhibit-startup-message            t
-	  fringes-outside-margins            t
-	  x-select-enable-clipboard          t
-	  use-package-always-ensure          t)
+	  exec-path                           (append exec-path '("/usr/local/bin/"))
+	  inhibit-startup-message             t
+	  fringes-outside-margins             t
+	  x-select-enable-clipboard           t
+	  use-package-always-ensure           t)
 
 ;; Bookmarks
 (setq
  ;; persistent bookmarks
- bookmark-save-flag                      t
- bookmark-default-file              (concat temp-dir "/bookmarks"))
+ bookmark-save-flag                     t
+ bookmark-default-file                  (concat temp-dir "/bookmarks"))
 
 ;; Backups enabled, use nil to disable
 (setq
- ;; history-length                     1000
- ;; backup-inhibited                   nil
- make-backup-files                  nil
- auto-save-default                  nil
- ;; auto-save-list-file-name           (concat temp-dir "/auto-save-list")
- create-lockfiles                   nil
- ;; backup-directory-alist            `((".*" . ,(concat temp-dir "/backup/")))
- ;; auto-save-file-name-transforms    `((".*" ,(concat temp-dir "/auto-save-list/") t))
+ ;; history-length                        1000
+ ;; backup-inhibited                    nil
+ make-backup-files                      nil
+ auto-save-default                      nil
+ ;; auto-save-list-file-name              (concat temp-dir "/auto-save-list")
+ create-lockfiles                       nil
+ ;; backup-directory-alist                `((".*" . ,(concat temp-dir "/backup/")))
+ ;; auto-save-file-name-transforms        `((".*" ,(concat temp-dir "/auto-save-list/") t))
  )
 
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -78,9 +78,6 @@
 
 ;; Delete trailing whitespace before save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; Font settings
-(set-frame-font "Monaco 13")
 
 (provide 'base)
 ;;; base ends here
