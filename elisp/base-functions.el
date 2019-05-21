@@ -6,19 +6,6 @@
 ;; automatically open sym-linked files
 (setq vc-follow-symlinks t)
 
-;; HIGHLIGHTING
-;; Turn on hl-line
-(global-hl-line-mode 1)
-
-;;Set any color as the background face of the current line
-(set-face-background 'hl-line "#3e4446")
-
-;; To keep syntax highlighting in the current line
-(set-face-foreground 'highlight nil)
-
-;; Set cursor color to bright yellow
-(set-cursor-color "#FEFF00")
-
 ;; Duplicate line or whole region
 (defun duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
