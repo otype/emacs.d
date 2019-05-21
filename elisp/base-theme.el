@@ -1,17 +1,29 @@
+(use-package powerline
+  :ensure t
+  :config
+  (setq powerline-default-separator 'utf-8))
+
+(use-package moe-theme
+  :ensure t
+  :config
+  (moe-theme-set-color 'yellow)
+  (powerline-moe-theme)
+  (moe-dark))
+
 ;; Font settings
 (set-frame-font "Monaco 13")
 
-(use-package farmhouse-theme
-  :ensure t
-  :load-path "~/.emacs.d/elpa/farmhouse-theme-20160713.2244"
-  :defer t
-  :init
-  (load-theme 'farmhouse-dark t))
+;; HIGHLIGHTING
+;; Turn on hl-line
+(global-hl-line-mode 1)
 
-(use-package powerline
-  :ensure t
-  :init
-  (powerline-center-theme)
-  (setq powerline-default-separator 'utf-8))
+;;Set any color as the background face of the current line
+(set-face-background 'hl-line "#3e4446")
+
+;; To keep syntax highlighting in the current line
+(set-face-foreground 'highlight nil)
+
+;; Set cursor color to bright yellow
+(set-cursor-color "#FEFF00")
 
 (provide 'base-theme)
