@@ -1,6 +1,6 @@
 # emacs.d
 
-This is the emacs.d configuration direction.
+This is a my emacs.d configuration directory/setup.
 
 ## Getting started
 
