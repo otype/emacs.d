@@ -1,12 +1,3 @@
-;; Ace jump mode is a minor mode of emacs, which help you to move the cursor within Emacs.
-;; You can move your cursor to ANY position ( across window and frame ) in emacs by using
-;; only 3 times key press. Have a try and I am sure you will love it.
-;; https://github.com/winterTTr/ace-jump-mode
-(use-package ace-jump-mode
-  :bind
-  ("C-c SPC" . ace-jump-mode))
-
-
 ;; Company is a text completion framework for Emacs. The name stands for "complete anything".
 ;; It uses pluggable back-ends and front-ends to retrieve and display completion candidates.
 ;; https://company-mode.github.io/
@@ -126,6 +117,7 @@
 ;; positions, like moving to the beginning/end of code, line or comment.
 ;; https://github.com/alezost/mwim.el
 (use-package mwim
+  :ensure t
   :bind
   ("C-a" . mwim-beginning)
   ("C-e" . mwim-end))
@@ -145,6 +137,8 @@
 ;; associated with projectile projects.
 ;; https://github.com/IvanMalison/org-projectile
 (use-package org-projectile
+  :ensure t
+  :defer t
   :config
   (org-projectile-per-project)
   (setq org-projectile-per-project-filepath "todo.org"
@@ -153,6 +147,8 @@
 ;; utf-8 bullets for org-mode
 ;; https://github.com/sabof/org-bullets
 (use-package org-bullets
+  :ensure t
+  :defer t
   :config
   (setq org-hide-leading-stars t)
   (add-hook 'org-mode-hook
@@ -162,7 +158,9 @@
 ;; This Emacs library provides a global mode which displays ugly form feed
 ;; characters as tidy horizontal rules.
 ;; https://github.com/purcell/page-break-lines
-(use-package page-break-lines)
+(use-package page-break-lines
+  :ensure t
+  :defer t)
 
 ;; Projectile is a project interaction library for Emacs. Its goal is to provide
 ;; a nice set of features operating on a project level without introducing external
@@ -186,19 +184,22 @@
 ;; this list through a command or the menu.
 ;; https://www.emacswiki.org/emacs/RecentFiles
 (use-package recentf
+  :ensure t
   :config
   (setq recentf-save-file (recentf-expand-file-name "~/.emacs.d/private/cache/recentf"))
   (recentf-mode 1))
 
 ;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it.
 ;; https://github.com/Fuco1/smartparens
-(use-package smartparens)
+(use-package smartparens
+  :ensure t)
 
 ;; Smex is a M-x enhancement for Emacs. Built on top of Ido, it provides a convenient
 ;; interface to your recently and most frequently used commands. And to all the other
 ;; commands, too.
 ;; https://github.com/nonsequitur/smex
-(use-package smex)
+(use-package smex
+  :ensure t)
 
 ;; Emacs’s undo system allows you to recover any past state of a buffer.
 ;; https://www.emacswiki.org/emacs/UndoTree
@@ -217,11 +218,15 @@
 
 ;; wgrep allows you to edit a grep buffer and apply those changes to the file buffer.
 ;; https://github.com/mhayashi1120/Emacs-wgrep
-(use-package wgrep)
+(use-package wgrep
+  :ensure t
+  :defer t)
 
 ;; Simple major mode to edit YAML file for emacs
 ;; https://github.com/yoshiki/yaml-mode
 (use-package yaml-mode
+  :ensure t
+  :defer t
   :defer t
   :config
   (add-hook 'yaml-mode-hook
@@ -232,6 +237,8 @@
 ;; and automatically expand it into function templates.
 ;; https://github.com/joaotavora/yasnippet
 (use-package yasnippet
+  :ensure t
+  :defer t
   :config
   (yas-global-mode 1))
 
