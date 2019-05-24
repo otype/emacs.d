@@ -29,6 +29,7 @@
 (require 'lang-go)
 ;(require 'lang-java)
 (require 'lang-javascript)
+(require 'lang-lisp)
 (require 'lang-python)
 (require 'lang-ruby)
 (require 'lang-terraform)
