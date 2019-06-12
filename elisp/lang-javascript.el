@@ -78,7 +78,7 @@
 
   ;; This command is very similar to killing in paredit: It kills up to the end of the line, but always
   ;; keeping the AST valid.
-  (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+  ;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
 
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
   (add-hook 'js2-mode-hook
