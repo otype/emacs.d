@@ -203,13 +203,13 @@
 
 ;; ;; Emacs’s undo system allows you to recover any past state of a buffer.
 ;; ;; https://www.emacswiki.org/emacs/UndoTree
-;; (use-package undo-tree
-;;   :ensure t
-;;   :config
-;;   (setq
-;;    undo-tree-auto-save-history nil
-;;    undo-tree-history-directory-alist `(("." . ,(concat temp-dir "/undo/"))))
-;;   (global-undo-tree-mode 1))
+(use-package undo-tree
+  :ensure t
+  :config
+  (setq
+   undo-tree-auto-save-history nil
+   undo-tree-history-directory-alist `(("." . ,(concat temp-dir "/undo/"))))
+  (global-undo-tree-mode 1))
 
 ;; Emacs package that displays available keybindings in popup
 ;; https://github.com/justbur/emacs-which-key
