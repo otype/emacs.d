@@ -11,7 +11,8 @@
   (moe-dark))
 
 ;; Font settings
-(set-frame-font "Monaco 13")
+;;(set-frame-font "Monaco 13" t t)
+(set-frame-font "IBM Plex Mono 14" t t)
 
 ;; HIGHLIGHTING
 ;; Turn on hl-line
