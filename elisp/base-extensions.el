@@ -10,6 +10,7 @@
 (use-package ediff
   :config
   (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+  (setq ediff-split-window-function 'split-window-horizontally)
   (setq-default ediff-highlight-all-diffs 'nil)
   (setq ediff-diff-options "-w"))
 
