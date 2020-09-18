@@ -44,9 +44,9 @@
   :bind (("M-x" . helm-M-x)
          ("C-x C-m" . helm-M-x)
          ("C-x C-f" . helm-find-files)
-	 ("C-c h"   . helm-command-prefix)
+         ("C-c h"   . helm-command-prefix)
          ("C-c h v" . helm-projectile)
-	 ("C-c h m" . helm-mini)
+         ("C-c h m" . helm-mini)
          ("C-c h o" . helm-occur)
          ("C-c h p" . helm-projectile-ag)
          ("C-c h a" . helm-do-ag)
@@ -202,15 +202,15 @@
 (use-package smex
   :ensure t)
 
-;; ;; Emacs’s undo system allows you to recover any past state of a buffer.
-;; ;; https://www.emacswiki.org/emacs/UndoTree
-(use-package undo-tree
-  :ensure t
-  :config
-  (setq
-   undo-tree-auto-save-history nil
-   undo-tree-history-directory-alist `(("." . ,(concat temp-dir "/undo/"))))
-  (global-undo-tree-mode 1))
+;; Emacs’s undo system allows you to recover any past state of a buffer.
+;; https://www.emacswiki.org/emacs/UndoTree
+;; (use-package undo-tree
+;;   :ensure t
+;;   :config
+;;   (setq
+;;    undo-tree-auto-save-history nil
+;;    undo-tree-history-directory-alist `(("." . ,(concat temp-dir "/undo/"))))
+;;   (global-undo-tree-mode 1))
 
 ;; Emacs package that displays available keybindings in popup
 ;; https://github.com/justbur/emacs-which-key
