@@ -6,7 +6,8 @@
 (use-package moe-theme
   :ensure t
   :config
-  (moe-theme-select-color 'yellow)
+  (setq moe-theme-highlight-buffer-id t)
+  (moe-theme-set-color 'yellow)
   (powerline-moe-theme)
   (moe-dark))
 

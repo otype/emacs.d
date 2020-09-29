@@ -44,7 +44,7 @@
   :bind (("M-x" . helm-M-x)
          ("C-x C-m" . helm-M-x)
          ("C-x C-f" . helm-find-files)
-         ("C-c j"   . helm-command-prefix)
+         ;; ("C-c j"   . helm-command-prefix)
          ("C-c j v" . helm-projectile)
          ("C-c j m" . helm-mini)
          ("C-c j o" . helm-occur)
