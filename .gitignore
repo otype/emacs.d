@@ -10,6 +10,7 @@
 auto-save-list
 tramp
 .\#*
+session.*
 
 # Org-mode
 .org-id-locations
