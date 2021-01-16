@@ -25,6 +25,7 @@ session.*
 
 # elpa packages
 /elpa/
+elpy/
 
 # reftex files
 *.rel
