@@ -175,7 +175,7 @@
 
   (setq projectile-completion-system 'helm)
   (setq projectile-enable-caching t)
-  (setq projectile-project-search-path '("~/src/" "~/misc/"))
+  (setq projectile-project-search-path '("~/src/" "~/tmp/"))
   (projectile-global-mode)
   :bind-keymap
   ("C-c p" . projectile-command-map))
