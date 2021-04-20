@@ -38,12 +38,12 @@
     (progn
       (setq initial-frame-alist
             '(
-              (width . 150) ; chars
-              (height . 70))) ; lines
+              (width . 130) ; chars
+              (height . 50))) ; lines
       (setq default-frame-alist
             '(
-              (width . 150)
-              (height . 70)))))
+              (width . 130)
+              (height . 50)))))
 
 
 (provide 'base-theme)
