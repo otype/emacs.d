@@ -78,17 +78,20 @@
   :bind
   ("C-x c s" . helm-swoop))
 
-;; This library extends linum-mode to highlight current line number.
-;; https://github.com/tom-tan/hlinum-mode
-(use-package hlinum
-  :ensure t
-  :config
-  (hlinum-activate))
-
-(use-package linum
-  :config
-  (setq linum-format "%4d")
-  (global-linum-mode nil))
+;; =================================================================================================
+;; DON'T USE THIS! IT WILL MAKE EMACS VEEERY SLOW, ESPECIALLY ON SELECTING VAST AMOUNT OF LINES!!!
+;; =================================================================================================
+;; ;; This library extends linum-mode to highlight current line number.
+;; ;; https://github.com/tom-tan/hlinum-mode
+;; (use-package hlinum
+;;   :ensure t
+;;   :config
+;;   (hlinum-activate))
+;;
+;; (use-package linum
+;;   :config
+;;   (setq linum-format "%4d")
+;;   (global-linum-mode nil))
 
 ;; this package includes Emacs minor modes (iedit-mode and iedit-rectangle-mode)
 ;; based on a API library (iedit-lib) and allows you to edit one occurrence of some
