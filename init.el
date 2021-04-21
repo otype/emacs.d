@@ -37,3 +37,8 @@
 (require 'lang-python)
 (require 'lang-ruby)
 (require 'lang-terraform)
+
+;; To speed up, compile to bytecode (see https://stackoverflow.com/a/8902202)
+;; DISABLE ON FIRST START OF EMACS (or when clearing ~/.emacs.d/elpa)
+;; If installation of elpa modules fails: $ find ~/.emacs.d -name *.elc | xargs rm -f
+;;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
