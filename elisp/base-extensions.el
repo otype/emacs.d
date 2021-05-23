@@ -205,16 +205,6 @@
 (use-package smex
   :ensure t)
 
-;; Emacs’s undo system allows you to recover any past state of a buffer.
-;; https://www.emacswiki.org/emacs/UndoTree
-;; (use-package undo-tree
-;;   :ensure t
-;;   :config
-;;   (setq
-;;    undo-tree-auto-save-history nil
-;;    undo-tree-history-directory-alist `(("." . ,(concat temp-dir "/undo/"))))
-;;   (global-undo-tree-mode 1))
-
 ;; Emacs package that displays available keybindings in popup
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
@@ -246,21 +236,5 @@
   :defer t
   :config
   (yas-global-mode 1))
-
-
-;;
-;; TO BE EVALUATED
-;;
-
-;; (use-package multiple-cursors
-;;   :bind
-;;   ("C-S-c C-S-c" . mc/edit-lines)
-;;   ("C->" . mc/mark-next-like-this)
-;;   ("C-<" . mc/mark-previous-like-this)
-;;   ("C-c C->" . mc/mark-all-like-this))
-
-;; https://github.com/magit/magit-popup
-;; (use-package magit-popup)
-
 
 (provide 'base-extensions)

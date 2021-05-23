@@ -28,15 +28,16 @@
 ;;(require 'email)
 
 ;; Language layers
-(require 'lang-elixir)
+;(require 'lang-elixir)
 (require 'lang-go)
-(require 'lang-haskell)
+;(require 'lang-haskell)
 ;(require 'lang-java)
 (require 'lang-javascript)
 (require 'lang-lisp)
 (require 'lang-python)
-(require 'lang-ruby)
+;(require 'lang-ruby)
 (require 'lang-terraform)
+(require 'lang-vala)
 
 ;; To speed up, compile to bytecode (see https://stackoverflow.com/a/8902202)
 ;; DISABLE ON FIRST START OF EMACS (or when clearing ~/.emacs.d/elpa)
