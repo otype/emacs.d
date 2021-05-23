@@ -4,6 +4,8 @@
 
 ;;; Code:
 
+(setq exec-path (append exec-path '("~/.pyenv/bin")))
+
 (use-package python
   :mode ("\\.py" . python-mode)
   :config
