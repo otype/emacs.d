@@ -5,6 +5,16 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
+(use-package company-tabnine
+  :ensure t
+  :init
+  (add-to-list 'company-backends #'company-tabnine)
+  :config
+  ;; Trigger completion immediately.
+  (setq company-idle-delay 0)
+  ;; Number the candidates (use M-1, M-2 etc to select completions).
+  (setq company-show-numbers t))
+
 ;; This file documents Ediff, a comprehensive visual interface to Unix diff and patch utilities.
 ;; https://www.gnu.org/software/emacs/manual/html_node/ediff/
 (use-package ediff
@@ -24,7 +34,8 @@
 ;; Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs, intended as
 ;; replacement for the older Flymake extension which is part of GNU Emacs.
 ;; https://www.flycheck.org/en/latest/
-(use-package flycheck)
+(use-package flycheck
+  :ensure t)
 
 ;; Helm is an Emacs framework for incremental completions and narrowing selections. It
 ;; helps to rapidly complete file names, buffer names, or any other Emacs interactions
