@@ -37,7 +37,7 @@
 (require 'lang-python)
 ;(require 'lang-ruby)
 (require 'lang-terraform)
-(require 'lang-vala)
+;(require 'lang-vala)
 
 ;; To speed up, compile to bytecode (see https://stackoverflow.com/a/8902202)
 ;; DISABLE ON FIRST START OF EMACS (or when clearing ~/.emacs.d/elpa)
