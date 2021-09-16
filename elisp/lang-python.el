@@ -6,31 +6,37 @@
 
 (setq exec-path (append exec-path '("~/.pyenv/bin")))
 
+(use-package py-autopep8)
+
+(use-package blacken)
+
+(use-package elpy
+  :init
+  (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
+  :config
+  (setq elpy-rpc-backend "jedi")
+  (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+  (add-hook 'python-mode-hook
+	          (lambda ()
+		          (setq indent-tabs-mode nil)
+		          (setq tab-width 4)
+		          (setq python-indent-offset 4)
+              )
+            )
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode)
+  :bind (:map elpy-mode-map
+	            ("M-." . elpy-goto-definition)
+	            ("M-," . pop-tag-mark)))
+
 (use-package python
   :mode ("\\.py" . python-mode)
   :config
-  (use-package elpy
-    :init
-    (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
-    :config
-    (setq elpy-rpc-backend "jedi")
-    (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-    (add-hook 'python-mode-hook
-	      (lambda ()
-		(setq indent-tabs-mode nil)
-		(setq tab-width 4)
-		(setq python-indent-offset 4)))
-    ;;flycheck-python-flake8-executable "/usr/local/bin/flake8"
-    :bind (:map elpy-mode-map
-	      ("M-." . elpy-goto-definition)
-	      ("M-," . pop-tag-mark)))
   (elpy-enable))
 
 (use-package pip-requirements
   :config
   (add-hook 'pip-requirements-mode-hook #'pip-requirements-auto-complete-setup))
-
-(use-package py-autopep8)
 
 (use-package pyenv-mode
   :init

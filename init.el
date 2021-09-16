@@ -35,7 +35,7 @@
 (require 'lang-javascript)
 (require 'lang-lisp)
 (require 'lang-python)
-;(require 'lang-ruby)
+(require 'lang-ruby)
 (require 'lang-terraform)
 ;(require 'lang-vala)
 
