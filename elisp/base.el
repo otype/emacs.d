@@ -77,5 +77,8 @@
 ;; Delete trailing whitespace before save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Prevent this message 'Package cl is deprecated' on startup
+(setq byte-compile-warnings '(cl-functions))
+
 (provide 'base)
 ;;; base ends here

@@ -28,7 +28,7 @@
 ;;(require 'email)
 
 ;; Language layers
-;(require 'lang-elixir)
+(require 'lang-elixir)
 (require 'lang-go)
 ;(require 'lang-haskell)
 ;(require 'lang-java)
@@ -36,6 +36,7 @@
 (require 'lang-lisp)
 (require 'lang-python)
 (require 'lang-ruby)
+(require 'lang-rust)
 (require 'lang-terraform)
 ;(require 'lang-vala)
 
