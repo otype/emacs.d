@@ -12,7 +12,7 @@
   (moe-dark))
 
 ;; Font settings
-(set-frame-font "IBM Plex Mono 11" t t)
+(set-frame-font "IBM Plex Mono 12" t t)
 
 ;; HIGHLIGHTING
 ;; Turn on hl-line

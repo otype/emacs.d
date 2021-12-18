@@ -1,0 +1,42 @@
+;; Object semanticdb-project-database-file-1572d8d788d0
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1572d8d788d0"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1572d8d788ec"
+      :major-mode jdee-mode
+      :tags 
+        '( ("com.hangyasi.bookstore.security" package nil nil [1 41])
+            ("com.hangyasi.bookstore.persistence.dto.User" include nil nil [43 94])
+            ("com.hangyasi.bookstore.persistence.repository.UserRepository" include nil nil [95 163])
+            ("org.springframework.security.core.userdetails.UserDetailsService" include nil nil [164 236])
+            ("org.springframework.security.core.userdetails.UsernameNotFoundException" include nil nil [237 316])
+            ("org.springframework.stereotype.Service" include nil nil [317 363])
+            ("BookstoreUserDetailsService" type
+               (:typemodifiers ("public")
+                :interfaces ("UserDetailsService")
+                :members 
+                  ( ("userRepository" variable (:type "UserRepository") (reparse-symbol class_member_declaration) [452 482])
+                    ("BookstoreUserDetailsService" function
+                       (:constructor-flag t
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("repository" variable (:type "UserRepository") (reparse-symbol formal_parameters) [523 548]))                          )
+                        (reparse-symbol class_member_declaration) [488 599])
+                    ("loadUserByUsername" function
+                       (:throws ("UsernameNotFoundException")
+                        :typemodifiers ("public")
+                        :arguments 
+                          ( ("username" variable (:type "String") (reparse-symbol formal_parameters) [652 667]))                          
+                        :type "BookstoreUserDetails")
+                        (reparse-symbol class_member_declaration) [605 930]))                  
+                :type "class")
+                nil [374 932]))          
+      :file "BookstoreUserDetailsService.java"
+      :pointmax 933
+      :fsize 955
+      :lastmodtime '(24811 65442 0 0)
+      :unmatched-syntax '((IDENTIFIER 365 . 373))))
+  :file "!home!hgschmidt!Downloads!bookstore!src!main!java!com!hangyasi!bookstore!security!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
