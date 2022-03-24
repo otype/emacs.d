@@ -2,7 +2,8 @@
   :defer t
   :config
   (add-hook 'rust-mode-hook
-          (lambda () (setq indent-tabs-mode nil)))
+            (lambda () (setq indent-tabs-mode nil))
+            (lambda () (prettify-symbols-mode)))
   (setq rust-format-on-save t))
 
 (use-package cargo
