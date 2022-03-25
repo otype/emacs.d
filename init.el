@@ -28,16 +28,16 @@
 ;;(require 'email)
 
 ;; Language layers
-(require 'lang-elixir)
+;(require 'lang-elixir)
 (require 'lang-go)
 ;(require 'lang-haskell)
 ;(require 'lang-java)
-(require 'lang-javascript)
+;(require 'lang-javascript)
 (require 'lang-lisp)
-(require 'lang-python)
-(require 'lang-ruby)
+;(require 'lang-python)
+;(require 'lang-ruby)
 (require 'lang-rust)
-(require 'lang-terraform)
+;(require 'lang-terraform)
 ;(require 'lang-vala)
 
 ;; To speed up, compile to bytecode (see https://stackoverflow.com/a/8902202)
