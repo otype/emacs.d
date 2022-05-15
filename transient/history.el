@@ -1,7 +1,7 @@
 ((magit-blame
   ("-w"))
  (magit-commit nil
-               ("--all"))
+	       ("--all"))
  (magit-dispatch nil)
  (magit-pull
   ("--rebase"))
