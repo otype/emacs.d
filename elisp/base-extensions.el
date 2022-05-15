@@ -1,3 +1,8 @@
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1))
+
 ;; Company is a text completion framework for Emacs. The name stands for "complete anything".
 ;; It uses pluggable back-ends and front-ends to retrieve and display completion candidates.
 ;; https://company-mode.github.io/
@@ -5,15 +10,15 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package company-tabnine
-  :ensure t
-  :init
-  (add-to-list 'company-backends #'company-tabnine)
-  :config
-  ;; Trigger completion immediately.
-  (setq company-idle-delay 0)
-  ;; Number the candidates (use M-1, M-2 etc to select completions).
-  (setq company-show-numbers t))
+;; (use-package company-tabnine
+;;   :ensure t
+;;   :init
+;;   (add-to-list 'company-backends #'company-tabnine)
+;;   :config
+;;   ;; Trigger completion immediately.
+;;   (setq company-idle-delay 0)
+;;   ;; Number the candidates (use M-1, M-2 etc to select completions).
+;;   (setq company-show-numbers t))
 
 ;; This file documents Ediff, a comprehensive visual interface to Unix diff and patch utilities.
 ;; https://www.gnu.org/software/emacs/manual/html_node/ediff/
@@ -148,6 +153,17 @@
   ("C-c l" . org-store-link)
   ("C-c a" . org-agenda))
 
+;; ;; utf-8 bullets for org-mode
+;; ;; https://github.com/sabof/org-bullets
+;; (use-package org-bullets
+;;   :ensure t
+;;   :defer t
+;;   :config
+;;   (setq org-hide-leading-stars t)
+;;   (add-hook 'org-mode-hook
+;;             (lambda ()
+;;               (org-bullets-mode t))))
+
 ;; org-projectile provides functions for the creation of org-mode TODOs that are
 ;; associated with projectile projects.
 ;; https://github.com/IvanMalison/org-projectile
@@ -159,16 +175,12 @@
   (setq org-projectile-per-project-filepath "todo.org"
 	org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
 
-;; utf-8 bullets for org-mode
-;; https://github.com/sabof/org-bullets
-(use-package org-bullets
+(use-package org-superstar
   :ensure t
-  :defer t
   :config
-  (setq org-hide-leading-stars t)
   (add-hook 'org-mode-hook
-            (lambda ()
-              (org-bullets-mode t))))
+	    (lambda ()
+	      (org-superstar-mode 1))))
 
 ;; This Emacs library provides a global mode which displays ugly form feed
 ;; characters as tidy horizontal rules.
