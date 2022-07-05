@@ -13,6 +13,9 @@
 
 ;; Font settings
 (set-frame-font "IBM Plex Mono 12" t t)
+;(set-frame-font "Victor Mono 13" t t)
+;(set-frame-font "JetBrains Mono 12" t t)
+
 
 ;; Enable global visual-line-mode
 (global-visual-line-mode t)
