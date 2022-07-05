@@ -7,6 +7,9 @@
 ;; It uses pluggable back-ends and front-ends to retrieve and display completion candidates.
 ;; https://company-mode.github.io/
 (use-package company
+  :custom
+  (company-idle-delay 0.5) ;; how long to wait until popup
+  ;; (company-begin-commands nil) ;; uncomment to disable popup
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
@@ -258,6 +261,9 @@
   :ensure t
   :defer t
   :config
-  (yas-global-mode 1))
+  (yas-reload-all)
+  (yas-global-mode 1)
+  (add-hook 'prog-mode-hook 'yas-minor-mode)
+  (add-hook 'text-mode-hook 'yas-minor-mode))
 
 (provide 'base-extensions)
