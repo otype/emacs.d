@@ -34,7 +34,7 @@
 ;(require 'lang-java)
 ;(require 'lang-javascript)
 (require 'lang-lisp)
-(require 'lang-python)
+;(require 'lang-python)
 ;(require 'lang-ruby)
 (require 'lang-rust)
 ;(require 'lang-terraform)
