@@ -7,15 +7,23 @@
   :ensure t
   :config
   (setq moe-theme-highlight-buffer-id t)
-;; (moe-theme-set-color 'yellow)
+  (setq moe-theme-mode-line-color 'yellow)
+  ;; Resize titles
+  (setq moe-theme-resize-title-markdown '(1.6 1.4 1.3 1.2 1.0 1.0))
+  (setq moe-theme-resize-title-org '(1.6 1.4 1.3 1.2 1.1 1.0 1.0 1.0 1.0))
   (powerline-moe-theme)
   (moe-dark))
+
+(use-package planet-theme
+  :ensure t
+  :config
+  (load-theme 'planet t)
+  (powerline-moe-theme))
 
 ;; Font settings
 (set-frame-font "IBM Plex Mono 12" t t)
 ;(set-frame-font "Victor Mono 13" t t)
 ;(set-frame-font "JetBrains Mono 12" t t)
-
 
 ;; Enable global visual-line-mode
 (global-visual-line-mode t)
