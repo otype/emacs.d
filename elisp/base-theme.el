@@ -7,8 +7,8 @@
   (setq moe-theme-highlight-buffer-id t)
   (setq moe-theme-mode-line-color 'yellow)
   ;; Resize titles
-  (setq moe-theme-resize-title-markdown '(1.6 1.4 1.3 1.2 1.0 1.0))
-  (setq moe-theme-resize-title-org '(1.6 1.4 1.3 1.2 1.1 1.0 1.0 1.0 1.0))
+  (setq moe-theme-resize-title-markdown '(1.4 1.3 1.2 1.1 1.0 1.0))
+  (setq moe-theme-resize-title-org '(1.4 1.3 1.2 1.1 1.1 1.0 1.0 1.0 1.0))
   (powerline-moe-theme)
   (moe-dark))
 
