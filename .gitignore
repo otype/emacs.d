@@ -80,3 +80,5 @@ anaconda-mode/
 **/projectile.cache
 private/cache/
 .custom.el
+.lsp-session-v1
+eln-cache/
