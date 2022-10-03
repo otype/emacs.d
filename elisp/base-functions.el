@@ -28,4 +28,8 @@
       (goto-char (+ origin (* (length region) arg) arg)))))
 (global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
 
+(defun my-reload-emacs-configuration ()
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
+
 (provide 'base-functions)

@@ -53,9 +53,9 @@
 (setq mu4e-get-mail-command "mbsync -a")
 
 ;; something about ourselves
-(setq
- user-mail-address "hans.schmidt@meltwater.com"
- user-full-name  "Hans-Gunther Schmidt"
+;; (setq
+;;  user-mail-address "hans@otype.de"
+ ;; user-full-name  "Hans-Gunther Schmidt"
  ;; message-signature
  ;; (concat
  ;;  "Hans-Gunther Schmidt\n"

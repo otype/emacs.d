@@ -1,13 +1,5 @@
-;; (use-package rust-mode
-;;   :defer t
-;;   :config
-;;   (add-hook 'rust-mode-hook
-;;             (lambda () (setq indent-tabs-mode nil))
-;;             (lambda () (prettify-symbols-mode)))
-;;   (setq rust-format-on-save t))
-
 (use-package rustic
-  :ensure
+  :defer t
   :bind (:map rustic-mode-map
               ("M-j" . lsp-ui-imenu)
               ("M-?" . lsp-find-references)
@@ -36,7 +28,7 @@
     (setq-local buffer-save-without-query t)))
 
 (use-package lsp-mode
-  :ensure
+  :defer t
   :commands lsp
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
@@ -55,7 +47,7 @@
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
 (use-package lsp-ui
-  :ensure
+  :defer t
   :commands lsp-ui-mode
   :custom
   (lsp-ui-peek-always-show t)
