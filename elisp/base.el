@@ -23,50 +23,59 @@
 
 ;; Emacs customizations
 (setq confirm-kill-emacs                  'y-or-n-p
-	  confirm-nonexistent-file-or-buffer  t
-	  save-interprogram-paste-before-kill t
-	  mouse-yank-at-point                 t
-	  require-final-newline               t
-	  visible-bell                        nil
-	  ring-bell-function                  'ignore
-	  custom-file                         "~/.emacs.d/.custom.el"
-	  ;; http://ergoemacs.org/emacs/emacs_stop_cursor_enter_prompt.html
-	  minibuffer-prompt-properties
-	  '(read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)
+      confirm-nonexistent-file-or-buffer  t
+      save-interprogram-paste-before-kill t
+      mouse-yank-at-point                 t
+      require-final-newline               t
+      visible-bell                        nil
+      ring-bell-function                  'ignore
+      custom-file                         "~/.emacs.d/.custom.el"
+      ;; http://ergoemacs.org/emacs/emacs_stop_cursor_enter_prompt.html
+      minibuffer-prompt-properties
+      '(read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)
 
-	  ;; Disable non selected window highlight
-	  cursor-in-non-selected-windows      nil
-	  highlight-nonselected-windows       nil
-	  ;; PATH
-	  exec-path                           (append exec-path '("/usr/local/bin/"))
-	  inhibit-startup-message             t
-	  fringes-outside-margins             t
-	  x-select-enable-clipboard           t
-	  use-package-always-ensure           t)
+      ;; Disable non selected window highlight
+      cursor-in-non-selected-windows      nil
+      highlight-nonselected-windows       nil
+      ;; PATH
+      exec-path                           (append exec-path '("/usr/local/bin/"))
+      inhibit-startup-message             t
+      fringes-outside-margins             t
+      x-select-enable-clipboard           t
+      use-package-always-ensure           t)
+
+;; Load custom file
+(load custom-file t)
 
 ;; Bookmarks
-(setq
- ;; persistent bookmarks
- bookmark-save-flag                     t
- bookmark-default-file                  (concat temp-dir "/bookmarks"))
+(setq bookmark-save-flag                     t
+      bookmark-default-file                  (concat temp-dir "/bookmarks"))
+
+;; Personal information
+(setq user-mail-address "hans@otype.de"
+      user-full-name  "Hans-Gunther Schmidt")
+
+;; Save history
+(setq savehist-file "~/.emacs.d/savehist"
+      history-length                    t
+      history-delete-duplicates         t
+      savehist-save-minibuffer-history  1)
+(savehist-mode 1)
 
 ;; Backups enabled, use nil to disable
-(setq
- ;; history-length                        1000
- ;; backup-inhibited                    nil
- make-backup-files                      nil
- auto-save-default                      nil
- ;; auto-save-list-file-name              (concat temp-dir "/auto-save-list")
- create-lockfiles                       nil
- ;; backup-directory-alist                `((".*" . ,(concat temp-dir "/backup/")))
- ;; auto-save-file-name-transforms        `((".*" ,(concat temp-dir "/auto-save-list/") t))
+(setq delete-old-versions               -1
+      version-control                   t
+      vc-make-backup-files              t
+      make-backup-files                 t
+      auto-save-default                 t
+      create-lockfiles                  t
  )
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-auto-revert-mode t)
 
 ;; Disable toolbar & menubar
-(menu-bar-mode -1)
+(menu-bar-mode 1)
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode)

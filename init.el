@@ -5,7 +5,7 @@
 ;;; Code:
 
 ;; Taken from here: https://github.com/bbatsov/prelude/issues/1225#issuecomment-511266025
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+;(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,

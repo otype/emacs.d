@@ -1,10 +1,8 @@
 (use-package powerline
-  :ensure t
   :config
   (setq powerline-default-separator 'utf-8))
 
 (use-package moe-theme
-  :ensure t
   :config
   (setq moe-theme-highlight-buffer-id t)
   (setq moe-theme-mode-line-color 'yellow)
@@ -21,7 +19,7 @@
   (powerline-moe-theme))
 
 ;; Font settings
-(set-frame-font "IBM Plex Mono 12" t t)
+(set-frame-font "IBM Plex Mono 14" t t)
 ;(set-frame-font "Victor Mono 13" t t)
 ;(set-frame-font "JetBrains Mono 12" t t)
 

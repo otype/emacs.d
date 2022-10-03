@@ -43,7 +43,8 @@
   :config
   (add-hook 'go-mode-hook 'go-eldoc-setup))
 
-(use-package go-guru :defer t)
+(use-package go-guru
+  :defer t)
 
 (defun setup-go-mode-compile ()
   ; Customize compile command to run go build

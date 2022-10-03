@@ -11,6 +11,8 @@ auto-save-list
 tramp
 .\#*
 session.*
+eln-cache/
+.lsp-session-v1
 
 # Org-mode
 .org-id-locations
