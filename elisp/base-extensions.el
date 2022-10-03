@@ -1,5 +1,5 @@
+;; Whenever the window scrolls a light will shine on top of your cursor so you know where it is.
 (use-package beacon
-  :ensure t
   :config
   (beacon-mode 1))
 
@@ -14,7 +14,6 @@
   (add-hook 'after-init-hook 'global-company-mode))
 
 ;; (use-package company-tabnine
-;;   :ensure t
 ;;   :init
 ;;   (add-to-list 'company-backends #'company-tabnine)
 ;;   :config
@@ -42,8 +41,7 @@
 ;; Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs, intended as
 ;; replacement for the older Flymake extension which is part of GNU Emacs.
 ;; https://www.flycheck.org/en/latest/
-(use-package flycheck
-  :ensure t)
+(use-package flycheck)
 
 ;; Helm is an Emacs framework for incremental completions and narrowing selections. It
 ;; helps to rapidly complete file names, buffer names, or any other Emacs interactions
@@ -97,37 +95,21 @@
   :bind
   ("C-x c s" . helm-swoop))
 
-;; =================================================================================================
-;; DON'T USE THIS! IT WILL MAKE EMACS VEEERY SLOW, ESPECIALLY ON SELECTING VAST AMOUNT OF LINES!!!
-;; =================================================================================================
-;; ;; This library extends linum-mode to highlight current line number.
-;; ;; https://github.com/tom-tan/hlinum-mode
-;; (use-package hlinum
-;;   :ensure t
-;;   :config
-;;   (hlinum-activate))
-;;
-;; (use-package linum
-;;   :config
-;;   (setq linum-format "%4d")
-;;   (global-linum-mode nil))
-
 ;; this package includes Emacs minor modes (iedit-mode and iedit-rectangle-mode)
 ;; based on a API library (iedit-lib) and allows you to edit one occurrence of some
 ;; text in a buffer (possibly narrowed) or region, and simultaneously have other
 ;; occurrences edited in the same way, with visual feedback as you type.
 ;; https://github.com/victorhge/iedit
 (use-package iedit
-  :ensure t)
+  :bind
+  ("C-s-;" . iedit-mode))
 
 ;; Magit is an interface to the version control system Git, implemented as an
 ;; Emacs package.
 ;; https://magit.vc/
 (use-package magit
-  :ensure t
   :config
   :bind
-  ;; Magic
   ("C-x g s" . magit-status)
   ("C-x g x" . magit-checkout)
   ("C-x g c" . magit-commit)
@@ -140,7 +122,6 @@
 ;; positions, like moving to the beginning/end of code, line or comment.
 ;; https://github.com/alezost/mwim.el
 (use-package mwim
-  :ensure t
   :bind
   ("C-a" . mwim-beginning)
   ("C-e" . mwim-end))
@@ -156,22 +137,10 @@
   ("C-c l" . org-store-link)
   ("C-c a" . org-agenda))
 
-;; ;; utf-8 bullets for org-mode
-;; ;; https://github.com/sabof/org-bullets
-;; (use-package org-bullets
-;;   :ensure t
-;;   :defer t
-;;   :config
-;;   (setq org-hide-leading-stars t)
-;;   (add-hook 'org-mode-hook
-;;             (lambda ()
-;;               (org-bullets-mode t))))
-
 ;; org-projectile provides functions for the creation of org-mode TODOs that are
 ;; associated with projectile projects.
 ;; https://github.com/IvanMalison/org-projectile
 (use-package org-projectile
-  :ensure t
   :defer t
   :config
   (org-projectile-per-project)
@@ -179,7 +148,6 @@
 	org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
 
 (use-package org-superstar
-  :ensure t
   :config
   (add-hook 'org-mode-hook
 	    (lambda ()
@@ -189,7 +157,6 @@
 ;; characters as tidy horizontal rules.
 ;; https://github.com/purcell/page-break-lines
 (use-package page-break-lines
-  :ensure t
   :defer t)
 
 ;; Projectile is a project interaction library for Emacs. Its goal is to provide
@@ -197,7 +164,6 @@
 ;; dependencies (when feasible).
 ;; https://github.com/bbatsov/projectile
 (use-package projectile
-  :ensure t
   :config
   (setq projectile-known-projects-file
         (expand-file-name "projectile-bookmarks.eld" temp-dir))
@@ -214,22 +180,19 @@
 ;; this list through a command or the menu.
 ;; https://www.emacswiki.org/emacs/RecentFiles
 (use-package recentf
-  :ensure t
   :config
   (setq recentf-save-file (recentf-expand-file-name "~/.emacs.d/private/cache/recentf"))
   (recentf-mode 1))
 
 ;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it.
 ;; https://github.com/Fuco1/smartparens
-(use-package smartparens
-  :ensure t)
+(use-package smartparens)
 
 ;; Smex is a M-x enhancement for Emacs. Built on top of Ido, it provides a convenient
 ;; interface to your recently and most frequently used commands. And to all the other
 ;; commands, too.
 ;; https://github.com/nonsequitur/smex
-(use-package smex
-  :ensure t)
+(use-package smex)
 
 ;; Emacs package that displays available keybindings in popup
 ;; https://github.com/justbur/emacs-which-key
@@ -240,14 +203,11 @@
 ;; wgrep allows you to edit a grep buffer and apply those changes to the file buffer.
 ;; https://github.com/mhayashi1120/Emacs-wgrep
 (use-package wgrep
-  :ensure t
   :defer t)
 
 ;; Simple major mode to edit YAML file for emacs
 ;; https://github.com/yoshiki/yaml-mode
 (use-package yaml-mode
-  :ensure t
-  :defer t
   :defer t
   :config
   (add-hook 'yaml-mode-hook
@@ -258,7 +218,6 @@
 ;; and automatically expand it into function templates.
 ;; https://github.com/joaotavora/yasnippet
 (use-package yasnippet
-  :ensure t
   :defer t
   :config
   (yas-reload-all)
