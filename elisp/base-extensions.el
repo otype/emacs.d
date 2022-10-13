@@ -131,11 +131,31 @@
 ;; https://orgmode.org/
 (use-package org
   :config
-  (setq org-directory "~/org"
-        org-default-notes-file (concat org-directory "/mw-tasks.org"))
+  (setq org-directory "~/Documents/org-roam-notes"
+        ;; org-default-notes-file (concat org-directory "/mw-tasks.org")
+	)
   :bind
   ("C-c l" . org-store-link)
   ("C-c a" . org-agenda))
+
+(use-package org-roam
+  :after org
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory (file-truename org-directory))
+  (org-roam-completion-everywhere t)
+  :config
+  (org-roam-setup)
+  :bind (("C-c n f" . org-roam-node-find)
+         ("C-c n r" . org-roam-node-random)
+	 ("C-c n l" . org-roam-buffer-toggle)
+         :map org-mode-map
+         (("C-c n a" . org-roam-alias-add)
+	  ("C-c n c"   . completion-at-point)
+          ("C-c n i" . org-roam-node-insert)
+          ("C-c n o" . org-id-get-create)
+          ("C-c n t" . org-roam-tag-add))))
 
 ;; org-projectile provides functions for the creation of org-mode TODOs that are
 ;; associated with projectile projects.
