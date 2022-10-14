@@ -44,6 +44,9 @@
 ;; Set cursor color to bright yellow
 (set-cursor-color "#FEFF00")
 
+;; Modify region background and text color
+(set-face-attribute 'region nil :background "#FBFFC8")
+
 ;; Set window frame size
 (if (display-graphic-p)
     (progn
