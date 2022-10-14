@@ -4,7 +4,6 @@
 ;; Planet is a theme for Emacs inspired by the color palette of the former Gmail
 ;; theme, "Planets."
 (use-package planet-theme
-  :ensure t
   :config
   (load-theme 'planet t))
 
