@@ -22,6 +22,18 @@
 ;;   ;; Number the candidates (use M-1, M-2 etc to select completions).
 ;;   (setq company-show-numbers t))
 
+;; An extensible emacs startup screen showing you what’s most important.
+(use-package dashboard
+  :config
+  (dashboard-setup-startup-hook)
+  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+  (setq dashboard-items '((recents  . 5)
+                        (bookmarks . 5)
+                        (projects . 5)
+                        (agenda . 5)
+                        (registers . 5)))
+  (setq dashboard-set-navigator t))
+
 ;; This file documents Ediff, a comprehensive visual interface to Unix diff and patch utilities.
 ;; https://www.gnu.org/software/emacs/manual/html_node/ediff/
 (use-package ediff
@@ -167,6 +179,8 @@
   (setq org-projectile-per-project-filepath "todo.org"
 	org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
 
+;; Prettify headings and plain lists in Org mode. This package is a direct
+;; descendant of ‘org-bullets’, with most of the code base completely rewritten.
 (use-package org-superstar
   :config
   (add-hook 'org-mode-hook
@@ -177,7 +191,9 @@
 ;; characters as tidy horizontal rules.
 ;; https://github.com/purcell/page-break-lines
 (use-package page-break-lines
-  :defer t)
+  :defer t
+  :config
+  (global-page-break-lines-mode))
 
 ;; Projectile is a project interaction library for Emacs. Its goal is to provide
 ;; a nice set of features operating on a project level without introducing external
@@ -212,7 +228,7 @@
 ;; interface to your recently and most frequently used commands. And to all the other
 ;; commands, too.
 ;; https://github.com/nonsequitur/smex
-(use-package smex)
+;(use-package smex)
 
 ;; Emacs package that displays available keybindings in popup
 ;; https://github.com/justbur/emacs-which-key

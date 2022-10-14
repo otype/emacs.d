@@ -1,11 +1,14 @@
+(require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(package-initialize)
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
+;; use-package to simplify the config file
 (unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
+(require 'use-package)
+(setq use-package-always-ensure 't)
 
 (defconst private-dir  (expand-file-name "private" user-emacs-directory))
 (defconst temp-dir (format "%s/cache" private-dir)
@@ -42,7 +45,9 @@
       inhibit-startup-message             t
       fringes-outside-margins             t
       x-select-enable-clipboard           t
-      use-package-always-ensure           t)
+      use-package-always-ensure           t
+      inhibit-compacting-font-caches      t
+      find-file-visit-truename            t)
 
 ;; Load custom file
 (load custom-file t)

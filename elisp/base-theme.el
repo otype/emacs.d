@@ -1,22 +1,20 @@
-(use-package powerline
-  :config
-  (setq powerline-default-separator 'utf-8))
+;; Nice icon set for emacs
+(use-package all-the-icons)
 
-(use-package moe-theme
-  :config
-  (setq moe-theme-highlight-buffer-id t)
-  (setq moe-theme-mode-line-color 'yellow)
-  ;; Resize titles
-  (setq moe-theme-resize-title-markdown '(1.4 1.3 1.2 1.1 1.0 1.0))
-  (setq moe-theme-resize-title-org '(1.4 1.3 1.2 1.1 1.1 1.0 1.0 1.0 1.0))
-  (powerline-moe-theme)
-  (moe-dark))
-
+;; Planet is a theme for Emacs inspired by the color palette of the former Gmail
+;; theme, "Planets."
 (use-package planet-theme
   :ensure t
   :config
-  (load-theme 'planet t)
-  (powerline-moe-theme))
+  (load-theme 'planet t))
+
+;; Mode-line variant
+(use-package doom-modeline
+  :init
+  (doom-modeline-mode 1)
+  :config
+  (setq doom-modeline-height 35)
+  (setq doom-modeline-bar-width 1))
 
 ;; Font settings
 (set-frame-font "IBM Plex Mono 13" t t)
@@ -26,18 +24,20 @@
 ;; Enable global visual-line-mode
 (global-visual-line-mode t)
 
-;; HIGHLIGHTING
 ;; Turn on hl-line
 (global-hl-line-mode 1)
+
+;; Remove fringes left and right
+(set-fringe-mode 0)
+
+;; Enable line numbers
+(global-display-line-numbers-mode 1)
 
 ;; Emacs 24.4 ships with a new minor mode called prettify-symbols-mode. Its purpose
 ;; is to replace the standard text representation of various identifiers/symbols with
 ;; a (arguably) more aesthetically pleasing representation (often a single unicode
 ;; character would replace several ascii characters).
 (global-prettify-symbols-mode +1)
-
-;;Set any color as the background face of the current line
-(set-face-background 'hl-line "#3e4446")
 
 ;; To keep syntax highlighting in the current line
 (set-face-foreground 'highlight nil)
