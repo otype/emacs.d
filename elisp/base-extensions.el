@@ -69,6 +69,7 @@
 	helm-input-idle-delay 0.01
 	helm-quick-update t
 	helm-ff-skip-boring-files t)
+  (set-face-attribute 'helm-selection nil :background "#FBFFC8" :foreground "#04134B")
   (helm-mode 1)
   :bind (("M-x" . helm-M-x)
          ("C-x C-m" . helm-M-x)
