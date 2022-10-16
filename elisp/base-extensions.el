@@ -71,7 +71,7 @@
 	helm-ff-skip-boring-files t)
   (set-face-attribute 'helm-selection nil :background "#FBFFC8" :foreground "#04134B")
   (helm-mode 1)
-  :bind (("M-x" . helm-M-x)
+  :bind (("M-x"     . helm-M-x)
          ("C-x C-m" . helm-M-x)
          ("C-x C-f" . helm-find-files)
          ;; ("C-c j"   . helm-command-prefix)
@@ -82,7 +82,7 @@
          ("C-c j a" . helm-do-ag)
          ("C-c j k" . helm-show-kill-ring)
          :map helm-map
-         ("<tab>" . helm-execute-persistent-action)))
+         ("<tab>"   . helm-execute-persistent-action)))
 
 ;; helm-ag.el provides interfaces of The Silver Searcher with helm.
 ;; https://github.com/syohex/emacs-helm-ag
@@ -136,8 +136,10 @@
 ;; https://github.com/alezost/mwim.el
 (use-package mwim
   :bind
-  ("C-a" . mwim-beginning)
-  ("C-e" . mwim-end))
+  ("C-a"    . mwim-beginning)
+  ("<home>" . mwim-beginning)
+  ("C-e"    . mwim-end)
+  ("<end>"  . mwim-end))
 
 ;; Org mode is for keeping notes, maintaining TODO lists, planning projects, and
 ;; authoring documents with a fast and effective plain-text system.
@@ -239,8 +241,8 @@
 
 ;; wgrep allows you to edit a grep buffer and apply those changes to the file buffer.
 ;; https://github.com/mhayashi1120/Emacs-wgrep
-(use-package wgrep
-  :defer t)
+;; (use-package wgrep
+;;   :defer t)
 
 ;; Simple major mode to edit YAML file for emacs
 ;; https://github.com/yoshiki/yaml-mode
@@ -254,12 +256,12 @@
 ;; YASnippet is a template system for Emacs. It allows you to type an abbreviation
 ;; and automatically expand it into function templates.
 ;; https://github.com/joaotavora/yasnippet
-(use-package yasnippet
-  :defer t
-  :config
-  (yas-reload-all)
-  (yas-global-mode 1)
-  (add-hook 'prog-mode-hook 'yas-minor-mode)
-  (add-hook 'text-mode-hook 'yas-minor-mode))
+;; (use-package yasnippet
+;;   :defer t
+;;   :config
+;;   (yas-reload-all)
+;;   (yas-global-mode 1)
+;;   (add-hook 'prog-mode-hook 'yas-minor-mode)
+;;   (add-hook 'text-mode-hook 'yas-minor-mode))
 
 (provide 'base-extensions)
