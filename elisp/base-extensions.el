@@ -13,15 +13,6 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-;; (use-package company-tabnine
-;;   :init
-;;   (add-to-list 'company-backends #'company-tabnine)
-;;   :config
-;;   ;; Trigger completion immediately.
-;;   (setq company-idle-delay 0)
-;;   ;; Number the candidates (use M-1, M-2 etc to select completions).
-;;   (setq company-show-numbers t))
-
 ;; An extensible emacs startup screen showing you what’s most important.
 (use-package dashboard
   :config
@@ -227,22 +218,11 @@
 ;; https://github.com/Fuco1/smartparens
 (use-package smartparens)
 
-;; Smex is a M-x enhancement for Emacs. Built on top of Ido, it provides a convenient
-;; interface to your recently and most frequently used commands. And to all the other
-;; commands, too.
-;; https://github.com/nonsequitur/smex
-;(use-package smex)
-
 ;; Emacs package that displays available keybindings in popup
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
   :config
   (which-key-mode))
-
-;; wgrep allows you to edit a grep buffer and apply those changes to the file buffer.
-;; https://github.com/mhayashi1120/Emacs-wgrep
-;; (use-package wgrep
-;;   :defer t)
 
 ;; Simple major mode to edit YAML file for emacs
 ;; https://github.com/yoshiki/yaml-mode
@@ -252,16 +232,5 @@
   (add-hook 'yaml-mode-hook
         (lambda ()
             (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
-
-;; YASnippet is a template system for Emacs. It allows you to type an abbreviation
-;; and automatically expand it into function templates.
-;; https://github.com/joaotavora/yasnippet
-;; (use-package yasnippet
-;;   :defer t
-;;   :config
-;;   (yas-reload-all)
-;;   (yas-global-mode 1)
-;;   (add-hook 'prog-mode-hook 'yas-minor-mode)
-;;   (add-hook 'text-mode-hook 'yas-minor-mode))
 
 (provide 'base-extensions)
