@@ -105,9 +105,7 @@
 
   (lsp-ui-peek-always-show -1)
   (lsp-ui-sideline-show-hover t)
-  (lsp-ui-sideline-show-code-actions t)
-
-  )
+  (lsp-ui-sideline-show-code-actions t))
 
 (use-package cargo
   :defer t
@@ -118,5 +116,11 @@
   :defer t
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+(use-package smartparens
+  :defer t
+  :config
+  (require 'smartparens-config)
+  (add-hook 'rustic-mode-hook #'smartparens-strict-mode))
 
 (provide 'lang-rust)
