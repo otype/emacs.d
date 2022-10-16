@@ -3,9 +3,16 @@
 
 ;; Planet is a theme for Emacs inspired by the color palette of the former Gmail
 ;; theme, "Planets."
-(use-package planet-theme
+;; (use-package planet-theme
+;;   :config
+;;   (load-theme 'planet t))
+
+;; Kaolin is a set of eye pleasing themes for GNU Emacs with support for a large
+;; number of modes and external packages.
+(use-package kaolin-themes
   :config
-  (load-theme 'planet t))
+  (load-theme 'kaolin-dark t)
+  (kaolin-treemacs-theme))
 
 ;; Mode-line variant
 (use-package doom-modeline
@@ -16,9 +23,9 @@
   (setq doom-modeline-bar-width 1))
 
 ;; Font settings
-(set-frame-font "IBM Plex Mono 13" t t)
-;(set-frame-font "Victor Mono 13" t t)
-;(set-frame-font "JetBrains Mono 12" t t)
+(set-frame-font "IBM Plex Mono 13" t)
+;(set-frame-font "Victor Mono 13" t)
+;(set-frame-font "JetBrains Mono 12" t)
 
 ;; Enable global visual-line-mode
 (global-visual-line-mode t)
