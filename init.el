@@ -22,8 +22,8 @@
 
 ;; Language layers
 ;(require 'lang-elixir)
-;(require 'lang-go)
-;(require 'lang-haskell)
+(require 'lang-go)
+(require 'lang-haskell)
 ;(require 'lang-java)
 ;(require 'lang-javascript)
 (require 'lang-lisp)
