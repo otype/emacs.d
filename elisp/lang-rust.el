@@ -32,28 +32,82 @@
   :defer t
   :commands lsp
   :custom
+  ;; Symbol highlighting
+  (lsp-enable-symbol-highlighting t)
+
+  ;; Lenses
+  (lsp-lens-enable t)
+
+  ;; Headliner
+  (lsp-headerline-breadcrumb-enable t)
+
+  ;; Modeline code actions
+  (lsp-modeline-code-actions-enable t)
+
+  ;; Signature help documentation
+  (lsp-signature-auto-activate nil)
+  (lsp-signature-render-documentation nil)
+
   ;; what to use when checking on-save. "check" is default, I prefer clippy
   (lsp-rust-analyzer-cargo-watch-command "clippy")
+
+  ;; Display all of the info returned by document/onHover. If this is set to nil,
+  ;; eldoc will show only the symbol information.
   (lsp-eldoc-render-all t)
+
+  ;; Debounce interval for after-change-functions.
   (lsp-idle-delay 0.6)
-  ;; enable / disable the hints as you prefer:
+
+  ;; Show inlay hints.
   (lsp-rust-analyzer-server-display-inlay-hints t)
+
+  ;; Whether to show elided lifetime inlay hints.
   (lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")
+
+  ;; Whether to show inlay type hints for method chains. These hints will be
+  ;; formatted with the type hint formatting options, if the mode is not
+  ;; configured to ask the server to format them.
   (lsp-rust-analyzer-display-chaining-hints t)
+
+  ;; When showing elided lifetime inlay hints, whether to use parameter names or
+  ;; numeric placeholder names for the lifetimes.
   (lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names nil)
+
+  ;; Whether to show closure return type inlay hints for closures with block bodies.
   (lsp-rust-analyzer-display-closure-return-type-hints t)
+
+  ;; Whether to show function parameter name inlay hints at the call site.
   (lsp-rust-analyzer-display-parameter-hints nil)
+
+  ;; Whether to show inlay type hints for compiler inserted reborrows.
   (lsp-rust-analyzer-display-reborrow-hints nil)
+
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+(use-package helm-lsp
+  :defer t
+  :commands
+  helm-lsp-workspace-symbol)
 
 (use-package lsp-ui
   :defer t
   :commands lsp-ui-mode
   :custom
-  (lsp-ui-peek-always-show t)
+  ;; enable lsp-ui-doc
+  (lsp-ui-doc-enable t)
+
+  ;; When non-nil, move the cursor over a symbol to show the doc
+  (lsp-ui-doc-show-with-cursor nil)
+
+  ;; When non-nil, move the mouse pointer over a symbol to show the doc
+  (lsp-ui-doc-show-with-mouse t)
+
+  (lsp-ui-peek-always-show -1)
   (lsp-ui-sideline-show-hover t)
-  (lsp-ui-doc-enable nil))
+  (lsp-ui-sideline-show-code-actions t)
+
+  )
 
 (use-package cargo
   :defer t
