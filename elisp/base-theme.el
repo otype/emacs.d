@@ -26,11 +26,37 @@
 ;; Turn on hl-line
 (global-hl-line-mode 1)
 
-;; Remove fringes left and right
-(set-fringe-mode 0)
-
 ;; Enable line numbers
 (global-display-line-numbers-mode 1)
+
+;; Disable toolbar & menubar
+(menu-bar-mode -1)
+
+;; Disable the display of tool bars
+;; (when (fboundp 'tool-bar-mode)
+;;   (tool-bar-mode -1))
+(tool-bar-mode -1)
+
+;; Disable the display of scroll bars
+;; (when (fboundp 'scroll-bar-mode)
+;;   (scroll-bar-mode -1))
+(scroll-bar-mode -1)
+
+;; show-paren-mode allows one to see matching pairs of parentheses and other characters.
+;; When point is on the opening character of one of the paired characters, the other is
+;; highlighted. When the point is after the closing character of one of the paired
+;; characters, the other is highlighted.
+(show-paren-mode 1)
+
+;; disable splash screen
+(setq inhibit-startup-message t)
+
+;; The fringes normally appear between the display margins and the window text. If the
+;; value is non-nil, they appear outside the display margins.
+;;(setq fringes-outside-margins t)
+
+;; Remove fringes left and right
+(set-fringe-mode 0)
 
 ;; Emacs 24.4 ships with a new minor mode called prettify-symbols-mode. Its purpose
 ;; is to replace the standard text representation of various identifiers/symbols with
@@ -46,18 +72,5 @@
 
 ;; Modify region background and text color
 (set-face-attribute 'region nil :background "#FBFFC8")
-
-;; Set window frame size
-(if (display-graphic-p)
-    (progn
-      (setq initial-frame-alist
-            '(
-              (width . 110) ; chars
-              (height . 40))) ; lines
-      (setq default-frame-alist
-            '(
-              (width . 110)
-              (height . 40)))))
-
 
 (provide 'base-theme)

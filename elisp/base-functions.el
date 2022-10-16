@@ -3,9 +3,6 @@
 ;; (defun something
 ;;    (do-something))
 
-;; automatically open sym-linked files
-(setq vc-follow-symlinks t)
-
 ;; Duplicate line or whole region
 (defun duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
