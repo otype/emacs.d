@@ -70,7 +70,7 @@
 (setq delete-old-versions                 -1
       version-control                     t
       vc-make-backup-files                t
-      make-backup-files                   t
+      make-backup-files                   -1
       auto-save-default                   t
       create-lockfiles                    t)
 

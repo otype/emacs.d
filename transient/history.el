@@ -3,6 +3,6 @@
  (magit-commit nil
 	       ("--all"))
  (magit-dispatch nil)
- (magit-pull
-  ("--rebase"))
+ (magit-pull nil
+	     ("--rebase"))
  (magit-push nil))
