@@ -15,15 +15,21 @@
 
 ;; An extensible emacs startup screen showing you what’s most important.
 (use-package dashboard
+  :init
+  (progn
+    (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+    (setq dashboard-items '((recents   . 5)
+                            (bookmarks . 5)
+                            (projects  . 5)
+                            (agenda    . 5)
+                            (registers . 5)))
+    (setq dashboard-set-navigator     t)
+    (setq dashboard-set-file-icons    t)
+    (setq dashboard-set-heading-icons t)
+    (setq dashboard-startup-banner    'logo)
+    (setq dashboard-week-agenda       t))
   :config
-  (dashboard-setup-startup-hook)
-  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
-  (setq dashboard-items '((recents  . 5)
-                        (bookmarks . 5)
-                        (projects . 5)
-                        (agenda . 5)
-                        (registers . 5)))
-  (setq dashboard-set-navigator t))
+  (dashboard-setup-startup-hook))
 
 ;; This file documents Ediff, a comprehensive visual interface to Unix diff and patch utilities.
 ;; https://www.gnu.org/software/emacs/manual/html_node/ediff/

@@ -61,7 +61,7 @@
 ;;(setq fringes-outside-margins t)
 
 ;; Remove fringes left and right
-(set-fringe-mode 0)
+(set-fringe-mode 5)
 
 ;; Emacs 24.4 ships with a new minor mode called prettify-symbols-mode. Its purpose
 ;; is to replace the standard text representation of various identifiers/symbols with
