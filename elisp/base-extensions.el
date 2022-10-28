@@ -143,9 +143,11 @@
 ;; https://orgmode.org/
 (use-package org
   :config
-  (setq org-directory "~/Documents/org-roam-notes"
-        ;; org-default-notes-file (concat org-directory "/mw-tasks.org")
-	)
+  (setq org-directory "~/Nextcloud/Documents/org/"
+        org-default-notes-file (concat org-directory "/mw-tasks.org"))
+  (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "<img draggable="false" role="img" class="emoji" alt="✔" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/2714.svg"> DONE(d)")
+			    (sequence "⚑ WAITING(w)" "|")
+			    (sequence "|" "✘ CANCELED(c)")))
   :bind
   ("C-c l" . org-store-link)
   ("C-c a" . org-agenda))
@@ -155,7 +157,7 @@
   :init
   (setq org-roam-v2-ack t)
   :custom
-  (org-roam-directory (file-truename org-directory))
+  (org-roam-directory (file-truename "~/Nextcloud/Documents/org-roam-notes/"))
   (org-roam-completion-everywhere t)
   :config
   (org-roam-setup)
@@ -164,7 +166,7 @@
 	 ("C-c n l" . org-roam-buffer-toggle)
          :map org-mode-map
          (("C-c n a" . org-roam-alias-add)
-	  ("C-c n c"   . completion-at-point)
+	  ("C-c n c" . completion-at-point)
           ("C-c n i" . org-roam-node-insert)
           ("C-c n o" . org-id-get-create)
           ("C-c n t" . org-roam-tag-add))))
@@ -176,8 +178,9 @@
   :defer t
   :config
   (org-projectile-per-project)
-  (setq org-projectile-per-project-filepath "todo.org"
-	org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
+  ;; (setq org-projectile-per-project-filepath "todo.org")
+  ;; (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+)
 
 ;; Prettify headings and plain lists in Org mode. This package is a direct
 ;; descendant of ‘org-bullets’, with most of the code base completely rewritten.
