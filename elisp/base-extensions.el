@@ -178,9 +178,8 @@
   :defer t
   :config
   (org-projectile-per-project)
-  ;; (setq org-projectile-per-project-filepath "todo.org")
-  ;; (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
-)
+  (setq org-projectile-per-project-filepath "todo.org")
+  (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
 
 ;; Prettify headings and plain lists in Org mode. This package is a direct
 ;; descendant of ‘org-bullets’, with most of the code base completely rewritten.
