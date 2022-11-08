@@ -1,9 +1,3 @@
-;;; package --- python configs
-;;; Commentary:
-;;; Contains my python configs
-
-;;; Code:
-
 (setq exec-path (append exec-path '("~/.pyenv/bin")))
 
 (use-package py-autopep8
@@ -20,17 +14,15 @@
   (setq elpy-rpc-backend "jedi")
   (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
   (add-hook 'python-mode-hook
-	          (lambda ()
-		          (setq indent-tabs-mode nil)
-		          (setq tab-width 4)
-		          (setq python-indent-offset 4)
-              )
-            )
+	    (lambda ()
+	      (setq indent-tabs-mode nil)
+	      (setq tab-width 4)
+	      (setq python-indent-offset 4)))
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode)
   :bind (:map elpy-mode-map
-	            ("M-." . elpy-goto-definition)
-	            ("M-," . pop-tag-mark)))
+	      ("M-." . elpy-goto-definition)
+	      ("M-," . pop-tag-mark)))
 
 (use-package focus
   :defer t
@@ -80,4 +72,3 @@
 (setq-default python-indent-offset 4)
 
 (provide 'lang-python)
-;;; base-python.el ends here

@@ -76,6 +76,7 @@
          ("C-c j m" . helm-mini)
          ("C-c j o" . helm-occur)
          ("C-c j p" . helm-projectile-ag)
+	 ("C-c j g" . helm-projectile-grep-command)
          ("C-c j a" . helm-do-ag)
          ("C-c j k" . helm-show-kill-ring)
          :map helm-map
@@ -143,9 +144,8 @@
 ;; https://orgmode.org/
 (use-package org
   :config
-  (setq org-directory "~/Documents/org-roam-notes"
-        ;; org-default-notes-file (concat org-directory "/mw-tasks.org")
-	)
+  (setq org-directory "~/Nextcloud/Documents/org/")
+  (setq org-default-notes-file (concat org-directory "/mw-tasks.org"))
   :bind
   ("C-c l" . org-store-link)
   ("C-c a" . org-agenda))
@@ -155,7 +155,7 @@
   :init
   (setq org-roam-v2-ack t)
   :custom
-  (org-roam-directory (file-truename org-directory))
+  (org-roam-directory (file-truename "~/Nextcloud/Documents/org-roam-notes/"))
   (org-roam-completion-everywhere t)
   :config
   (org-roam-setup)
@@ -236,7 +236,7 @@
   :defer t
   :config
   (add-hook 'yaml-mode-hook
-        (lambda ()
-            (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+            (lambda ()
+              (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
 (provide 'base-extensions)
