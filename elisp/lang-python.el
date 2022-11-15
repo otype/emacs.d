@@ -14,10 +14,19 @@
   (setq elpy-rpc-backend "jedi")
   (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
   (add-hook 'python-mode-hook
+<<<<<<< HEAD
 	    (lambda ()
 	      (setq indent-tabs-mode nil)
 	      (setq tab-width 4)
 	      (setq python-indent-offset 4)))
+=======
+	          (lambda ()
+		          (setq indent-tabs-mode t)
+		          (setq tab-width 4)
+		          (setq python-indent-offset 4)
+              )
+            )
+>>>>>>> 750b55c (Fix Python configuration)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode)
   :bind (:map elpy-mode-map
