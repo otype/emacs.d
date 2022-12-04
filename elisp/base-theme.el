@@ -1,12 +1,6 @@
 ;; Nice icon set for emacs
 (use-package all-the-icons)
 
-;; Planet is a theme for Emacs inspired by the color palette of the former Gmail
-;; theme, "Planets."
-;; (use-package planet-theme
-;;   :config
-;;   (load-theme 'planet t))
-
 ;; Kaolin is a set of eye pleasing themes for GNU Emacs with support for a large
 ;; number of modes and external packages.
 (use-package kaolin-themes
