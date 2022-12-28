@@ -1,8 +1,5 @@
 ;; Add your custom functions here
 
-;; (defun something
-;;    (do-something))
-
 ;; Duplicate line or whole region
 (defun duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
@@ -23,8 +20,8 @@
 	(insert region)
 	(setq end (point)))
       (goto-char (+ origin (* (length region) arg) arg)))))
-(global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
 
+;; Reload my emacs configuration
 (defun my-reload-emacs-configuration ()
   (interactive)
   (load-file "~/.emacs.d/init.el"))
