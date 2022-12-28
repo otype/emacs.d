@@ -57,28 +57,30 @@
 ;; requiring selecting an item from a list of possible choices.
 ;; https://github.com/emacs-helm/helm
 (use-package helm
-  :init
-  (require 'helm-config)
   :config
+  (helm-mode 1)
+  (set-face-attribute 'helm-selection nil :background "#FBFFC8" :foreground "#04134B")
   (setq helm-split-window-in-side-p     t
         helm-split-window-default-side  'below
 	helm-idle-delay                 0.0
 	helm-input-idle-delay           0.01
 	helm-quick-update               t
-	helm-ff-skip-boring-files       t)
-  (set-face-attribute 'helm-selection nil :background "#FBFFC8" :foreground "#04134B")
-  (helm-mode 1)
+	helm-ff-skip-boring-files       t
+	helm-ag-insert-at-point         'symbol)
   :bind (("M-x"     . helm-M-x)
-         ("C-x C-m" . helm-M-x)
-         ("C-x C-f" . helm-find-files)
-         ;; ("C-c j"   . helm-command-prefix)
-         ("C-c j v" . helm-projectile)
-         ("C-c j m" . helm-mini)
-         ("C-c j o" . helm-occur)
-         ("C-c j p" . helm-projectile-ag)
-	 ("C-c j g" . helm-projectile-grep-command)
-         ("C-c j a" . helm-do-ag)
-         ("C-c j k" . helm-show-kill-ring)
+	 ("C-c C-m" . helm-M-x)
+	 ("C-c C-f" . helm-find-files)
+	 ("C-c h"   . helm-command-prefix)
+	 :map helm-command-map
+	 (("a" . helm-projectile-ag)
+	  ("d" . helm-do-ag)
+	  ("f" . helm-find-files)
+	  ;("g" . helm-projectile-grep)
+	  ("g" . helm-browse-project)
+          ("k" . helm-show-kill-ring)
+          ("m" . helm-mini)
+          ("o" . helm-occur)
+	  ("v" . helm-projectile))
          :map helm-map
          ("<tab>"   . helm-execute-persistent-action)))
 
@@ -92,7 +94,11 @@
 
 ;; helm for git-grep(1), an incremental git-grep(1).
 ;; https://github.com/yasuyk/helm-git-grep
-(use-package helm-git-grep)
+;;(use-package helm-git-grep)
+
+;; Helm Git project manager.
+;; https://github.com/emacs-helm/helm-ls-git
+(use-package helm-ls-git)
 
 ;; Helm UI for Projectile
 ;; https://github.com/bbatsov/helm-projectile
@@ -104,7 +110,7 @@
 ;; https://github.com/ShingoFukuyama/helm-swoop
 (use-package helm-swoop
   :bind
-  ("C-x c s" . helm-swoop))
+  ("C-c h s" . helm-swoop))
 
 ;; this package includes Emacs minor modes (iedit-mode and iedit-rectangle-mode)
 ;; based on a API library (iedit-lib) and allows you to edit one occurrence of some
@@ -121,13 +127,13 @@
 (use-package magit
   :config
   :bind
-  ("C-x g s" . magit-status)
-  ("C-x g x" . magit-checkout)
-  ("C-x g c" . magit-commit)
-  ("C-x g p" . magit-push)
-  ("C-x g u" . magit-pull)
-  ("C-x g e" . magit-ediff-resolve)
-  ("C-x g r" . magit-rebase-interactive))
+  ("C-c m s" . magit-status)
+  ("C-c m x" . magit-checkout)
+  ("C-c m c" . magit-commit)
+  ("C-c m p" . magit-push)
+  ("C-c m u" . magit-pull)
+  ("C-c m e" . magit-ediff-resolve)
+  ("C-c m r" . magit-rebase-interactive))
 
 ;; This Emacs package provides several commands to switch between various line
 ;; positions, like moving to the beginning/end of code, line or comment.
@@ -150,8 +156,8 @@
 			    (sequence "⚑ WAITING(w)" "|")
 			    (sequence "|" "✘ CANCELED(c)")))
   :bind
-  ("C-c l" . org-store-link)
-  ("C-c a" . org-agenda))
+  ("C-c o s" . org-store-link)
+  ("C-c o a" . org-agenda))
 
 (use-package org-roam
   :after org
@@ -162,15 +168,15 @@
   (org-roam-completion-everywhere t)
   :config
   (org-roam-setup)
-  :bind (("C-c n f" . org-roam-node-find)
-         ("C-c n r" . org-roam-node-random)
-	 ("C-c n l" . org-roam-buffer-toggle)
+  :bind (("C-c r f" . org-roam-node-find)
+         ("C-c r r" . org-roam-node-random)
+	 ("C-c r l" . org-roam-buffer-toggle)
          :map org-mode-map
-         (("C-c n a" . org-roam-alias-add)
-	  ("C-c n c" . completion-at-point)
-          ("C-c n i" . org-roam-node-insert)
-          ("C-c n o" . org-id-get-create)
-          ("C-c n t" . org-roam-tag-add))))
+         (("C-c r a" . org-roam-alias-add)
+	  ("C-c r c" . completion-at-point)
+	  ("C-c r i" . org-roam-node-insert)
+	  ("C-c r o" . org-id-get-create)
+          ("C-c r t" . org-roam-tag-add))))
 
 ;; org-projectile provides functions for the creation of org-mode TODOs that are
 ;; associated with projectile projects.
@@ -179,8 +185,8 @@
   :defer t
   :config
   (org-projectile-per-project)
-  (setq org-projectile-per-project-filepath "todo.org")
-  (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
+  (setq org-projectile-per-project-filepath "todo.org"
+	org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
 
 ;; Prettify headings and plain lists in Org mode. This package is a direct
 ;; descendant of ‘org-bullets’, with most of the code base completely rewritten.
