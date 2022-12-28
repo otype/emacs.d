@@ -5,7 +5,7 @@
 ;; number of modes and external packages.
 (use-package kaolin-themes
   :config
-  (load-theme 'kaolin-dark t)
+  (load-theme 'kaolin-shiva t)
   (kaolin-treemacs-theme))
 
 ;; Mode-line variant
