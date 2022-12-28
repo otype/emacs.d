@@ -18,16 +18,16 @@
   :init
   (progn
     (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
-    (setq dashboard-items '((recents   . 5)
-                            (bookmarks . 5)
-                            (projects  . 5)
-                            (agenda    . 5)
-                            (registers . 5)))
-    (setq dashboard-set-navigator     t)
-    (setq dashboard-set-file-icons    t)
-    (setq dashboard-set-heading-icons t)
-    (setq dashboard-startup-banner    'logo)
-    (setq dashboard-week-agenda       t))
+    (setq dashboard-items              '((recents   . 5)
+					 (bookmarks . 5)
+					 (projects  . 5)
+					 (agenda    . 5)
+					 (registers . 5))
+	  dashboard-set-navigator      t
+	  dashboard-set-file-icons     t
+	  dashboard-set-heading-icons  t
+	  dashboard-startup-banner     'logo
+	  dashboard-week-agenda        t))
   :config
   (dashboard-setup-startup-hook))
 
@@ -35,10 +35,10 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/ediff/
 (use-package ediff
   :config
-  (setq ediff-window-setup-function 'ediff-setup-windows-plain)
-  (setq ediff-split-window-function 'split-window-horizontally)
-  (setq-default ediff-highlight-all-diffs 'nil)
-  (setq ediff-diff-options "-w"))
+  (setq ediff-window-setup-function        'ediff-setup-windows-plain)
+  (setq ediff-split-window-function        'split-window-horizontally)
+  (setq-default ediff-highlight-all-diffs  'nil)
+  (setq ediff-diff-options "               -w"))
 
 ;;Expand region increases the selected region by semantic units. Just keep pressing the key
 ;; until it selects what you want.
@@ -60,12 +60,12 @@
   :init
   (require 'helm-config)
   :config
-  (setq helm-split-window-in-side-p t
-        helm-split-window-default-side 'below
-	helm-idle-delay 0.0
-	helm-input-idle-delay 0.01
-	helm-quick-update t
-	helm-ff-skip-boring-files t)
+  (setq helm-split-window-in-side-p     t
+        helm-split-window-default-side  'below
+	helm-idle-delay                 0.0
+	helm-input-idle-delay           0.01
+	helm-quick-update               t
+	helm-ff-skip-boring-files       t)
   (set-face-attribute 'helm-selection nil :background "#FBFFC8" :foreground "#04134B")
   (helm-mode 1)
   :bind (("M-x"     . helm-M-x)
@@ -204,12 +204,11 @@
 ;; https://github.com/bbatsov/projectile
 (use-package projectile
   :config
-  (setq projectile-known-projects-file
-        (expand-file-name "projectile-bookmarks.eld" temp-dir))
+  (setq projectile-known-projects-file  (expand-file-name "projectile-bookmarks.eld" temp-dir)
+	projectile-completion-system    'helm
+	projectile-enable-caching       t
+	projectile-project-search-path  '("~/src/" "~/tmp/"))
 
-  (setq projectile-completion-system 'helm)
-  (setq projectile-enable-caching t)
-  (setq projectile-project-search-path '("~/src/" "~/tmp/"))
   (projectile-global-mode)
   :bind-keymap
   ("C-c p" . projectile-command-map))
