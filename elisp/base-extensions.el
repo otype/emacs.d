@@ -80,6 +80,7 @@
           ("k" . helm-show-kill-ring)
           ("m" . helm-mini)
           ("o" . helm-occur)
+	  ("s" . helm-swoop)
 	  ("v" . helm-projectile))
          :map helm-map
          ("<tab>"   . helm-execute-persistent-action)))
@@ -108,9 +109,7 @@
 ;; At the same time, the original buffer's cursor is jumping line to line according
 ;; to moving up and down the line list.
 ;; https://github.com/ShingoFukuyama/helm-swoop
-(use-package helm-swoop
-  :bind
-  ("C-c h s" . helm-swoop))
+(use-package helm-swoop)
 
 ;; this package includes Emacs minor modes (iedit-mode and iedit-rectangle-mode)
 ;; based on a API library (iedit-lib) and allows you to edit one occurrence of some
@@ -127,13 +126,13 @@
 (use-package magit
   :config
   :bind
-  ("C-c m s" . magit-status)
-  ("C-c m x" . magit-checkout)
   ("C-c m c" . magit-commit)
-  ("C-c m p" . magit-push)
-  ("C-c m u" . magit-pull)
   ("C-c m e" . magit-ediff-resolve)
-  ("C-c m r" . magit-rebase-interactive))
+  ("C-c m p" . magit-push)
+  ("C-c m r" . magit-rebase-interactive)
+  ("C-c m s" . magit-status)
+  ("C-c m u" . magit-pull)
+  ("C-c m x" . magit-checkout))
 
 ;; This Emacs package provides several commands to switch between various line
 ;; positions, like moving to the beginning/end of code, line or comment.
@@ -169,9 +168,9 @@
   :config
   (org-roam-setup)
   :bind (("C-c r f" . org-roam-node-find)
-         ("C-c r r" . org-roam-node-random)
 	 ("C-c r l" . org-roam-buffer-toggle)
-         :map org-mode-map
+	 ("C-c r r" . org-roam-node-random)
+	 :map org-mode-map
          (("C-c r a" . org-roam-alias-add)
 	  ("C-c r c" . completion-at-point)
 	  ("C-c r i" . org-roam-node-insert)
