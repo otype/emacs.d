@@ -18,9 +18,9 @@
   :init
   (progn
     (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
-    (setq dashboard-items              '((recents   . 5)
-					 (bookmarks . 5)
-					 (projects  . 5)
+    (setq dashboard-items              '((recents   . 10)
+					 (bookmarks . 10)
+					 (projects  . 10)
 					 (agenda    . 5)
 					 (registers . 5))
 	  dashboard-set-navigator      t
@@ -101,6 +101,13 @@
 ;; https://github.com/emacs-helm/helm-ls-git
 (use-package helm-ls-git)
 
+;; This package provides alternative of the build-in lsp-mode xref-appropos which
+;; provides as you type completion.
+;; https://github.com/emacs-lsp/helm-lsp
+(use-package helm-lsp
+  :commands
+  helm-lsp-workspace-symbol)
+
 ;; Helm UI for Projectile
 ;; https://github.com/bbatsov/helm-projectile
 (use-package helm-projectile)
@@ -119,6 +126,44 @@
 (use-package iedit
   :bind
   ("C-s-;" . iedit-mode))
+
+;; Client for Language Server Protocol (v3.14). lsp-mode aims to provide IDE-like
+;; experience by providing optional integration with the most popular Emacs packages
+;; like company, flycheck and projectile.
+;; https://github.com/emacs-lsp/lsp-mode
+(use-package lsp-mode
+  :commands lsp
+  :custom
+  (lsp-enable-symbol-highlighting t)          ;; Symbol highlighting
+  (lsp-headerline-breadcrumb-enable t)        ;; Headliner
+  (lsp-idle-delay 0.6)                        ;; Debounce interval for after-change-functions.
+  (lsp-lens-enable t)                         ;; Lenses
+  (lsp-modeline-code-actions-enable t)        ;; Modeline code actions
+  (lsp-signature-auto-activate nil)           ;; Signature help documentation
+  (lsp-signature-render-documentation nil)    ;; Signature help documentation
+
+  ;; Display all of the info returned by document/onHover. If this is set to nil,
+  ;; eldoc will show only the symbol information.
+  (lsp-eldoc-render-all t)
+
+  :config
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+;; This package contains all the higher level UI modules of lsp-mode, like flycheck
+;; support and code lenses.
+;; https://github.com/emacs-lsp/lsp-ui/
+(use-package lsp-ui
+  :defer t
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-doc-enable t)                       ;; enable lsp-ui-doc
+  (lsp-ui-doc-show-with-cursor nil)           ;; When non-nil, move the cursor over a
+                                              ;; symbol to show the doc
+  (lsp-ui-doc-show-with-mouse t)              ;; When non-nil, move the mouse pointer
+                                              ;; over a symbol to show the doc
+  (lsp-ui-peek-always-show -1)
+  (lsp-ui-sideline-show-hover t)
+  (lsp-ui-sideline-show-code-actions t))
 
 ;; Magit is an interface to the version control system Git, implemented as an
 ;; Emacs package.

@@ -28,35 +28,17 @@
   (when buffer-file-name
     (setq-local buffer-save-without-query t)))
 
+;; See ./base-extensions.el for main configuration
+;;
+;; Client for Language Server Protocol (v3.14). lsp-mode aims to provide IDE-like
+;; experience by providing optional integration with the most popular Emacs packages
+;; like company, flycheck and projectile.
+;; https://github.com/emacs-lsp/lsp-mode
 (use-package lsp-mode
-  :defer t
   :commands lsp
   :custom
-  ;; Symbol highlighting
-  (lsp-enable-symbol-highlighting t)
-
-  ;; Lenses
-  (lsp-lens-enable t)
-
-  ;; Headliner
-  (lsp-headerline-breadcrumb-enable t)
-
-  ;; Modeline code actions
-  (lsp-modeline-code-actions-enable t)
-
-  ;; Signature help documentation
-  (lsp-signature-auto-activate nil)
-  (lsp-signature-render-documentation nil)
-
   ;; what to use when checking on-save. "check" is default, I prefer clippy
   (lsp-rust-analyzer-cargo-watch-command "clippy")
-
-  ;; Display all of the info returned by document/onHover. If this is set to nil,
-  ;; eldoc will show only the symbol information.
-  (lsp-eldoc-render-all t)
-
-  ;; Debounce interval for after-change-functions.
-  (lsp-idle-delay 0.6)
 
   ;; Show inlay hints.
   (lsp-rust-analyzer-server-display-inlay-hints t)
@@ -80,32 +62,7 @@
   (lsp-rust-analyzer-display-parameter-hints nil)
 
   ;; Whether to show inlay type hints for compiler inserted reborrows.
-  (lsp-rust-analyzer-display-reborrow-hints nil)
-
-  :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
-
-(use-package helm-lsp
-  :defer t
-  :commands
-  helm-lsp-workspace-symbol)
-
-(use-package lsp-ui
-  :defer t
-  :commands lsp-ui-mode
-  :custom
-  ;; enable lsp-ui-doc
-  (lsp-ui-doc-enable t)
-
-  ;; When non-nil, move the cursor over a symbol to show the doc
-  (lsp-ui-doc-show-with-cursor nil)
-
-  ;; When non-nil, move the mouse pointer over a symbol to show the doc
-  (lsp-ui-doc-show-with-mouse t)
-
-  (lsp-ui-peek-always-show -1)
-  (lsp-ui-sideline-show-hover t)
-  (lsp-ui-sideline-show-code-actions t))
+  (lsp-rust-analyzer-display-reborrow-hints nil))
 
 (use-package cargo
   :defer t
