@@ -3,8 +3,8 @@
 ;; Duplicate line or whole region
 (defun duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
-	 If there's no region, the current line will be duplicated. However, if
-	 there's a region, all lines that region covers will be duplicated."
+   If there's no region, the current line will be duplicated. However, if
+   there's a region, all lines that region covers will be duplicated."
   (interactive "p")
   (let (beg end (origin (point)))
     (if (and mark-active (> (point) (mark)))
