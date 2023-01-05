@@ -194,33 +194,58 @@
 ;; https://orgmode.org/
 (use-package org
   :config
-  (setq org-directory "~/Nextcloud/Documents/org/"
-        org-default-notes-file (concat org-directory "/mw-tasks.org"))
-  (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "<img draggable="false" role="img" class="emoji" alt="✔" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/2714.svg"> DONE(d)")
-			    (sequence "⚑ WAITING(w)" "|")
-			    (sequence "|" "✘ CANCELED(c)")))
+  (setq org-directory           "~/Nextcloud/Documents/org/"
+        org-default-notes-file  (concat org-directory "/mw-tasks.org"))
+;; 	   org-todo-keywords       '((sequence "☛ TODO(t)" "|" "<img draggable="false" role="img" class="emoji" alt="✔" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/2714.svg"> DONE(d)")
+;; 			    (sequence "⚑ WAITING(w)" "|")
+;; 			    (sequence "|" "✘ CANCELED(c)")))
   :bind
   ("C-c o s" . org-store-link)
   ("C-c o a" . org-agenda))
 
+;; Org-roam is a plain-text knowledge management system. It brings some of Roam's more
+;; powerful features into the Org-mode ecosystem.
+;; https://github.com/org-roam/org-roam
 (use-package org-roam
   :after org
   :init
-  (setq org-roam-v2-ack t)
-  :custom
-  (org-roam-directory (file-truename "~/Nextcloud/Documents/org-roam-notes/"))
-  (org-roam-completion-everywhere t)
-  :config
-  (org-roam-setup)
+  (setq org-roam-v2-ack                 t
+	org-roam-directory              (file-truename "~/org-roam-notes/")
+	org-roam-completion-everywhere  t
+	org-roam-capture-templates
+	'(("p" "private" plain "%?" :target
+           (file+head "private/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n") :unnarrowed t)
+          ("w" "work" plain "%?" :target
+           (file+head "work/%<%Y%m%d%H%M%S>-${slug}.org"  "#+title: ${title}\n") :unnarrowed t))
+	)
   :bind (("C-c r f" . org-roam-node-find)
+	 ("C-c r g" . org-roam-graph)
 	 ("C-c r l" . org-roam-buffer-toggle)
 	 ("C-c r r" . org-roam-node-random)
 	 :map org-mode-map
          (("C-c r a" . org-roam-alias-add)
 	  ("C-c r c" . completion-at-point)
+	  ("C-c r d" . org-roam-dailies-capture-today)
+	  ("C-c r e" . org-roam-capture)
 	  ("C-c r i" . org-roam-node-insert)
 	  ("C-c r o" . org-id-get-create)
-          ("C-c r t" . org-roam-tag-add))))
+          ("C-c r t" . org-roam-tag-add)))
+  :config
+  (org-roam-setup))
+
+;; ;; Org-Roam-UI is a frontend for exploring and interacting with your org-roam notes.
+;; ;; https://github.com/org-roam/org-roam-ui
+;; (use-package org-roam-ui
+;;     :after org-roam ;; or :after org
+;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;; ;;         a hookable mode anymore, you're advised to pick something yourself
+;; ;;         if you don't care about startup time, use
+;; ;;  :hook (after-init . org-roam-ui-mode)
+;;     :config
+;;     (setq org-roam-ui-sync-theme t
+;;           org-roam-ui-follow t
+;;           org-roam-ui-update-on-save t
+;;           org-roam-ui-open-on-start t))
 
 ;; org-projectile provides functions for the creation of org-mode TODOs that are
 ;; associated with projectile projects.
