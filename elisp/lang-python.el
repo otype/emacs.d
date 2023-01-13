@@ -1,13 +1,10 @@
 (setq exec-path (append exec-path '("~/.pyenv/bin")))
 
-(use-package py-autopep8
-  :defer t)
+(use-package py-autopep8)
 
-(use-package blacken
-  :defer t)
+(use-package blacken)
 
 (use-package elpy
-  :defer t
   :init
   (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
   :config
@@ -27,23 +24,19 @@
 	      ("M-," . pop-tag-mark)))
 
 (use-package focus
-  :defer t
   :config
   (add-hook 'focus-mode-to-thing '(python-mode . paragaph)))
 
 (use-package python
-  :defer t
   :mode ("\\.py" . python-mode)
   :config
   (elpy-enable))
 
 (use-package pip-requirements
-  :defer t
   :config
   (add-hook 'pip-requirements-mode-hook #'pip-requirements-auto-complete-setup))
 
 (use-package pyenv-mode
-  :defer t
   :init
   (add-to-list 'exec-path "~/.pyenv/shims")
   (setenv "WORKON_HOME" "~/.pyenv/versions/")

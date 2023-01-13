@@ -29,6 +29,6 @@
 (require 'lang-lisp)
 (require 'lang-python)
 ;(require 'lang-ruby)
-;(require 'lang-rust)
+(require 'lang-rust)
 ;(require 'lang-terraform)
 ;(require 'lang-vala)

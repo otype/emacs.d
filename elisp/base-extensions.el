@@ -153,7 +153,6 @@
 ;; support and code lenses.
 ;; https://github.com/emacs-lsp/lsp-ui/
 (use-package lsp-ui
-  :defer t
   :commands lsp-ui-mode
   :custom
   (lsp-ui-doc-enable t)                       ;; enable lsp-ui-doc
@@ -233,25 +232,10 @@
   :config
   (org-roam-setup))
 
-;; ;; Org-Roam-UI is a frontend for exploring and interacting with your org-roam notes.
-;; ;; https://github.com/org-roam/org-roam-ui
-;; (use-package org-roam-ui
-;;     :after org-roam ;; or :after org
-;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;; ;;         a hookable mode anymore, you're advised to pick something yourself
-;; ;;         if you don't care about startup time, use
-;; ;;  :hook (after-init . org-roam-ui-mode)
-;;     :config
-;;     (setq org-roam-ui-sync-theme t
-;;           org-roam-ui-follow t
-;;           org-roam-ui-update-on-save t
-;;           org-roam-ui-open-on-start t))
-
 ;; org-projectile provides functions for the creation of org-mode TODOs that are
 ;; associated with projectile projects.
 ;; https://github.com/IvanMalison/org-projectile
 (use-package org-projectile
-  :defer t
   :config
   (org-projectile-per-project)
   (setq org-projectile-per-project-filepath "todo.org"
@@ -269,7 +253,6 @@
 ;; characters as tidy horizontal rules.
 ;; https://github.com/purcell/page-break-lines
 (use-package page-break-lines
-  :defer t
   :config
   (global-page-break-lines-mode))
 
@@ -310,7 +293,6 @@
 ;; Simple major mode to edit YAML file for emacs
 ;; https://github.com/yoshiki/yaml-mode
 (use-package yaml-mode
-  :defer t
   :config
   (add-hook 'yaml-mode-hook
             (lambda ()

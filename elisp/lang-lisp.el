@@ -1,5 +1,4 @@
 (use-package smartparens
-  :defer t
   :config
   (require 'smartparens-config)
   (add-hook 'lisp-mode-hook        'smartparens-strict-mode)
