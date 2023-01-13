@@ -1,14 +1,13 @@
 (use-package rustic
-  :defer t
   :bind (:map rustic-mode-map
               ("M-j" . lsp-ui-imenu)
               ("M-?" . lsp-find-references)
-              ("C-c C-c l" . flycheck-list-errors)
-              ("C-c C-c a" . lsp-execute-code-action)
-              ("C-c C-c r" . lsp-rename)
-              ("C-c C-c q" . lsp-workspace-restart)
-              ("C-c C-c Q" . lsp-workspace-shutdown)
-              ("C-c C-c s" . lsp-rust-analyzer-status))
+              ("C-c C-r l" . flycheck-list-errors)
+              ("C-c C-r a" . lsp-execute-code-action)
+              ("C-c C-r r" . lsp-rename)
+              ("C-c C-r q" . lsp-workspace-restart)
+              ("C-c C-r Q" . lsp-workspace-shutdown)
+              ("C-c C-r s" . lsp-rust-analyzer-status))
   :config
   (require 'smartparens-config)
   ;; uncomment for less flashiness
@@ -65,17 +64,14 @@
   (lsp-rust-analyzer-display-reborrow-hints nil))
 
 (use-package cargo
-  :defer t
   :config
   (add-hook 'rust-mode-hook 'cargo-minor-mode))
 
 (use-package flycheck-rust
-  :defer t
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (use-package smartparens
-  :defer t
   :config
   (require 'smartparens-config)
   (add-hook 'rustic-mode-hook #'smartparens-strict-mode))

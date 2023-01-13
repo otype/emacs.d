@@ -1,5 +1,4 @@
 (use-package go-mode
-  :defer t
   :config
   (setq tab-width         2
 	indent-tabs-mode  1)
@@ -21,7 +20,6 @@
 			    (company-mode))))
 
 (use-package company-go
-  :defer t
   :after go-mode
   :config
   (setq tab-width 4)
@@ -32,21 +30,17 @@
 	      ("M-*" . pop-tag-mark)))
 
 (use-package flycheck
-  :defer t
   :config
   (add-hook 'go-mode-hook 'flycheck-mode))
 
 (use-package flycheck-golangci-lint
-  :defer t
   :hook (go-mode . flycheck-golangci-lint-setup)) ;; the same as :init + add-hook
 
 (use-package go-eldoc
-  :defer t
   :config
   (add-hook 'go-mode-hook 'go-eldoc-setup))
 
-(use-package go-guru
-  :defer t)
+(use-package go-guru)
 
 (defun setup-go-mode-compile ()
   ;; Customize compile command to run go build

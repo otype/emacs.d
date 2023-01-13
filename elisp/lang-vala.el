@@ -1,5 +1,4 @@
 (use-package vala-mode
-  :defer t
   :init
   (add-to-list 'auto-mode-alist          '("\\.vala$"  . vala-mode))
   (add-to-list 'auto-mode-alist          '("\\.vapi$"  . vala-mode))

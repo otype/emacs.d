@@ -1,10 +1,8 @@
 (use-package alchemist
-  :defer t
   :config
   (add-hook 'elixir-mode-hook 'alchemist-mode))
 
 (use-package elixir-mode
-  :defer t
   :config
   ;; Create a buffer-local hook to run elixir-format on save, only when we enable elixir-mode.
   (add-hook 'elixir-mode-hook
