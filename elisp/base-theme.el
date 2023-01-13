@@ -8,6 +8,20 @@
   (load-theme 'kaolin-shiva t)
   (kaolin-treemacs-theme))
 
+;; This projects aims to become an aesthetic, functional and efficient tabs plugin for
+;; Emacs with a lot of customization options.
+;; https://github.com/ema2159/centaur-tabs
+(use-package centaur-tabs
+  :demand
+  :config
+  (centaur-tabs-mode t)
+  (setq centaur-tabs-style      "rounded")
+  (setq centaur-tabs-set-icons  t)
+  (setq centaur-tabs-height     32)
+  :bind
+  ("C-<prior>" . centaur-tabs-backward)
+  ("C-<next>"  . centaur-tabs-forward))
+
 ;; Mode-line variant
 (use-package doom-modeline
   :init
