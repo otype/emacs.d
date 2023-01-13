@@ -178,6 +178,13 @@
   ("C-c m u" . magit-pull)
   ("C-c m x" . magit-checkout))
 
+;; MoveText allows you to move the current line using M-up / M-down (or any other bindings you choose)
+;; if a region is marked, it will move the region instead.
+;; https://github.com/emacsfodder/move-text
+(use-package move-text
+  :init
+  (move-text-default-bindings))
+
 ;; This Emacs package provides several commands to switch between various line
 ;; positions, like moving to the beginning/end of code, line or comment.
 ;; https://github.com/alezost/mwim.el
