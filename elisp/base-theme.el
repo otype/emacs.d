@@ -1,13 +1,6 @@
 ;; Nice icon set for emacs
 (use-package all-the-icons)
 
-;; Kaolin is a set of eye pleasing themes for GNU Emacs with support for a large
-;; number of modes and external packages.
-(use-package kaolin-themes
-  :config
-  (load-theme 'kaolin-shiva t)
-  (kaolin-treemacs-theme))
-
 ;; This projects aims to become an aesthetic, functional and efficient tabs plugin for
 ;; Emacs with a lot of customization options.
 ;; https://github.com/ema2159/centaur-tabs
@@ -29,6 +22,13 @@
   :config
   (setq doom-modeline-height 35)
   (setq doom-modeline-bar-width 1))
+
+;; Kaolin is a set of eye pleasing themes for GNU Emacs with support for a large
+;; number of modes and external packages.
+(use-package kaolin-themes
+  :config
+  (load-theme 'kaolin-shiva t)
+  (kaolin-treemacs-theme))
 
 ;; Font settings
 (set-frame-font "IBM Plex Mono 13" t)
