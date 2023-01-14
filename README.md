@@ -14,9 +14,9 @@
 This is an opinionated emacs.d configuration directory.
 
 <p float="left">
-	<img src="/images/emacs.d_dashboard.png" alt="Emacs Dashboard" width="200"/>
-	<img src="/images/emacs.d_coding.png" alt="Coding in Rust" width="200"/>
-	<img src="/images/emacs.d_helm.png" alt="Using Helm" width="200"/>
+	<img src="/images/emacs.d_dashboard.png" alt="Emacs Dashboard" width="250"/>
+	<img src="/images/emacs.d_coding.png" alt="Coding in Rust" width="250"/>
+	<img src="/images/emacs.d_helm.png" alt="Using Helm" width="250"/>
 </p>
 
 ## Getting started
