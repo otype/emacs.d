@@ -13,6 +13,11 @@
 
 This is an opinionated emacs.d configuration directory.
 
+![alt text](/images/emacs.d_dashboard.png "Emacs Dashboard")
+![alt text](/images/emacs.d_coding.png "Coding in Rust")
+![alt text](/images/emacs.d_helm.png "Using Helm")
+
+
 ## Getting started
 
 #### Requirements
