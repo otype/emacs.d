@@ -19,6 +19,23 @@ This is an opinionated emacs.d configuration directory.
 	<img src="/images/emacs.d_helm.png" alt="Using Helm" width="250"/>
 </p>
 
+This configuration is based on the following core packages:
+
+- use-package
+- dashboard
+- helm (& various support packages)
+- iedit
+- lsp
+- magit
+- smartparens
+- centaur-tabs
+- doom-modeline
+- kaolin-themes
+- all-the-icons
+- flycheck
+
+... and lots of programming languages related packages.
+
 ## Getting started
 
 #### Requirements
