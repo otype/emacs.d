@@ -14,20 +14,19 @@
   (add-hook 'after-init-hook 'global-company-mode))
 
 ;; An extensible emacs startup screen showing you what’s most important.
+;; https://github.com/emacs-dashboard/emacs-dashboard
 (use-package dashboard
   :init
   (progn
     (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
-    (setq dashboard-items              '((recents   . 10)
-					 (bookmarks . 10)
-					 (projects  . 10)
-					 (agenda    . 5)
-					 (registers . 5))
+    (setq dashboard-items              '((projects  . 7)
+					 (recents   . 10)
+					 (bookmarks . 7))
 	  dashboard-set-navigator      t
 	  dashboard-set-file-icons     t
 	  dashboard-set-heading-icons  t
 	  dashboard-startup-banner     'logo
-	  dashboard-week-agenda        t))
+	  dashboard-week-agenda        nil))
   :config
   (dashboard-setup-startup-hook))
 
