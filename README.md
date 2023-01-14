@@ -1,10 +1,6 @@
 # emacs.d
 
 #### An opinionated Emacs configuration.
-
-
-## Introduction
-
 <p>
 	<a href="https://github.com/otype/emacs.d/commits/master">
 	<img src="https://img.shields.io/github/last-commit/otype/emacs.d.svg?style=flat-square&logo=github&logoColor=white" alt="GitHub last commit">
