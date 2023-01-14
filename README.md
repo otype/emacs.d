@@ -31,16 +31,27 @@ Here are some sample screenshots:
 #### Requirements
 
 - [Emacs](https://www.gnu.org/software/emacs/) v26.x or higher
+- Font [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono)
+- [Ag - The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
+- Various Language Servers, e.g. [gopls](https://pkg.go.dev/golang.org/x/tools/gopls) (Golang), [lsp-server](https://github.com/rust-lang/rust-analyzer/tree/master/lib/lsp-server) (Rust), etc.
 
-#### Setup
+#### Installation
 
-1. Clone this repo:
+1. **Clone this repo**. This will go to your `$HOME` directory.
 
 ```console
-$ git clone git@github.com:otype/emacs.d.git ~/.emacs.d
+$ git clone https://github.com/otype/emacs.d.git ~/.emacs.d
 ```
 
-2. Start Emacs:
+2. **Enable your desired language support configurations.** This happens in [init.el](/init.el).
+
+Please check each language configuration file (see [elisp/](/elisp/) for related dependencies.
+
+```console
+$ nano -w ~/.emacs.d/init.el
+```
+
+2. **Start Emacs.** Emacs will auto-install all dependencies.
 
 ```console
 $ emacs
