@@ -25,6 +25,7 @@
 
 ;; Kaolin is a set of eye pleasing themes for GNU Emacs with support for a large
 ;; number of modes and external packages.
+;; https://github.com/ogdenwebb/emacs-kaolin-themes
 (use-package kaolin-themes
   :config
   (load-theme 'kaolin-shiva t)
