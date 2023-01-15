@@ -57,4 +57,4 @@ $ nano -w ~/.emacs.d/init.el
 $ emacs
 ```
 
-This will automatically install all packages on startup.
+Once finished, you should have a working Emacs configuration.
