@@ -45,7 +45,7 @@ $ git clone https://github.com/otype/emacs.d.git ~/.emacs.d
 
 2. **Enable your desired language support configurations.** This happens in [init.el](/init.el).
 
-Please check each language configuration file (see [elisp/](/elisp/) for related dependencies.
+Please check each language configuration file (see [/elisp/](/elisp/)) for related dependencies.
 
 ```console
 $ nano -w ~/.emacs.d/init.el
