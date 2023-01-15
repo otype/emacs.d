@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/github/issues-raw/otype/emacs.d.svg?style=flat-square&logo=github&logoColor=white" alt="GitHub issues">
     <a href="https://github.com/otype/emacs.d/pulls">
     <img src="https://img.shields.io/github/issues-pr-raw/otype/emacs.d.svg?style=flat-square&logo=github&logoColor=white" alt="GitHub pull requests">
-	<a href="https://github.com/otype/emacs.d/LICENSE">
+	<a href="https://github.com/otype/emacs.d/blob/main/LICENSE">
 	<img src="https://img.shields.io/github/license/otype/emacs.d" alt="LICENSE">
 </p>
 
