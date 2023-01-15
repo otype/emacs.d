@@ -69,6 +69,7 @@
   :bind (("M-x"     . helm-M-x)
 	 ("C-c C-m" . helm-M-x)
 	 ("C-c C-f" . helm-find-files)
+	 ("C-x C-f" . helm-find-files)
 	 ("C-c h"   . helm-command-prefix)
 	 :map helm-command-map
 	 (("a" . helm-projectile-ag)
