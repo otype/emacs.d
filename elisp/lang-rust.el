@@ -1,3 +1,26 @@
+;; This is Focus, a package that dims surrounding text. It works with any theme and can
+;; be configured to focus in on different regions like sentences, paragraphs or code-blocks.
+;; https://github.com/larstvei/Focus
+(use-package focus
+  :config
+  (add-hook 'rust-mode-hook 'focus-mode)
+  (add-to-list 'focus-mode-to-thing '(rust-mode . defun)))
+
+;; Cargo mode for Emacs. This package gives you a set of key combinations to perform Cargo
+;; tasks within your Rust projects.
+;; https://github.com/kwrooijen/cargo.el
+(use-package cargo
+  :config
+  (add-hook 'rust-mode-hook 'cargo-minor-mode))
+
+;; This Flycheck extension configures Flycheck automatically for the current Cargo project.
+;; https://github.com/flycheck/flycheck-rust
+(use-package flycheck-rust
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+;; Rust development environment for Emacs
+;; https://github.com/brotzeit/rustic
 (use-package rustic
   :bind (:map rustic-mode-map
               ("M-j" . lsp-ui-imenu)
@@ -63,14 +86,9 @@
   ;; Whether to show inlay type hints for compiler inserted reborrows.
   (lsp-rust-analyzer-display-reborrow-hints nil))
 
-(use-package cargo
-  :config
-  (add-hook 'rust-mode-hook 'cargo-minor-mode))
-
-(use-package flycheck-rust
-  :config
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-
+;; Smartparens is a minor mode for dealing with pairs in Emacs. It can
+;; automatically insert pairs.
+;; https://github.com/Fuco1/smartparens
 (use-package smartparens
   :config
   (require 'smartparens-config)
