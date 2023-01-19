@@ -1,4 +1,5 @@
-;; Nice icon set for emacs
+;; A utility package to collect various Icon Fonts and propertize them within Emacs.
+;; https://github.com/domtronn/all-the-icons.el
 (use-package all-the-icons)
 
 ;; This projects aims to become an aesthetic, functional and efficient tabs plugin for
@@ -15,7 +16,8 @@
   ("C-<prior>" . centaur-tabs-backward)
   ("C-<next>"  . centaur-tabs-forward))
 
-;; Mode-line variant
+;; A fancy and fast mode-line inspired by minimalism design.
+;; https://github.com/seagle0128/doom-modeline
 (use-package doom-modeline
   :init
   (doom-modeline-mode 1)
