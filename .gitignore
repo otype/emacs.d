@@ -85,3 +85,4 @@ eln-cache/
 org-roam.db
 savehist
 url
+transient/
