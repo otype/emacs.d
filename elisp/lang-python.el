@@ -21,9 +21,9 @@
 	      ("M-." . elpy-goto-definition)
 	      ("M-," . pop-tag-mark)))
 
-(use-package focus
-  :config
-  (add-hook 'focus-mode-to-thing '(python-mode . paragaph)))
+;; (use-package focus
+;;   :config
+;;   (add-hook 'focus-mode-to-thing '(python-mode . paragaph)))
 
 (use-package python
   :mode ("\\.py" . python-mode)
