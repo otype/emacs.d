@@ -21,14 +21,14 @@
 ;; Email
 
 ;; Language layers
-;(require 'lang-elixir)
+;; (require 'lang-elixir)
 (require 'lang-go)
-;(require 'lang-haskell)
-;(require 'lang-java)
-;(require 'lang-javascript)
+;; (require 'lang-haskell)
+;; (require 'lang-java)
+;; (require 'lang-javascript)
 (require 'lang-lisp)
 (require 'lang-python)
-;(require 'lang-ruby)
+;; (require 'lang-ruby)
 (require 'lang-rust)
-;(require 'lang-terraform)
-;(require 'lang-vala)
+;; (require 'lang-terraform)
+;; (require 'lang-vala)
