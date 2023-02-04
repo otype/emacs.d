@@ -170,6 +170,7 @@
 (use-package magit
   :config
   :bind
+  ("C-c m b" . magit-branch-and-checkout)
   ("C-c m c" . magit-commit)
   ("C-c m e" . magit-ediff-resolve)
   ("C-c m p" . magit-push)
