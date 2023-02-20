@@ -9,6 +9,9 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 (add-to-list 'load-path (concat user-emacs-directory "elisp"))
 
+;; Personal information
+(require 'user)
+
 ;; Base layers
 (require 'base)
 (require 'base-theme)
@@ -17,9 +20,6 @@
 ;; Custom functions and keybindings
 (require 'base-functions)
 (require 'base-global-keys)
-
-;; Personal information
-(require 'user)
 
 ;; Language layers
 ;; (require 'lang-elixir)
