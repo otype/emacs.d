@@ -51,7 +51,9 @@ Please check each language configuration file (see [/elisp/](/elisp/)) for relat
 $ nano -w ~/.emacs.d/init.el
 ```
 
-3. **Start Emacs.** Emacs will auto-install all dependencies.
+3. **Add your personal email and name** Modify [user.el](/elisp/user.el).
+
+4. **Start Emacs.** Emacs will auto-install all dependencies.
 
 ```console
 $ emacs
