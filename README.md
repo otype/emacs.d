@@ -51,10 +51,10 @@ Please check each language configuration file (see [/elisp/](/elisp/)) for relat
 $ nano -w ~/.emacs.d/init.el
 ```
 
-2. **Start Emacs.** Emacs will auto-install all dependencies.
+3. **Start Emacs.** Emacs will auto-install all dependencies.
 
 ```console
 $ emacs
 ```
 
-Once finished, you should have a working Emacs configuration.
+Once finished, you have a working Emacs configuration.
