@@ -57,10 +57,6 @@
 (setq bookmark-save-flag                  t
       bookmark-default-file               (concat temp-dir "/bookmarks"))
 
-;; Personal information
-(setq user-mail-address                   "hans@otype.de"
-      user-full-name                      "Hans-Gunther Schmidt")
-
 ;; Save history
 (savehist-mode 1)
 (setq savehist-file                       "~/.emacs.d/savehist"

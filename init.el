@@ -18,7 +18,8 @@
 (require 'base-functions)
 (require 'base-global-keys)
 
-;; Email
+;; Personal information
+(require 'user)
 
 ;; Language layers
 ;; (require 'lang-elixir)
