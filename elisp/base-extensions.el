@@ -39,7 +39,7 @@
   (setq-default ediff-highlight-all-diffs  'nil)
   (setq ediff-diff-options "               -w"))
 
-;;Expand region increases the selected region by semantic units. Just keep pressing the key
+;; Expand region increases the selected region by semantic units. Just keep pressing the key
 ;; until it selects what you want.
 ;; https://github.com/magnars/expand-region.el
 (use-package expand-region

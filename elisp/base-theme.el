@@ -49,13 +49,9 @@
 (menu-bar-mode -1)
 
 ;; Disable the display of tool bars
-;; (when (fboundp 'tool-bar-mode)
-;;   (tool-bar-mode -1))
 (tool-bar-mode -1)
 
 ;; Disable the display of scroll bars
-;; (when (fboundp 'scroll-bar-mode)
-;;   (scroll-bar-mode -1))
 (scroll-bar-mode -1)
 
 ;; show-paren-mode allows one to see matching pairs of parentheses and other characters.
