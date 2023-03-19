@@ -26,7 +26,7 @@
 (require 'lang-go)
 ;; (require 'lang-haskell)
 ;; (require 'lang-java)
-;; (require 'lang-javascript)
+(require 'lang-javascript)
 (require 'lang-lisp)
 (require 'lang-python)
 ;; (require 'lang-ruby)
