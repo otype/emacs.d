@@ -36,6 +36,12 @@
 ;; Font settings
 (set-frame-font "IBM Plex Mono 13" t)
 
+;; Set Window/frame height and width
+(if (window-system)
+    (progn
+      (set-frame-height (selected-frame) 50)
+      (set-frame-width (selected-frame) 110)))
+
 ;; Enable global visual-line-mode
 (global-visual-line-mode t)
 
