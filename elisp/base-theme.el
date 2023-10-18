@@ -39,8 +39,8 @@
 ;; Set Window/frame height and width
 (if (window-system)
     (progn
-      (set-frame-height (selected-frame) 50)
-      (set-frame-width (selected-frame) 110)))
+      (set-frame-height (selected-frame) 35)
+      (set-frame-width (selected-frame) 120)))
 
 ;; Enable global visual-line-mode
 (global-visual-line-mode t)
