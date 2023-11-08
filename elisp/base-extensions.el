@@ -125,7 +125,7 @@
 ;; https://github.com/victorhge/iedit
 (use-package iedit
   :bind
-  ("C-s-;" . iedit-mode))
+  ("C-c-;" . iedit-mode))
 
 ;; Client for Language Server Protocol (v3.14). lsp-mode aims to provide IDE-like
 ;; experience by providing optional integration with the most popular Emacs packages
