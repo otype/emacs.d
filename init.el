@@ -22,7 +22,7 @@
 (require 'base-global-keys)
 
 ;; Language layers
-;; (require 'lang-elixir)
+(require 'lang-elixir)
 (require 'lang-go)
 ;; (require 'lang-haskell)
 ;; (require 'lang-java)
