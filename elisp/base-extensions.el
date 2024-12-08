@@ -210,6 +210,10 @@
   ("C-c o s" . org-store-link)
   ("C-c o a" . org-agenda))
 
+(use-package org-modern
+  :config
+  (with-eval-after-load 'org (global-org-modern-mode)))
+
 ;; Org-roam is a plain-text knowledge management system. It brings some of Roam's more
 ;; powerful features into the Org-mode ecosystem.
 ;; https://github.com/org-roam/org-roam
