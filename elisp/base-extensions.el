@@ -210,6 +210,10 @@
   ("C-c o s" . org-store-link)
   ("C-c o a" . org-agenda))
 
+;; This package implements a modern style for your Org buffers using font locking
+;; and text properties. The package styles headlines, keywords, tables and source
+;; blocks.
+;; https://github.com/minad/org-modern
 (use-package org-modern
   :config
   (with-eval-after-load 'org (global-org-modern-mode)))
