@@ -46,6 +46,12 @@
   :bind
   ("C-=" . er/expand-region))
 
+;; Forge allows you to work with Git forges, currently Github and Gitlab, from the comfort
+;; of Magit and Emacs.
+;; https://magit.vc/manual/forge/
+(use-package forge
+  :after magit)
+
 ;; Flycheck is a modern on-the-fly syntax checking extension for GNU Emacs, intended as
 ;; replacement for the older Flymake extension which is part of GNU Emacs.
 ;; https://www.flycheck.org/en/latest/
