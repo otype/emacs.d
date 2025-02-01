@@ -1,7 +1,7 @@
 (use-package go-mode
   :config
   (setq tab-width         2
-	indent-tabs-mode  1)
+	      indent-tabs-mode  1)
 
   ;; ;; Use goimports instead of go-fmt
   ;; (setq gofmt-command "goimports")
