@@ -86,14 +86,10 @@
           ("k" . helm-show-kill-ring)
           ("m" . helm-mini)
           ("o" . helm-occur)
-	  ("s" . helm-swoop)
+	  ;("s" . helm-swoop)
 	  ("v" . helm-projectile))
          :map helm-map
          ("<tab>"   . helm-execute-persistent-action)))
-
-;; helm-ag.el provides interfaces of The Silver Searcher with helm.
-;; https://github.com/syohex/emacs-helm-ag
-(use-package helm-ag)
 
 ;; Show flycheck errors with helm.
 ;; https://github.com/yasuyk/helm-flycheck
@@ -117,12 +113,6 @@
 ;; Helm UI for Projectile
 ;; https://github.com/bbatsov/helm-projectile
 (use-package helm-projectile)
-
-;; List match lines to another buffer, which is able to squeeze by any words you input.
-;; At the same time, the original buffer's cursor is jumping line to line according
-;; to moving up and down the line list.
-;; https://github.com/ShingoFukuyama/helm-swoop
-(use-package helm-swoop)
 
 ;; this package includes Emacs minor modes (iedit-mode and iedit-rectangle-mode)
 ;; based on a API library (iedit-lib) and allows you to edit one occurrence of some
