@@ -17,16 +17,15 @@
 ;; https://github.com/emacs-dashboard/emacs-dashboard
 (use-package dashboard
   :init
-  (progn
-    (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
-    (setq dashboard-items              '((projects  . 7)
-					 (recents   . 10)
-					 (bookmarks . 7))
-	  dashboard-set-navigator      t
-	  dashboard-set-file-icons     t
-	  dashboard-set-heading-icons  t
-	  dashboard-startup-banner     'logo
-	  dashboard-week-agenda        nil))
+  (setq initial-buffer-choice  (lambda () (get-buffer-create "*dashboard*"))
+        dashboard-items         '((projects  . 7)
+                                  (recents   . 10)
+                                  (bookmarks . 7))
+        dashboard-set-navigator     t
+        dashboard-set-file-icons    t
+        dashboard-set-heading-icons t
+        dashboard-startup-banner    'logo
+        dashboard-week-agenda       nil)
   :config
   (dashboard-setup-startup-hook))
 
@@ -37,7 +36,7 @@
   (setq ediff-window-setup-function        'ediff-setup-windows-plain)
   (setq ediff-split-window-function        'split-window-horizontally)
   (setq-default ediff-highlight-all-diffs  'nil)
-  (setq ediff-diff-options "               -w"))
+  (setq ediff-diff-options "-w"))
 
 ;; Expand region increases the selected region by semantic units. Just keep pressing the key
 ;; until it selects what you want.
@@ -67,29 +66,35 @@
   (set-face-attribute 'helm-selection nil :background "#FBFFC8" :foreground "#04134B")
   (setq helm-split-window-in-side-p     t
         helm-split-window-default-side  'below
-	helm-idle-delay                 0.0
-	helm-input-idle-delay           0.01
-	helm-quick-update               t
-	helm-ff-skip-boring-files       t
-	helm-ag-insert-at-point         'symbol)
+        helm-input-idle-delay           0.01
+        helm-ff-skip-boring-files       t)
   :bind (("M-x"     . helm-M-x)
-	 ("C-c C-m" . helm-M-x)
-	 ("C-c C-f" . helm-find-files)
-	 ("C-x C-f" . helm-find-files)
-	 ("C-c h"   . helm-command-prefix)
-	 :map helm-command-map
-	 (("a" . helm-projectile-ag)
-	  ("d" . helm-do-ag)
-	  ("f" . helm-find-files)
-	  ;("g" . helm-projectile-grep)
-	  ("g" . helm-browse-project)
+         ("C-x C-f" . helm-find-files)
+         ("C-x b"   . helm-mini)
+         ("M-y"     . helm-show-kill-ring)
+         ("C-c h"   . helm-command-prefix)
+         :map helm-command-map
+         (("a" . helm-projectile-ag)
+          ("b" . helm-filtered-bookmarks)
+          ("d" . helm-do-ag)
+          ;; ("g" . helm-projectile-grep)
+          ("g" . helm-browse-project)
+          ("i" . helm-semantic-or-imenu)
           ("k" . helm-show-kill-ring)
           ("m" . helm-mini)
           ("o" . helm-occur)
-	  ;("s" . helm-swoop)
-	  ("v" . helm-projectile))
+          ("r" . helm-resume)
+          ;; ("s" . helm-swoop)
+          ("v" . helm-projectile))
          :map helm-map
-         ("<tab>"   . helm-execute-persistent-action)))
+         ("<tab>" . helm-execute-persistent-action)
+         ("C-z"   . helm-execute-persistent-action)))
+
+;; helm-ag configuration.
+;; https://github.com/emacsorphanage/helm-ag
+(use-package helm-ag
+  :custom
+  (helm-ag-insert-at-point 'symbol))
 
 ;; Show flycheck errors with helm.
 ;; https://github.com/yasuyk/helm-flycheck
@@ -137,10 +142,14 @@
   (lsp-modeline-code-actions-enable t)        ;; Modeline code actions
   (lsp-signature-auto-activate nil)           ;; Signature help documentation
   (lsp-signature-render-documentation nil)    ;; Signature help documentation
+  (lsp-eldoc-render-all t)                    ;; Display all info from document/onHover
 
-  ;; Display all of the info returned by document/onHover. If this is set to nil,
-  ;; eldoc will show only the symbol information.
-  (lsp-eldoc-render-all t)
+  :bind (:map lsp-mode-map
+         ("C-c l r" . lsp-rename)
+         ("C-c l a" . lsp-execute-code-action)
+         ("C-c l f" . lsp-format-buffer)
+         ("C-c l d" . lsp-describe-thing-at-point)
+         ("C-c l l" . lsp-ui-flycheck-list))
 
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
@@ -156,7 +165,7 @@
                                               ;; symbol to show the doc
   (lsp-ui-doc-show-with-mouse t)              ;; When non-nil, move the mouse pointer
                                               ;; over a symbol to show the doc
-  (lsp-ui-peek-always-show -1)
+  (lsp-ui-peek-always-show t)
   (lsp-ui-sideline-show-hover t)
   (lsp-ui-sideline-show-code-actions t))
 
@@ -164,11 +173,13 @@
 ;; Emacs package.
 ;; https://magit.vc/
 (use-package magit
-  :config
   :bind
   ("C-c m b" . magit-branch-and-checkout)
   ("C-c m c" . magit-commit)
+  ("C-c m d" . magit-diff-unstaged)
   ("C-c m e" . magit-ediff-resolve)
+  ("C-c m f" . magit-fetch)
+  ("C-c m l" . magit-log-current)
   ("C-c m p" . magit-push)
   ("C-c m r" . magit-rebase-interactive)
   ("C-c m s" . magit-status)
@@ -198,13 +209,14 @@
 (use-package org
   :config
   (setq org-directory           "~/Nextcloud/Documents/org/"
-        org-default-notes-file  (concat org-directory "/mw-tasks.org"))
+        org-default-notes-file  (concat org-directory "mw-tasks.org"))
 ;; 	   org-todo-keywords       '((sequence "☛ TODO(t)" "|" "<img draggable="false" role="img" class="emoji" alt="✔" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/2714.svg"> DONE(d)")
 ;; 			    (sequence "⚑ WAITING(w)" "|")
 ;; 			    (sequence "|" "✘ CANCELED(c)")))
   :bind
   ("C-c o s" . org-store-link)
-  ("C-c o a" . org-agenda))
+  ("C-c o a" . org-agenda)
+  ("C-c o c" . org-capture))
 
 ;; This package implements a modern style for your Org buffers using font locking
 ;; and text properties. The package styles headlines, keywords, tables and source
@@ -242,7 +254,7 @@
 	  ("C-c r o" . org-id-get-create)
           ("C-c r t" . org-roam-tag-add)))
   :config
-  (org-roam-setup))
+  (org-roam-db-autosync-mode))
 
 ;; org-projectile provides functions for the creation of org-mode TODOs that are
 ;; associated with projectile projects.
@@ -252,14 +264,6 @@
   (org-projectile-per-project)
   (setq org-projectile-per-project-filepath "todo.org"
 	org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
-
-;; Prettify headings and plain lists in Org mode. This package is a direct
-;; descendant of ‘org-bullets’, with most of the code base completely rewritten.
-(use-package org-superstar
-  :config
-  (add-hook 'org-mode-hook
-	    (lambda ()
-	      (org-superstar-mode 1))))
 
 ;; This Emacs library provides a global mode which displays ugly form feed
 ;; characters as tidy horizontal rules.
@@ -289,7 +293,7 @@
 ;; https://www.emacswiki.org/emacs/RecentFiles
 (use-package recentf
   :config
-  (setq recentf-save-file (recentf-expand-file-name "~/.emacs.d/private/cache/recentf"))
+  (setq recentf-save-file (expand-file-name "~/.emacs.d/private/cache/recentf"))
   (recentf-mode 1))
 
 ;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it.

@@ -4,7 +4,6 @@
 
 (global-set-key (kbd "C-c C-o")
 		(lambda () (interactive) (find-file "~/org/mw-tasks.org")))
-(global-set-key (kbd "C-c C-c") 'org-capture)
 
 ;; Duplicate current line (or region)
 (global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)

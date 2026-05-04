@@ -8,12 +8,6 @@
   (add-hook 'js2-mode-hook 'color-identifiers-mode)
   (add-hook 'web-mode-hook 'color-identifiers-mode))
 
-(use-package ac-js2
-  :config
-  (add-hook 'js2-mode-hook 'ac-js2-mode)
-  (add-hook 'web-mode-hook 'ac-js2-mode)
-  (add-to-list 'company-backends 'ac-js2-company))
-
 (use-package smartparens
   :config
   (require 'smartparens-config)
