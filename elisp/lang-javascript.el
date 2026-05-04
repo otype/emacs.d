@@ -35,7 +35,7 @@
   :init
   (setq-default tab-width                     2
                 js2-basic-indent              2
-                js2-basic-offset              2
+                js-indent-level               2
                 js2-auto-indent-p             t
                 js2-cleanup-whitespace        t
                 js2-concat-multiline-strings  'eol
