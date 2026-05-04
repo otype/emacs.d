@@ -90,11 +90,11 @@
          ("<tab>" . helm-execute-persistent-action)
          ("C-z"   . helm-execute-persistent-action)))
 
-;; helm-ag configuration.
-;; https://github.com/emacsorphanage/helm-ag
-(use-package helm-ag
-  :custom
-  (helm-ag-insert-at-point 'symbol))
+;; helm-ag was removed from MELPA; use helm's built-in ag support instead.
+;; helm-do-grep-ag (bound in helm-command-map) provides equivalent functionality.
+(with-eval-after-load 'helm-grep
+  (setq helm-grep-ag-command "ag --line-numbers -S --hidden --color %s %s %s"
+        helm-grep-ag-pipe-cmd-switches '("--color")))
 
 ;; Show flycheck errors with helm.
 ;; https://github.com/yasuyk/helm-flycheck
