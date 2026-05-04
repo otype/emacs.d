@@ -1,34 +1,16 @@
 (setq exec-path (append exec-path '("~/.pyenv/bin")))
 
-(use-package py-autopep8)
+;; lsp-pyright provides fast Python type checking and completion via Pyright.
+;; https://github.com/emacs-lsp/lsp-pyright
+(use-package lsp-pyright
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp-deferred))))
 
-(use-package blacken)
-
-(use-package elpy
-  :init
-  (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
-  :config
-  (setq elpy-rpc-backend "jedi")
-  (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-  (add-hook 'python-mode-hook
-	    (lambda ()
-	      (setq indent-tabs-mode t)
-	      (setq tab-width 4)
-	      (setq python-indent-offset 4)))
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode)
-  :bind (:map elpy-mode-map
-	      ("M-." . elpy-goto-definition)
-	      ("M-," . pop-tag-mark)))
-
-;; (use-package focus
-;;   :config
-;;   (add-hook 'focus-mode-to-thing '(python-mode . paragaph)))
-
-(use-package python
-  :mode ("\\.py" . python-mode)
-  :config
-  (elpy-enable))
+;; Black formatter for Python.
+;; https://github.com/proofit404/blacken
+(use-package blacken
+  :hook (python-mode . blacken-mode))
 
 (use-package pip-requirements
   :config

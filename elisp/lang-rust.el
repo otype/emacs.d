@@ -3,7 +3,7 @@
 ;; https://github.com/kwrooijen/cargo.el
 (use-package cargo
   :config
-  (add-hook 'rust-mode-hook 'cargo-minor-mode))
+  (add-hook 'rustic-mode-hook 'cargo-minor-mode))
 
 ;; This Flycheck extension configures Flycheck automatically for the current Cargo project.
 ;; https://github.com/flycheck/flycheck-rust

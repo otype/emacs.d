@@ -2,7 +2,7 @@
 ;; Choose either melpa-stable or bleedinge-edge melpa
 ;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/") t)
+
 (package-initialize)
 
 ;; use-package to simplify the config file
@@ -36,14 +36,14 @@
       custom-file                         "~/.emacs.d/.custom.el"
       ;; http://ergoemacs.org/emacs/emacs_stop_cursor_enter_prompt.html
       minibuffer-prompt-properties
-      '(read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)
+      '(read-only t cursor-intangible t face minibuffer-prompt)
 
       ;; Disable non selected window highlight
       cursor-in-non-selected-windows      nil
       highlight-nonselected-windows       nil
       ;; PATH
       exec-path                           (append exec-path '("/usr/local/bin/"))
-      x-select-enable-clipboard           t
+      select-enable-clipboard             t
       use-package-always-ensure           t
       inhibit-compacting-font-caches      t
       ;; automatically open sym-linked files
@@ -79,6 +79,8 @@
       auto-save-timeout                   20     ; number of seconds idle time before auto-save (default: 30)
       auto-save-interval                  200    ; number of keystrokes between auto-saves (default: 300)
       )
+
+(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-auto-revert-mode t)
