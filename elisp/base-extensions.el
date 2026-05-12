@@ -13,6 +13,21 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
+;; Terminal emulator used by claude-code-ide as its backend.
+;; Compiles a small C module on first install (cmake + libtool required).
+;; https://github.com/akermu/emacs-libvterm
+(use-package vterm)
+
+;; Claude Code IDE integration via MCP — bidirectional bridge between
+;; Claude Code CLI and Emacs (buffers, selection, LSP, project, diagnostics).
+;; https://github.com/manzaltu/claude-code-ide.el
+(use-package claude-code-ide
+  :vc (:url "https://github.com/manzaltu/claude-code-ide.el"
+       :rev :newest)
+  :bind ("C-c c" . claude-code-ide-menu)
+  :config
+  (claude-code-ide-emacs-tools-setup))
+
 ;; An extensible emacs startup screen showing you what’s most important.
 ;; https://github.com/emacs-dashboard/emacs-dashboard
 (use-package dashboard
