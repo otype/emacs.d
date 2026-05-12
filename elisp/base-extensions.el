@@ -13,6 +13,19 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
+;; GitHub Copilot for Emacs. Requires Node.js >= 18.
+;; https://github.com/copilot-emacs/copilot.el
+(use-package copilot
+  :vc (:url "https://github.com/copilot-emacs/copilot.el"
+       :rev :newest
+       :branch "main")
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+         ("<tab>"   . copilot-accept-completion)
+         ("TAB"     . copilot-accept-completion)
+         ("C-TAB"   . copilot-accept-completion-by-word)
+         ("C-<tab>" . copilot-accept-completion-by-word)))
+
 ;; Terminal emulator used by claude-code-ide as its backend.
 ;; Compiles a small C module on first install (cmake + libtool required).
 ;; https://github.com/akermu/emacs-libvterm
