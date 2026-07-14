@@ -88,3 +88,5 @@ url
 transient/
 recentf
 abbrev_defs
+forge-database.sqlite
+/projects
