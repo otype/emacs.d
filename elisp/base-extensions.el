@@ -311,7 +311,7 @@
 	projectile-enable-caching       t
 	projectile-project-search-path  '("~/src/" "~/tmp/"))
 
-  (projectile-global-mode)
+  (projectile-mode +1)
   :bind-keymap
   ("C-c p" . projectile-command-map))
 
