@@ -26,4 +26,15 @@
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 
+;; Automatically sync org-roam files to Google Drive on save
+(defun my/sync-org-roam-to-gdrive ()
+  "Run Python sync script on save for org-roam files."
+  (when (string-prefix-p (expand-file-name org-roam-directory)
+                         (buffer-file-name))
+    (start-process "org-gdrive-sync" "*org-gdrive-sync*"
+                   "python3" (expand-file-name "~/bin/org_to_gdocs.py")
+                   (buffer-file-name))))
+
+(add-hook 'after-save-hook #'my/sync-org-roam-to-gdrive)
+
 (provide 'base-functions)
