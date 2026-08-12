@@ -145,7 +145,14 @@
 
 ;; Helm UI for Projectile
 ;; https://github.com/bbatsov/helm-projectile
-(use-package helm-projectile)
+(use-package helm-projectile
+  :config
+  ;; Remaps projectile-switch-project (and friends) to their
+  ;; helm-projectile equivalents on projectile-mode-map. Without this,
+  ;; projectile-switch-project falls back to plain completing-read,
+  ;; which helm-mode's advice mishandles (throws "Initial input should
+  ;; be a string or nil").
+  (helm-projectile-mode 1))
 
 ;; this package includes Emacs minor modes (iedit-mode and iedit-rectangle-mode)
 ;; based on a API library (iedit-lib) and allows you to edit one occurrence of some
@@ -307,7 +314,10 @@
 (use-package projectile
   :config
   (setq projectile-known-projects-file  (expand-file-name "projectile-bookmarks.eld" temp-dir)
-	projectile-completion-system    'helm
+	;; `helm' was removed as a first-class value in projectile 3.x —
+	;; it now behaves like `default'. Helm integration comes from
+	;; helm-projectile-mode instead (see the helm-projectile use-package).
+	projectile-completion-system    'default
 	projectile-enable-caching       t
 	projectile-project-search-path  '("~/src/" "~/tmp/"))
 
