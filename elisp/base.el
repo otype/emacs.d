@@ -5,6 +5,20 @@
 
 (package-initialize)
 
+;; Bypass package-vc overwrite prompts if the checkout already exists
+(with-eval-after-load 'package-vc
+  (defun my/package-vc--unpack-advice (orig-fun pkg-desc pkg-spec &optional rev)
+    (pcase-let* ((name (package-desc-name pkg-desc))
+                 (dirname (package-desc-full-name pkg-desc))
+                 (pkg-dir (file-name-as-directory (expand-file-name dirname package-user-dir))))
+      (if (file-directory-p pkg-dir)
+          (progn
+            (message "Package %s already exists at %s, skipping clone" name pkg-dir)
+            (setf (package-desc-dir pkg-desc) pkg-dir)
+            (package-vc--unpack-1 pkg-desc pkg-dir))
+        (funcall orig-fun pkg-desc pkg-spec rev))))
+  (advice-add 'package-vc--unpack :around #'my/package-vc--unpack-advice))
+
 ;; use-package to simplify the config file
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
