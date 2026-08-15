@@ -48,6 +48,7 @@ flycheck_*.el
 # projectiles files
 .projectile
 projectile-bookmarks.eld
+projectile-frecency.eld
 
 # directory configuration
 .dir-locals.el
