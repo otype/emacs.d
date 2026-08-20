@@ -81,7 +81,7 @@
   (modus-themes-load-theme 'modus-operandi))
 
 ;; Font settings
-(set-frame-font "IBM Plex Mono 13" t)
+(set-frame-font "IBM Plex Mono 12" t)
 
 ;; Set Window/frame height and width
 (if (window-system)
