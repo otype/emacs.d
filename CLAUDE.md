@@ -43,6 +43,7 @@ A personal Emacs configuration (loaded from `~/.emacs.d`), built on `use-package
 ## Workflow
 
 - Always submit changes via a pull request (branch + `gh pr create`), never commit or push directly to `main`, unless the user explicitly says to merge/push straight to `main` for that specific change.
+- Use `/home/hgschmidt/.claude/skills/pr-description/scripts/create-pr.sh` to open the PR (branch, commit, push, `gh pr create` in one step) rather than chaining separate `git`/`gh` calls — it refuses to run on the default branch without an explicit `--branch`.
 
 ## Keybinding prefixes
 
