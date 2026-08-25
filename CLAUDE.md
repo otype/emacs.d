@@ -40,6 +40,10 @@ A personal Emacs configuration (loaded from `~/.emacs.d`), built on `use-package
 - New language: create `elisp/lang-<name>.el` following the pattern in existing `lang-*.el` files (package `use-package` blocks + language-specific `lsp-mode` `:custom` overrides if needed + `(provide 'lang-<name>)`), then add `(require 'lang-<name>)` to `init.el` in alphabetical order among the language layers.
 - Custom interactive functions go in `elisp/base-functions.el`; global keybindings go in `elisp/base-global-keys.el` (both loaded after `base-extensions`, so they may reference any package configured there).
 
+## Workflow
+
+- Always submit changes via a pull request (branch + `gh pr create`), never commit or push directly to `main`, unless the user explicitly says to merge/push straight to `main` for that specific change.
+
 ## Keybinding prefixes
 
 Established `C-c` prefix conventions to follow when adding new bindings (full reference in `README.md`):
