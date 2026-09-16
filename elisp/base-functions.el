@@ -26,15 +26,16 @@
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 
-;; Automatically sync org-roam files to Google Drive on save
-(defun my/sync-org-roam-to-gdrive ()
-  "Run Python sync script on save for org-roam files."
-  (when (string-prefix-p (expand-file-name org-roam-directory)
-                         (buffer-file-name))
-    (start-process "org-gdrive-sync" "*org-gdrive-sync*"
-                   "python3" (expand-file-name "~/bin/org_to_gdocs.py")
+;; Automatically export org-roam files to the meltwater-obsidian vault on save
+(defun my/sync-org-roam-to-obsidian ()
+  "Run the pandoc-based export script on save for org-roam files."
+  (when (and (buffer-file-name)
+             (string-prefix-p (expand-file-name org-roam-directory)
+                               (expand-file-name (buffer-file-name))))
+    (start-process "org-obsidian-sync" "*org-obsidian-sync*"
+                   (expand-file-name "~/bin/generate-org-roam-obsidian-export")
                    (buffer-file-name))))
 
-(add-hook 'after-save-hook #'my/sync-org-roam-to-gdrive)
+(add-hook 'after-save-hook #'my/sync-org-roam-to-obsidian)
 
 (provide 'base-functions)
