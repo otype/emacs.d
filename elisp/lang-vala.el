@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (use-package vala-mode
   :init
   (add-to-list 'auto-mode-alist          '("\\.vala$"  . vala-mode))
