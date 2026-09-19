@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; Cargo mode for Emacs. This package gives you a set of key combinations to perform Cargo
 ;; tasks within your Rust projects.
 ;; https://github.com/kwrooijen/cargo.el
