@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; Whenever the window scrolls a light will shine on top of your cursor so you know where it is.
 (use-package beacon
   :config

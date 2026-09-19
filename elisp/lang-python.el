@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; lsp-pyright provides fast Python type checking and completion via Pyright.
 ;; https://github.com/emacs-lsp/lsp-pyright
 (use-package lsp-pyright
