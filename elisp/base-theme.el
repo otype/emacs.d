@@ -4,19 +4,19 @@
 ;; https://github.com/domtronn/all-the-icons.el
 (use-package all-the-icons)
 
-;; This projects aims to become an aesthetic, functional and efficient tabs plugin for
-;; Emacs with a lot of customization options.
-;; https://github.com/ema2159/centaur-tabs
-(use-package centaur-tabs
-  :demand
-  :config
-  (centaur-tabs-mode t)
-  (setq centaur-tabs-style      "rounded")
-  (setq centaur-tabs-set-icons  t)
-  (setq centaur-tabs-height     32)
-  :bind
-  ("C-<prior>" . centaur-tabs-backward)
-  ("C-<next>"  . centaur-tabs-forward))
+;; ;; This projects aims to become an aesthetic, functional and efficient tabs plugin for
+;; ;; Emacs with a lot of customization options.
+;; ;; https://github.com/ema2159/centaur-tabs
+;; (use-package centaur-tabs
+;;   :demand
+;;   :config
+;;   (centaur-tabs-mode t)
+;;   (setq centaur-tabs-style      "rounded")
+;;   (setq centaur-tabs-set-icons  t)
+;;   (setq centaur-tabs-height     32)
+;;   :bind
+;;   ("C-<prior>" . centaur-tabs-backward)
+;;   ("C-<next>"  . centaur-tabs-forward))
 
 ;; ;; A fancy and fast mode-line inspired by minimalism design.
 ;; ;; https://github.com/seagle0128/doom-modeline
