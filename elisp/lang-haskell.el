@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (use-package haskell-mode
   :config
   (add-hook 'haskell-mode-hook #'hindent-mode)

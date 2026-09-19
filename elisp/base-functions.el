@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; Add your custom functions here
 
 ;; Duplicate line or whole region

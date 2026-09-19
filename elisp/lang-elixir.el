@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (use-package elixir-mode
   :config
   ;; Create a buffer-local hook to run elixir-format on save, only when we enable elixir-mode.

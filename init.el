@@ -1,4 +1,4 @@
-;;; package --- Main init file
+;;; package --- Main init file -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; This is my Emacs init file
 
