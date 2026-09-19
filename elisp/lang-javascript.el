@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (use-package prettier-js
   :config
   (add-hook 'js2-mode-hook 'prettier-js-mode)

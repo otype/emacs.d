@@ -1,4 +1,4 @@
-;;; package --- Main init file
+;;; package --- Main init file -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; This is my Emacs init file
 
@@ -8,6 +8,11 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 (add-to-list 'load-path (concat user-emacs-directory "elisp"))
+
+;; Omarchy theme integration (colors follow the system theme).
+;; omarchy.el only looks in ~/.config/emacs/themes, so add our own dir.
+(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
+(load "/usr/share/omarchy-emacs/config/omarchy.el" t)
 
 ;; Personal information
 (require 'user)

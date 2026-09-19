@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (use-package go-mode
   :config
   (setq tab-width         2
