@@ -2,7 +2,7 @@
 
 #### An opinionated Emacs configuration.
 <p>
-	<a href="https://github.com/otype/emacs.d/commits/master">
+	<a href="https://github.com/otype/emacs.d/commits/main">
 	<img src="https://img.shields.io/github/last-commit/otype/emacs.d.svg?style=flat-square&logo=github&logoColor=white" alt="GitHub last commit">
     <a href="https://github.com/otype/emacs.d/issues">
     <img src="https://img.shields.io/github/issues-raw/otype/emacs.d.svg?style=flat-square&logo=github&logoColor=white" alt="GitHub issues">
@@ -12,7 +12,7 @@
 	<img src="https://img.shields.io/github/license/otype/emacs.d" alt="LICENSE">
 </p>
 
-Emacs.d is an opinionated [Emacs](https://www.gnu.org/software/emacs/) configuration based on [use-package](https://jwiegley.github.io/use-package/), [helm](https://emacs-helm.github.io/helm/) (& various addons), [projectile](https://docs.projectile.mx/projectile/index.html), [flycheck](https://www.flycheck.org/en/latest/) and [smartparens](https://github.com/Fuco1/smartparens). For the looks, it uses [dashboard](https://github.com/emacs-dashboard/emacs-dashboard), [centaur-tabs](https://github.com/ema2159/centaur-tabs), [doom-modeline](https://seagle0128.github.io/doom-modeline/), [kaolin-themes](https://github.com/ogdenwebb/emacs-kaolin-themes) and [all-the-icons](https://github.com/domtronn/all-the-icons.el).
+Emacs.d is an opinionated [Emacs](https://www.gnu.org/software/emacs/) configuration based on [use-package](https://jwiegley.github.io/use-package/), [helm](https://emacs-helm.github.io/helm/) (& various addons), [projectile](https://docs.projectile.mx/projectile/index.html), [flycheck](https://www.flycheck.org/en/latest/) and [smartparens](https://github.com/Fuco1/smartparens). For the looks, it uses [dashboard](https://github.com/emacs-dashboard/emacs-dashboard), [centaur-tabs](https://github.com/ema2159/centaur-tabs), [doom-modeline](https://seagle0128.github.io/doom-modeline/), [modus-themes](https://protesilaos.com/emacs/modus-themes) and [all-the-icons](https://github.com/domtronn/all-the-icons.el).
 
 For coding, it provides [magit](https://magit.vc/) (with [forge](https://magit.vc/manual/forge/)), [lsp-mode](https://emacs-lsp.github.io/lsp-mode/) with [lsp-ui](https://github.com/emacs-lsp/lsp-ui), and [org-mode](https://orgmode.org/) with [org-modern](https://github.com/minad/org-modern) and [org-roam](https://www.orgroam.com/). Language support is configured per file — active languages are [Elixir](/elisp/lang-elixir.el), [Go](/elisp/lang-go.el), [JavaScript](/elisp/lang-javascript.el), [Lisp](/elisp/lang-lisp.el), [Python](/elisp/lang-python.el), [Rust](/elisp/lang-rust.el) and [Terraform](/elisp/lang-terraform.el). Additional configurations for [Haskell](/elisp/lang-haskell.el), [Java](/elisp/lang-java.el), [Ruby](/elisp/lang-ruby.el) and [Vala](/elisp/lang-vala.el) are available but disabled by default.
 
@@ -126,5 +126,10 @@ Once finished, you have a working Emacs configuration.
 | `C-c r g` | `org-roam-graph` |
 | `C-c r l` | `org-roam-buffer-toggle` |
 | `C-c r r` | `org-roam-node-random` |
-| `C-c r i` | `org-roam-node-insert` (org buffers) |
+| `C-c r a` | `org-roam-alias-add` (org buffers) |
+| `C-c r c` | `completion-at-point` (org buffers) |
 | `C-c r d` | `org-roam-dailies-capture-today` (org buffers) |
+| `C-c r e` | `org-roam-capture` (org buffers) |
+| `C-c r i` | `org-roam-node-insert` (org buffers) |
+| `C-c r o` | `org-id-get-create` (org buffers) |
+| `C-c r t` | `org-roam-tag-add` (org buffers) |
