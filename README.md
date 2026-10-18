@@ -33,7 +33,7 @@ Here are some sample screenshots:
 #### Requirements
 
 - [Emacs](https://www.gnu.org/software/emacs/) v27.x or higher
-- Font [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono)
+- Font [Liberation Mono](https://github.com/liberationfonts/liberation-fonts)
 - [Ag - The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
 - Language servers for your active language layers:
   - [gopls](https://pkg.go.dev/golang.org/x/tools/gopls) — Go
