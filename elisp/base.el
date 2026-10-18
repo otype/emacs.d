@@ -28,6 +28,7 @@
 (defconst private-dir (expand-file-name "private" user-emacs-directory))
 (defconst temp-dir (format "%s/cache" private-dir)
   "Hostname-based elisp temp directories")
+(make-directory temp-dir t)
 
 ;; Core settings
 ;; UTF-8 please
