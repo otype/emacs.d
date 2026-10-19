@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (use-package jdee
   :config
   (add-hook 'java-mode-hook 'jdee-mode)
