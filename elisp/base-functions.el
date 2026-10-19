@@ -27,16 +27,4 @@
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 
-;; Automatically export org-roam files to the obsidian vault on save
-(defun my/sync-org-roam-to-obsidian ()
-  "Run the pandoc-based export script on save for org-roam files."
-  (when (and (buffer-file-name)
-             (string-prefix-p (expand-file-name org-roam-directory)
-                               (expand-file-name (buffer-file-name))))
-    (start-process "org-obsidian-sync" "*org-obsidian-sync*"
-                   (expand-file-name "~/bin/generate-org-roam-obsidian-export")
-                   (buffer-file-name))))
-
-(add-hook 'after-save-hook #'my/sync-org-roam-to-obsidian)
-
 (provide 'base-functions)

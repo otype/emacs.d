@@ -3,9 +3,6 @@
 
 ;(global-set-key (kbd "[SHORTCUT]") '[FUNCTION])
 
-(global-set-key (kbd "C-c C-o")
-		(lambda () (interactive) (find-file "~/org/tasks.org")))
-
 ;; Duplicate current line (or region)
 (global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
 

@@ -233,8 +233,7 @@
 ;; https://orgmode.org/
 (use-package org
   :config
-  (setq org-directory           "~/Nextcloud/Documents/org/"
-        org-default-notes-file  (concat org-directory "tasks.org"))
+  (setq org-directory           "~/Nextcloud/Documents/org/")
 ;; 	   org-todo-keywords       '((sequence "☛ TODO(t)" "|" "<img draggable="false" role="img" class="emoji" alt="✔" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/2714.svg"> DONE(d)")
 ;; 			    (sequence "⚑ WAITING(w)" "|")
 ;; 			    (sequence "|" "✘ CANCELED(c)")))
