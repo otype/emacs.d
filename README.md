@@ -41,8 +41,8 @@
 
 <p float="left">
 	<img src="/images/emacs.d_dashboard.png" alt="Emacs Dashboard" width="250"/>
-	<img src="/images/emacs.d_coding.png" alt="Coding in Rust" width="250"/>
-	<img src="/images/emacs.d_helm.png" alt="Using Helm" width="250"/>
+	<img src="/images/emacs.d_coding.png" alt="Editing Emacs Lisp" width="250"/>
+	<img src="/images/emacs.d_magit.png" alt="Magit status next to the code" width="250"/>
 </p>
 
 ## 🚀 Getting started
