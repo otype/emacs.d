@@ -34,12 +34,14 @@ newly added layers are picked up without editing this function."
               (expand-file-name "elisp" user-emacs-directory)))
         features)
     (dolist (entry load-history features)
-      (let ((file (car entry))
-            (feature (cdr entry)))
+      (let ((file (car entry)))
         (when (and (stringp file)
-                   (string-prefix-p dir (expand-file-name file))
-                   (symbolp feature))
-          (push feature features))))))
+                   (string-prefix-p dir (expand-file-name file)))
+          ;; The cdr of an entry is a list of elements; features show up
+          ;; as (provide . FEATURE).
+          (dolist (element (cdr entry))
+            (when (eq (car-safe element) 'provide)
+              (push (cdr element) features))))))))
 
 (defun my-reload-emacs-configuration ()
   "Reload this Emacs configuration from disk.
