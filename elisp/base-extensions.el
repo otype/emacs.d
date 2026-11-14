@@ -1,8 +1,20 @@
 ;;; -*- lexical-binding: t; -*-
-;; Whenever the window scrolls a light will shine on top of your cursor so you know where it is.
-(use-package beacon
+;; Briefly highlights the cursor line after jumps, window changes and recentering so
+;; you can find the cursor again. Maintained replacement for beacon.
+;; https://github.com/protesilaos/pulsar
+(use-package pulsar
   :config
-  (beacon-mode 1))
+  (pulsar-global-mode 1))
+
+;; Format the buffer on save, asynchronously and without moving point. Enabled per mode
+;; (python-mode, web-mode) so it does not double up with gofmt/rustfmt on save.
+;; The formatter itself (black, prettier, ...) must be installed on the system.
+;; https://github.com/radian-software/apheleia
+(use-package apheleia
+  :commands apheleia-mode
+  :config
+  ;; js2-mode is not derived from js-mode, so apheleia does not know it.
+  (add-to-list 'apheleia-mode-alist '(js2-mode . prettier-javascript)))
 
 ;; Company is a text completion framework for Emacs. The name stands for "complete anything".
 ;; It uses pluggable back-ends and front-ends to retrieve and display completion candidates.
@@ -42,6 +54,7 @@
         dashboard-set-navigator     t
         dashboard-set-file-icons    t
         dashboard-set-heading-icons t
+        dashboard-icon-type         'nerd-icons
         dashboard-startup-banner    'logo
         dashboard-week-agenda       nil)
   :config
@@ -113,10 +126,6 @@
 (with-eval-after-load 'helm-grep
   (setq helm-grep-ag-command "ag --line-numbers -S --hidden --color %s %s %s"
         helm-grep-ag-pipe-cmd-switches '("--color")))
-
-;; Show flycheck errors with helm.
-;; https://github.com/yasuyk/helm-flycheck
-(use-package helm-flycheck)
 
 ;; helm for git-grep(1), an incremental git-grep(1).
 ;; https://github.com/yasuyk/helm-git-grep

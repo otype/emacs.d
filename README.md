@@ -30,11 +30,11 @@
 ## ✨ Highlights
 
 - 🧱 **Foundation:** [use-package](https://jwiegley.github.io/use-package/), [helm](https://emacs-helm.github.io/helm/) (& various addons), [projectile](https://docs.projectile.mx/projectile/index.html), [flycheck](https://www.flycheck.org/en/latest/) and [smartparens](https://github.com/Fuco1/smartparens).
-- 🎨 **Looks:** [dashboard](https://github.com/emacs-dashboard/emacs-dashboard), [centaur-tabs](https://github.com/ema2159/centaur-tabs), [doom-modeline](https://seagle0128.github.io/doom-modeline/), [all-the-icons](https://github.com/domtronn/all-the-icons.el) and the current [Omarchy](https://omarchy.org) theme, which is followed live when you switch themes.
+- 🎨 **Looks:** [dashboard](https://github.com/emacs-dashboard/emacs-dashboard), [centaur-tabs](https://github.com/ema2159/centaur-tabs), [doom-modeline](https://seagle0128.github.io/doom-modeline/), [nerd-icons](https://github.com/rainstormstudio/nerd-icons.el) and the current [Omarchy](https://omarchy.org) theme, which is followed live when you switch themes.
 - 🛠️ **Coding:** [magit](https://magit.vc/) (with [forge](https://magit.vc/manual/forge/)), and [lsp-mode](https://emacs-lsp.github.io/lsp-mode/) with [lsp-ui](https://github.com/emacs-lsp/lsp-ui) as the unified backend for completions, diagnostics, code actions and navigation, with [company](https://company-mode.github.io/) as the completion frontend.
 - 📝 **Notes:** [org-mode](https://orgmode.org/) with [org-modern](https://github.com/minad/org-modern) and [org-roam](https://www.orgroam.com/).
 - 💻 **Languages**, configured one file each:
-  - ✅ active: [Go](/elisp/lang-go.el), [JavaScript](/elisp/lang-javascript.el), [Lisp](/elisp/lang-lisp.el), [Python](/elisp/lang-python.el) (with [lsp-pyright](https://github.com/emacs-lsp/lsp-pyright) and [blacken](https://github.com/proofit404/blacken)), [Rust](/elisp/lang-rust.el) and [Terraform](/elisp/lang-terraform.el)
+  - ✅ active: [Go](/elisp/lang-go.el), [JavaScript](/elisp/lang-javascript.el), [Lisp](/elisp/lang-lisp.el), [Python](/elisp/lang-python.el) (with [lsp-pyright](https://github.com/emacs-lsp/lsp-pyright) and [apheleia](https://github.com/radian-software/apheleia) for format-on-save), [Rust](/elisp/lang-rust.el) and [Terraform](/elisp/lang-terraform.el)
   - 💤 available, disabled by default: [Elixir](/elisp/lang-elixir.el), [Haskell](/elisp/lang-haskell.el), [Java](/elisp/lang-java.el), [Ruby](/elisp/lang-ruby.el) and [Vala](/elisp/lang-vala.el)
 
 ## 📸 Preview

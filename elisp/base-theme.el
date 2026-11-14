@@ -1,7 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
-;; A utility package to collect various Icon Fonts and propertize them within Emacs.
-;; https://github.com/domtronn/all-the-icons.el
-(use-package all-the-icons)
+;; Nerd Font icons for Emacs; used by doom-modeline, centaur-tabs and dashboard.
+;; https://github.com/rainstormstudio/nerd-icons.el
+;; If icons show up as boxes, run `M-x nerd-icons-install-fonts' once.
+(use-package nerd-icons)
 
 ;; This projects aims to become an aesthetic, functional and efficient tabs plugin for
 ;; Emacs with a lot of customization options.
@@ -11,7 +12,8 @@
   :config
   (centaur-tabs-mode t)
   (setq centaur-tabs-style      "rounded")
-  (setq centaur-tabs-set-icons  t)
+  (setq centaur-tabs-set-icons  t
+        centaur-tabs-icon-type  'nerd-icons)
   (setq centaur-tabs-height     32)
   :bind
   ("C-<prior>" . centaur-tabs-backward)
