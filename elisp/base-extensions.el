@@ -233,12 +233,7 @@
 ;; https://orgmode.org/
 (use-package org
   :config
-  ;; Fall back to ~/org/ when the Nextcloud path is absent, so agenda and
-  ;; capture keep working on machines without that mount.
-  (setq org-directory
-        (if (file-directory-p "~/Nextcloud/Documents/org/")
-            "~/Nextcloud/Documents/org/"
-          "~/org/"))
+  (setq org-directory (expand-file-name "~/org/"))
   (make-directory org-directory t)
 ;; 	   org-todo-keywords       '((sequence "☛ TODO(t)" "|" "<img draggable="false" role="img" class="emoji" alt="✔" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/2714.svg"> DONE(d)")
 ;; 			    (sequence "⚑ WAITING(w)" "|")
