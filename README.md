@@ -32,7 +32,8 @@ Here are some sample screenshots:
 
 #### Requirements
 
-- [Emacs](https://www.gnu.org/software/emacs/) v27.x or higher
+- [Emacs](https://www.gnu.org/software/emacs/) v30 or higher (the `:vc` keyword of `use-package` is used)
+- [git](https://git-scm.com/) and `curl`
 - Font [Liberation Mono](https://github.com/liberationfonts/liberation-fonts)
 - [Ag - The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
 - Language servers for your active language layers:
@@ -44,29 +45,43 @@ Here are some sample screenshots:
 
 #### Installation
 
-1. **Clone this repo**. This will go to your `$HOME` directory.
+One command clones the configuration to `~/.emacs.d`, takes your name and email for [user.el](/elisp/user.el) from `git config`, and installs all Emacs packages:
+
+```console
+$ curl -fsSL https://raw.githubusercontent.com/otype/emacs.d/main/install.sh | bash
+```
+
+Prefer to read the script first?
+
+```console
+$ curl -fsSLO https://raw.githubusercontent.com/otype/emacs.d/main/install.sh
+$ less install.sh
+$ bash install.sh
+```
+
+The installer is safe to run again: it fast-forwards an existing clone, leaves a checkout with local changes alone, and moves any other existing `~/.emacs.d` to `~/.emacs.d.bak-<timestamp>` before cloning. Options (append them to the pipe with `bash -s -- <options>`):
+
+| Option | Effect |
+|---|---|
+| `--check` | Report what would change and change nothing (exit 1 if anything would) |
+| `--no-packages` | Skip the headless package installation; packages then install on the first start of Emacs |
+| `--name NAME`, `--email EMAIL` | Set `user-full-name` and `user-mail-address` instead of using `git config` |
+
+It only warns about missing extras (Liberation Mono, `ag`, language servers) and never installs system packages.
+
+After installing, enable more languages by uncommenting the `(require 'lang-…)` lines in [init.el](/init.el) (check each file in [/elisp/](/elisp/) for its dependencies), then start `emacs`.
+
+<details>
+<summary>Manual installation</summary>
 
 ```console
 $ git clone https://github.com/otype/emacs.d.git ~/.emacs.d
+$ $EDITOR ~/.emacs.d/elisp/user.el   # your name and email
+$ $EDITOR ~/.emacs.d/init.el         # enable language layers
+$ emacs                              # installs all packages on first start
 ```
 
-2. **Enable your desired language support configurations.** This happens in [init.el](/init.el).
-
-Please check each language configuration file (see [/elisp/](/elisp/)) for related dependencies.
-
-```console
-$ nano -w ~/.emacs.d/init.el
-```
-
-3. **Add your personal email and name.** Modify [user.el](/elisp/user.el).
-
-4. **Start Emacs.** Emacs will auto-install all dependencies.
-
-```console
-$ emacs
-```
-
-Once finished, you have a working Emacs configuration.
+</details>
 
 ## Key bindings reference
 
