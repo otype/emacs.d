@@ -5,22 +5,26 @@
 (defun duplicate-current-line-or-region (arg)
   "Duplicate the current line, or the region, ARG times.
 
-With no active region, duplicate the whole current line and leave
-point where it was. With an active region, duplicate exactly the
-selected text after the region."
+Always duplicates whole lines: the current line, or every line the
+active region touches (a region ending at the start of a line does
+not include that line). The copies go below, and point stays where
+it was."
   (interactive "p")
-  (let* ((beg (if (use-region-p) (region-beginning) (line-beginning-position)))
-         (end (if (use-region-p) (region-end) (line-end-position)))
+  (let* ((rbeg (if (use-region-p) (region-beginning) (point)))
+         (rend (if (use-region-p) (region-end) (point)))
+         (beg (save-excursion (goto-char rbeg) (line-beginning-position)))
+         (end (save-excursion
+                (goto-char rend)
+                (when (and (> rend rbeg) (bolp))
+                  (forward-char -1))
+                (line-end-position)))
          (text (buffer-substring-no-properties beg end))
-         ;; A region that ends at the beginning of a line already carries the
-         ;; separating newline; anything else needs one added.
-         (separator (if (string-suffix-p "\n" text) "" "\n"))
          (origin (copy-marker (point))))
     (unwind-protect
         (progn
           (goto-char end)
           (dotimes (_ (max arg 1))
-            (insert separator text))
+            (insert "\n" text))
           (goto-char origin))
       (set-marker origin nil))))
 
@@ -34,12 +38,14 @@ newly added layers are picked up without editing this function."
               (expand-file-name "elisp" user-emacs-directory)))
         features)
     (dolist (entry load-history features)
-      (let ((file (car entry))
-            (feature (cdr entry)))
+      (let ((file (car entry)))
         (when (and (stringp file)
-                   (string-prefix-p dir (expand-file-name file))
-                   (symbolp feature))
-          (push feature features))))))
+                   (string-prefix-p dir (expand-file-name file)))
+          ;; The cdr of an entry is a list of elements; features show up
+          ;; as (provide . FEATURE).
+          (dolist (element (cdr entry))
+            (when (eq (car-safe element) 'provide)
+              (push (cdr element) features))))))))
 
 (defun my-reload-emacs-configuration ()
   "Reload this Emacs configuration from disk.

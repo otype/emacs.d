@@ -235,7 +235,7 @@
   :config
   (setq org-directory (expand-file-name "~/org/"))
   (make-directory org-directory t)
-;; 	   org-todo-keywords       '((sequence "☛ TODO(t)" "|" "<img draggable="false" role="img" class="emoji" alt="✔" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/2714.svg"> DONE(d)")
+;; 	   org-todo-keywords       '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
 ;; 			    (sequence "⚑ WAITING(w)" "|")
 ;; 			    (sequence "|" "✘ CANCELED(c)")))
   :bind
