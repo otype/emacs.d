@@ -47,7 +47,9 @@ A personal Emacs configuration (loaded from `~/.emacs.d`), built on `use-package
 
 ## Keybinding prefixes
 
-Established `C-c` prefix conventions to follow when adding new bindings (full reference in `README.md`):
+Established `C-c` prefix conventions to follow when adding new bindings (full reference in `docs/keybindings.md` — update it whenever a binding is added, changed or removed):
+- `C-c c` — Claude Code menu
+- `C-c d` — duplicate line or region
 - `C-c h` — Helm
 - `C-c l` — LSP (bound under `lsp-mode-map`)
 - `C-c m` — Magit
