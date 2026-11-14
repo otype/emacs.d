@@ -73,11 +73,16 @@ say "OK    $(emacs --version | head -n1)"
 # Optional pieces: warn only, never install system packages.
 command -v ag >/dev/null 2>&1 || warn "ag (The Silver Searcher) not found; helm-projectile-ag will not work"
 if command -v fc-list >/dev/null 2>&1; then
-  fc-list | grep -qi 'liberation mono' || warn "font 'Liberation Mono' not found; Emacs will fall back to another font"
+  # Capture first: `fc-list | grep -q' would die of SIGPIPE under pipefail.
+  fonts="$(fc-list 2>/dev/null || true)"
+  grep -qi 'liberation mono' <<<"$fonts" || warn "font 'Liberation Mono' not found; Emacs will fall back to another font"
+  grep -qi 'nerd font' <<<"$fonts" || warn "no Nerd Font found; icons may show as boxes (run M-x nerd-icons-install-fonts in Emacs)"
 fi
 for server in gopls rust-analyzer pyright; do
   command -v "$server" >/dev/null 2>&1 || warn "language server '$server' not found (needed only if you use that language layer)"
 done
+command -v black >/dev/null 2>&1 || warn "'black' not found; Python format-on-save will not work"
+command -v prettier >/dev/null 2>&1 || warn "'prettier' not found; JavaScript/HTML format-on-save will not work"
 if [ "$DEST" = "$HOME/.emacs.d" ] && [ -e "$HOME/.emacs" ]; then
   warn "$HOME/.emacs exists and takes precedence over $DEST/init.el; move it away"
 fi

@@ -30,11 +30,11 @@
 ## ✨ Highlights
 
 - 🧱 **Foundation:** [use-package](https://jwiegley.github.io/use-package/), [helm](https://emacs-helm.github.io/helm/) (& various addons), [projectile](https://docs.projectile.mx/projectile/index.html), [flycheck](https://www.flycheck.org/en/latest/) and [smartparens](https://github.com/Fuco1/smartparens).
-- 🎨 **Looks:** [dashboard](https://github.com/emacs-dashboard/emacs-dashboard), [centaur-tabs](https://github.com/ema2159/centaur-tabs), [doom-modeline](https://seagle0128.github.io/doom-modeline/), [nerd-icons](https://github.com/rainstormstudio/nerd-icons.el) and the current [Omarchy](https://omarchy.org) theme, which is followed live when you switch themes.
-- 🛠️ **Coding:** [magit](https://magit.vc/) (with [forge](https://magit.vc/manual/forge/)), and [lsp-mode](https://emacs-lsp.github.io/lsp-mode/) with [lsp-ui](https://github.com/emacs-lsp/lsp-ui) as the unified backend for completions, diagnostics, code actions and navigation, with [company](https://company-mode.github.io/) as the completion frontend.
+- 🎨 **Looks:** [dashboard](https://github.com/emacs-dashboard/emacs-dashboard), [centaur-tabs](https://github.com/ema2159/centaur-tabs), [doom-modeline](https://seagle0128.github.io/doom-modeline/), [nerd-icons](https://github.com/rainstormstudio/nerd-icons.el), [pulsar](https://github.com/protesilaos/pulsar) (cursor highlight) and the current [Omarchy](https://omarchy.org) theme, which is followed live when you switch themes.
+- 🛠️ **Coding:** [magit](https://magit.vc/) (with [forge](https://magit.vc/manual/forge/)), and [lsp-mode](https://emacs-lsp.github.io/lsp-mode/) with [lsp-ui](https://github.com/emacs-lsp/lsp-ui) as the unified backend for completions, diagnostics, code actions and navigation, with [company](https://company-mode.github.io/) as the completion frontend. [apheleia](https://github.com/radian-software/apheleia) formats Python, JavaScript and HTML on save, and [claude-code-ide](https://github.com/manzaltu/claude-code-ide.el) brings Claude Code into Emacs (`C-c c`).
 - 📝 **Notes:** [org-mode](https://orgmode.org/) with [org-modern](https://github.com/minad/org-modern) and [org-roam](https://www.orgroam.com/).
 - 💻 **Languages**, configured one file each:
-  - ✅ active: [Go](/elisp/lang-go.el), [JavaScript](/elisp/lang-javascript.el), [Lisp](/elisp/lang-lisp.el), [Python](/elisp/lang-python.el) (with [lsp-pyright](https://github.com/emacs-lsp/lsp-pyright) and [apheleia](https://github.com/radian-software/apheleia) for format-on-save), [Rust](/elisp/lang-rust.el) and [Terraform](/elisp/lang-terraform.el)
+  - ✅ active: [Go](/elisp/lang-go.el), [JavaScript](/elisp/lang-javascript.el), [Lisp](/elisp/lang-lisp.el), [Python](/elisp/lang-python.el) (with [lsp-pyright](https://github.com/emacs-lsp/lsp-pyright)), [Rust](/elisp/lang-rust.el) and [Terraform](/elisp/lang-terraform.el)
   - 💤 available, disabled by default: [Elixir](/elisp/lang-elixir.el), [Haskell](/elisp/lang-haskell.el), [Java](/elisp/lang-java.el), [Ruby](/elisp/lang-ruby.el) and [Vala](/elisp/lang-vala.el)
 
 ## 📸 Preview
@@ -52,7 +52,12 @@
 - [Emacs](https://www.gnu.org/software/emacs/) v30 or higher (the `:vc` keyword of `use-package` is used)
 - [git](https://git-scm.com/) and `curl`
 - Font [Liberation Mono](https://github.com/liberationfonts/liberation-fonts)
+- A [Nerd Font](https://www.nerdfonts.com/) for the icons: install one with your package manager, or run `M-x nerd-icons-install-fonts` in Emacs
 - [Ag - The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
+- Formatters for format-on-save (optional, per language):
+  - [black](https://black.readthedocs.io/) — Python (`uv tool install black` or `pipx install black`)
+  - [prettier](https://prettier.io/) — JavaScript and HTML (`npm install -g prettier`)
+  - `gofmt` (ships with Go) and `rustfmt` (ships with rustup) are used for Go and Rust
 - Language servers for your active language layers:
   - [gopls](https://pkg.go.dev/golang.org/x/tools/gopls) — Go
   - [rust-analyzer](https://rust-analyzer.github.io/) — Rust
@@ -84,7 +89,7 @@ The installer is safe to run again: it fast-forwards an existing clone, leaves a
 | `--no-packages` | Skip the headless package installation; packages then install on the first start of Emacs |
 | `--name NAME`, `--email EMAIL` | Set `user-full-name` and `user-mail-address` instead of using `git config` |
 
-It only warns about missing extras (Liberation Mono, `ag`, language servers) and never installs system packages.
+It only warns about missing extras (Liberation Mono, a Nerd Font, `ag`, language servers, `black`, `prettier`) and never installs system packages.
 
 After installing, enable more languages by uncommenting the `(require 'lang-…)` lines in [init.el](/init.el) (check each file in [/elisp/](/elisp/) for its dependencies), then start `emacs`.
 
