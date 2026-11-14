@@ -14,7 +14,7 @@
 
 Emacs.d is an opinionated [Emacs](https://www.gnu.org/software/emacs/) configuration based on [use-package](https://jwiegley.github.io/use-package/), [helm](https://emacs-helm.github.io/helm/) (& various addons), [projectile](https://docs.projectile.mx/projectile/index.html), [flycheck](https://www.flycheck.org/en/latest/) and [smartparens](https://github.com/Fuco1/smartparens). For the looks, it uses [dashboard](https://github.com/emacs-dashboard/emacs-dashboard), [centaur-tabs](https://github.com/ema2159/centaur-tabs), [doom-modeline](https://seagle0128.github.io/doom-modeline/), the current [Omarchy](https://omarchy.org) theme and [all-the-icons](https://github.com/domtronn/all-the-icons.el).
 
-For coding, it provides [magit](https://magit.vc/) (with [forge](https://magit.vc/manual/forge/)), [lsp-mode](https://emacs-lsp.github.io/lsp-mode/) with [lsp-ui](https://github.com/emacs-lsp/lsp-ui), and [org-mode](https://orgmode.org/) with [org-modern](https://github.com/minad/org-modern) and [org-roam](https://www.orgroam.com/). Language support is configured per file — active languages are [Elixir](/elisp/lang-elixir.el), [Go](/elisp/lang-go.el), [JavaScript](/elisp/lang-javascript.el), [Lisp](/elisp/lang-lisp.el), [Python](/elisp/lang-python.el), [Rust](/elisp/lang-rust.el) and [Terraform](/elisp/lang-terraform.el). Additional configurations for [Haskell](/elisp/lang-haskell.el), [Java](/elisp/lang-java.el), [Ruby](/elisp/lang-ruby.el) and [Vala](/elisp/lang-vala.el) are available but disabled by default.
+For coding, it provides [magit](https://magit.vc/) (with [forge](https://magit.vc/manual/forge/)), [lsp-mode](https://emacs-lsp.github.io/lsp-mode/) with [lsp-ui](https://github.com/emacs-lsp/lsp-ui), and [org-mode](https://orgmode.org/) with [org-modern](https://github.com/minad/org-modern) and [org-roam](https://www.orgroam.com/). Language support is configured per file — active languages are [Go](/elisp/lang-go.el), [JavaScript](/elisp/lang-javascript.el), [Lisp](/elisp/lang-lisp.el), [Python](/elisp/lang-python.el), [Rust](/elisp/lang-rust.el) and [Terraform](/elisp/lang-terraform.el). Additional configurations for [Elixir](/elisp/lang-elixir.el), [Haskell](/elisp/lang-haskell.el), [Java](/elisp/lang-java.el), [Ruby](/elisp/lang-ruby.el) and [Vala](/elisp/lang-vala.el) are available but disabled by default.
 
 All language layers use [lsp-mode](https://emacs-lsp.github.io/lsp-mode/) as the unified backend for completions, diagnostics, code actions, and navigation — with [company](https://company-mode.github.io/) for the completion frontend. Python uses [lsp-pyright](https://github.com/emacs-lsp/lsp-pyright) with [blacken](https://github.com/proofit404/blacken) for formatting.
 
@@ -39,7 +39,7 @@ Here are some sample screenshots:
   - [gopls](https://pkg.go.dev/golang.org/x/tools/gopls) — Go
   - [rust-analyzer](https://rust-analyzer.github.io/) — Rust
   - [pyright](https://github.com/microsoft/pyright) — Python (`pip install pyright`)
-  - [elixir-ls](https://github.com/elixir-lsp/elixir-ls) — Elixir
+  - [elixir-ls](https://github.com/elixir-lsp/elixir-ls) — Elixir (only if you enable the layer)
   - [terraform-ls](https://github.com/hashicorp/terraform-ls) — Terraform (optional)
 
 #### Installation
