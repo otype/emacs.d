@@ -32,9 +32,16 @@
   "Enable Flycheck in the current JavaScript buffer and prefer ESLint.
 
 `flycheck-select-checker' does nothing unless `flycheck-mode' is on,
-which nothing else enabled for JavaScript buffers."
+which nothing else enabled for JavaScript buffers.
+
+`flycheck-select-checker' signals a `user-error' when ESLint cannot be
+used (not installed, or a buffer without a file). That error would abort
+the remaining mode hooks, e.g. `apheleia-mode', so it is swallowed and
+Flycheck falls back to its default checker choice."
   (flycheck-mode 1)
-  (flycheck-select-checker 'javascript-eslint))
+  (condition-case nil
+      (flycheck-select-checker 'javascript-eslint)
+    (user-error nil)))
 
 (use-package js2-mode
   :init
