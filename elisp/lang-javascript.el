@@ -1,8 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
-(use-package prettier-js
-  :config
-  (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'web-mode-hook 'prettier-js-mode))
+;; Format JavaScript on save with apheleia (prettier; needs `prettier' installed).
+(add-hook 'js2-mode-hook #'apheleia-mode)
 
 (use-package color-identifiers-mode
   :init
@@ -21,8 +19,8 @@
          ("\\.erb\\'"   . web-mode)
          ("\\.ejs\\'"   . web-mode))
   :init
-  (require 'prettier-js)
-  (add-hook 'web-mode-hook 'prettier-js-mode)
+  ;; Format on save with apheleia (uses prettier; needs `prettier' installed).
+  (add-hook 'web-mode-hook #'apheleia-mode)
   ;; (add-hook 'js2-mode-hook 'prettify-symbols-mode)
   (setq web-mode-markup-indent-offset  2
         web-mode-css-indent-offset     2

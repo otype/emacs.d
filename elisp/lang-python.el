@@ -6,10 +6,8 @@
                          (require 'lsp-pyright)
                          (lsp-deferred))))
 
-;; Black formatter for Python.
-;; https://github.com/proofit404/blacken
-(use-package blacken
-  :hook (python-mode . blacken-mode))
+;; Format Python on save with apheleia (uses black by default; needs `black' installed).
+(add-hook 'python-mode-hook #'apheleia-mode)
 
 (use-package pip-requirements
   :config
