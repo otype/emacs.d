@@ -177,7 +177,7 @@
          ("C-c l l" . lsp-ui-flycheck-list))
 
   :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+  (add-hook 'lsp-mode-hook #'lsp-ui-mode))
 
 ;; This package contains all the higher level UI modules of lsp-mode, like flycheck
 ;; support and code lenses.
@@ -233,7 +233,8 @@
 ;; https://orgmode.org/
 (use-package org
   :config
-  (setq org-directory           "~/Nextcloud/Documents/org/")
+  (setq org-directory (expand-file-name "~/org/"))
+  (make-directory org-directory t)
 ;; 	   org-todo-keywords       '((sequence "☛ TODO(t)" "|" "<img draggable="false" role="img" class="emoji" alt="✔" src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/2714.svg"> DONE(d)")
 ;; 			    (sequence "⚑ WAITING(w)" "|")
 ;; 			    (sequence "|" "✘ CANCELED(c)")))
@@ -335,10 +336,12 @@
 
 ;; Simple major mode to edit YAML file for emacs
 ;; https://github.com/yoshiki/yaml-mode
+(defun my-yaml-mode-setup ()
+  "Indent new lines in YAML buffers."
+  (local-set-key (kbd "RET") #'newline-and-indent))
+
 (use-package yaml-mode
   :config
-  (add-hook 'yaml-mode-hook
-            (lambda ()
-              (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+  (add-hook 'yaml-mode-hook #'my-yaml-mode-setup))
 
 (provide 'base-extensions)

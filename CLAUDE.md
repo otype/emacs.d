@@ -8,7 +8,7 @@ A personal Emacs configuration (loaded from `~/.emacs.d`), built on `use-package
 
 ## Reloading and validating changes
 
-- Reload the running config: `M-x my-reload-emacs-configuration` (bound to `C-c <f12>`), defined in `elisp/base-functions.el`. Re-evaluates `init.el` in place.
+- Reload the running config: `M-x my-reload-emacs-configuration` (bound to `C-c <f12>`), defined in `elisp/base-functions.el`. It unloads every layer under `elisp/` and re-runs `init.el`, so edited files are re-read from disk; restart Emacs after changing package selection or installing packages.
 - Full validation: quit and restart Emacs (`emacs`) so `package.el`/`use-package` re-run from a clean state — required to catch load-order or first-install issues that a live reload won't surface.
 - There is no batch/headless byte-compile or lint step in this repo; watch the `*Messages*` and `*Warnings*` buffers after reload/restart for `use-package` failures.
 

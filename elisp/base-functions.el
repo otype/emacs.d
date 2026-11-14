@@ -3,28 +3,57 @@
 
 ;; Duplicate line or whole region
 (defun duplicate-current-line-or-region (arg)
-  "Duplicates the current line or region ARG times.
-   If there's no region, the current line will be duplicated. However, if
-   there's a region, all lines that region covers will be duplicated."
+  "Duplicate the current line, or the region, ARG times.
+
+With no active region, duplicate the whole current line and leave
+point where it was. With an active region, duplicate exactly the
+selected text after the region."
   (interactive "p")
-  (let (beg end (origin (point)))
-    (if (and mark-active (> (point) (mark)))
-	(exchange-point-and-mark))
-    (setq beg (line-beginning-position))
-    (if mark-active
-	(exchange-point-and-mark))
-    (setq end (line-end-position))
-    (let ((region (buffer-substring-no-properties beg end)))
-      (dotimes (i arg)
-	(goto-char end)
-	(newline)
-	(insert region)
-	(setq end (point)))
-      (goto-char (+ origin (* (length region) arg) arg)))))
+  (let* ((beg (if (use-region-p) (region-beginning) (line-beginning-position)))
+         (end (if (use-region-p) (region-end) (line-end-position)))
+         (text (buffer-substring-no-properties beg end))
+         ;; A region that ends at the beginning of a line already carries the
+         ;; separating newline; anything else needs one added.
+         (separator (if (string-suffix-p "\n" text) "" "\n"))
+         (origin (copy-marker (point))))
+    (unwind-protect
+        (progn
+          (goto-char end)
+          (dotimes (_ (max arg 1))
+            (insert separator text))
+          (goto-char origin))
+      (set-marker origin nil))))
 
 ;; Reload my emacs configuration
+(defun my-config-features ()
+  "Return the features provided by the files in this configuration.
+
+The list comes from `load-history' rather than a hard-coded list, so
+newly added layers are picked up without editing this function."
+  (let ((dir (file-name-as-directory
+              (expand-file-name "elisp" user-emacs-directory)))
+        features)
+    (dolist (entry load-history features)
+      (let ((file (car entry))
+            (feature (cdr entry)))
+        (when (and (stringp file)
+                   (string-prefix-p dir (expand-file-name file))
+                   (symbolp feature))
+          (push feature features))))))
+
 (defun my-reload-emacs-configuration ()
+  "Reload this Emacs configuration from disk.
+
+Every layer is unloaded first, because `require' is a no-op for an
+already provided feature. Hooks are cleaned up by `unload-feature',
+so repeated reloads do not duplicate them. Restart Emacs instead when
+you change package selection or install new packages."
   (interactive)
-  (load-file "~/.emacs.d/init.el"))
+  (dolist (feature (my-config-features))
+    (when (featurep feature)
+      (unload-feature feature t)))
+  (load-file (expand-file-name "init.el" user-emacs-directory))
+  (message "Emacs configuration reloaded from %s" user-emacs-directory))
 
 (provide 'base-functions)
+;;; base-functions ends here
