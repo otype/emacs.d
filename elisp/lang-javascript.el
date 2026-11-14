@@ -11,7 +11,6 @@
 
 (use-package smartparens
   :config
-  (require 'smartparens-config)
   (add-hook 'js-mode-hook  #'smartparens-strict-mode)
   (add-hook 'js2-mode-hook #'smartparens-strict-mode))
 
@@ -22,7 +21,6 @@
          ("\\.erb\\'"   . web-mode)
          ("\\.ejs\\'"   . web-mode))
   :init
-  (require 'smartparens-config)
   (require 'prettier-js)
   (add-hook 'web-mode-hook 'prettier-js-mode)
   ;; (add-hook 'js2-mode-hook 'prettify-symbols-mode)

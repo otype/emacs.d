@@ -44,6 +44,15 @@
               '("~/.local/state/omarchy/current" ; Omarchy 4
                 "~/.config/omarchy/current")))   ; Omarchy 3
 
+(defun my-omarchy-helm-faces ()
+  "Make the Helm selection row follow the `region' face of the Omarchy theme.
+Does nothing until Helm is loaded; Helm's `use-package' block calls this
+too, and `omarchy-apply-theme' re-applies it on every theme switch."
+  (when (facep 'helm-selection)
+    (set-face-attribute 'helm-selection nil
+                        :background (face-attribute 'region :background nil t)
+                        :foreground (face-attribute 'region :foreground nil t))))
+
 (defun omarchy-apply-theme ()
   "Load the colors of the current Omarchy theme as the `omarchy' Emacs theme."
   (interactive)
@@ -77,7 +86,8 @@
             (put theme 'theme-settings nil)
             (setq custom-known-themes (delq theme custom-known-themes)))
           (load-file theme-file)
-          (enable-theme 'omarchy))))))
+          (enable-theme 'omarchy)
+          (my-omarchy-helm-faces))))))
 
 (omarchy-apply-theme)
 
@@ -146,10 +156,7 @@
 ;; To keep syntax highlighting in the current line
 (set-face-foreground 'highlight nil)
 
-;; Set cursor color to bright yellow
-(set-cursor-color "#FEFF00")
-
-;; Modify region background and text color
-(set-face-attribute 'region nil :background "#FBFFC8")
+;; Cursor and region colors come from the Omarchy theme (`cursor' and `region'
+;; faces in omarchy-theme.el), so they follow theme switches.
 
 (provide 'base-theme)

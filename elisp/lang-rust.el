@@ -25,7 +25,6 @@
               ("C-c C-r Q" . lsp-workspace-shutdown)
               ("C-c C-r s" . lsp-rust-analyzer-status))
   :config
-  (require 'smartparens-config)
   ;; uncomment for less flashiness
   ;; (setq lsp-eldoc-hook nil)
   ;; (setq lsp-enable-symbol-highlighting nil)
@@ -84,7 +83,6 @@
 ;; https://github.com/Fuco1/smartparens
 (use-package smartparens
   :config
-  (require 'smartparens-config)
   (add-hook 'rustic-mode-hook #'smartparens-strict-mode))
 
 (provide 'lang-rust)

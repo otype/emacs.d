@@ -19,16 +19,16 @@ A personal Emacs configuration (loaded from `~/.emacs.d`), built on `use-package
 1. `elisp/user.el` — personal identity (name/email), loaded first.
 2. Base layers, in order: `base` → `base-theme` → `base-extensions`.
    - `elisp/base.el`: package.el/MELPA bootstrap, `use-package` bootstrap, core Emacs settings (encoding, backups, `savehist`, `custom-file` location). Everything else depends on `use-package` being available after this loads.
-   - `elisp/base-theme.el`: UI/theming packages (`modus-themes`, `doom-modeline`, `centaur-tabs`, `all-the-icons`) and frame-level settings (font, fringe, line numbers).
-   - `elisp/base-extensions.el`: the bulk of the config — every non-language `use-package` block (helm, projectile, magit, lsp-mode, org, org-roam, etc.) lives here in one file, alphabetized by package name.
+   - `elisp/base-theme.el`: UI/theming packages (`doom-modeline`, `centaur-tabs`, `all-the-icons`), the Omarchy theme integration (`omarchy-apply-theme`, which loads `themes/omarchy-theme.el` and re-applies on theme switches) and frame-level settings (font, fringe, line numbers).
+   - `elisp/base-extensions.el`: the bulk of the config — every non-language `use-package` block (helm, projectile, magit, lsp-mode, org, org-roam, etc.) lives here in one file (not sorted; add new blocks near related ones).
 3. `elisp/base-functions.el` / `elisp/base-global-keys.el` — custom interactive functions and global keybindings, loaded after extensions so they can reference packages like `org-roam`.
 4. Language layers (`elisp/lang-*.el`) — one file per language, each self-contained (`use-package` blocks + a trailing `(provide 'lang-x)`). Commented-out `require` lines in `init.el` mark language layers that exist but are disabled (currently Haskell, Java, Ruby, Vala).
 
 **Key architectural pattern: unified LSP backend.** All active language layers (Elixir, Go, JavaScript, Lisp, Python, Rust, Terraform) hook into the single `lsp-mode` instance configured in `base-extensions.el`, using `company` as the shared completion frontend. Language files add language-specific `lsp-mode` settings (e.g. `lsp-rust-analyzer-*` variables in `lang-rust.el`) rather than configuring a separate LSP client per language. Python is the one exception, using `lsp-pyright` directly instead of routing through generic `lsp-mode` package selection.
 
-**Formatting on save is per-language and opt-in via hooks**, not centralized: `lang-rust.el` sets `rustic-format-on-save`, `lang-go.el` hooks `gofmt-before-save` onto `before-save-hook` (buffer-locally, Go files only), `lang-python.el` uses `blacken-mode`. There's also a global `delete-trailing-whitespace` on `before-save-hook` in `base.el` that applies to every buffer.
+**Formatting on save is per-language and opt-in via hooks**, not centralized: `lang-rust.el` sets `rustic-format-on-save`, `lang-go.el` hooks `gofmt-before-save` onto `before-save-hook` (buffer-locally, Go files only), `lang-python.el` uses `blacken-mode`. There's also a global `delete-trailing-whitespace` on `before-save-hook` in `base.el` that applies to every buffer except `diff-mode` and `markdown-mode`.
 
-**Package installation**: `use-package-always-ensure` is `t` (set in `base.el`), so any new `use-package` block auto-installs from MELPA on next load — no separate install step needed. Two packages (`claude-code-ide`, `copilot`) are pinned via `package-vc` in `.custom.el` rather than MELPA, since they track upstream git directly.
+**Package installation**: `use-package-always-ensure` is `t` (set in `base.el`), so any new `use-package` block auto-installs from MELPA on next load — no separate install step needed. `claude-code-ide` is the one package installed from git rather than MELPA, via `:vc` in its `use-package` block in `base-extensions.el`. `.custom.el` (gitignored) records the resulting `package-vc` selection. Backups go to `backups/` and auto-saves to `auto-saves/` under `~/.emacs.d` (both gitignored, created by `base.el`).
 
 **`.custom.el`** is the `custom-file` target (set in `base.el`) — Emacs' own `customize` UI writes here, not to `init.el`. Don't hand-edit `custom-set-variables`/`custom-set-faces` blocks unless necessary; prefer the `use-package` `:custom` keyword in the relevant `elisp/*.el` file for new settings so they stay documented alongside the package they configure.
 
@@ -43,7 +43,7 @@ A personal Emacs configuration (loaded from `~/.emacs.d`), built on `use-package
 ## Workflow
 
 - Always submit changes via a pull request (branch + `gh pr create`), never commit or push directly to `main`, unless the user explicitly says to merge/push straight to `main` for that specific change.
-- Use `/home/hgschmidt/.claude/skills/pr-description/scripts/create-pr.sh` to open the PR (branch, commit, push, `gh pr create` in one step) rather than chaining separate `git`/`gh` calls — it refuses to run on the default branch without an explicit `--branch`.
+- Open the PR by hand: `git switch -c <branch>`, commit, `git push -u origin <branch>`, then `gh pr create`. There is no helper script for this.
 
 ## Keybinding prefixes
 
