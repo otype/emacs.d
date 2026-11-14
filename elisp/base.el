@@ -101,11 +101,14 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-auto-revert-mode t)
 
-;; Delete trailing whitespace before save
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; Delete trailing whitespace before save, except where it carries meaning
+;; (patch files, Markdown hard line breaks).
+(defun my-delete-trailing-whitespace ()
+  "Delete trailing whitespace unless the current mode needs it."
+  (unless (derived-mode-p 'diff-mode 'markdown-mode)
+    (delete-trailing-whitespace)))
 
-;; Prevent this message 'Package cl is deprecated' on startup
-(setq byte-compile-warnings               '(cl-functions))
+(add-hook 'before-save-hook #'my-delete-trailing-whitespace)
 
 (provide 'base)
 ;;; base ends here

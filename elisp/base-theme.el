@@ -21,10 +21,10 @@
 ;; https://github.com/seagle0128/doom-modeline
 (use-package doom-modeline
   :init
-  (doom-modeline-mode 1)
+  (setq doom-modeline-height 35
+        doom-modeline-bar-width 1)
   :config
-  (setq doom-modeline-height 35)
-  (setq doom-modeline-bar-width 1))
+  (doom-modeline-mode 1))
 
 ;; Follow the current Omarchy theme. Only the colors are taken over from the
 ;; Omarchy Emacs integration (/usr/share/omarchy-emacs); fonts and the rest of
@@ -32,35 +32,67 @@
 (require 'cl-lib)
 (require 'filenotify)
 
-(defvar omarchy-current-dir
+(defvar omarchy-theme-watch nil
+  "File notification descriptor for the Omarchy theme name file.")
+
+(defvar omarchy-theme-dir (expand-file-name "themes" user-emacs-directory)
+  "Directory holding this configuration's copy of `omarchy-theme.el'.")
+
+(defun omarchy-current-dir ()
+  "Return the directory holding Omarchy's current theme assets, or nil."
   (cl-find-if (lambda (d) (file-directory-p (expand-file-name "theme" d)))
               '("~/.local/state/omarchy/current" ; Omarchy 4
-                "~/.config/omarchy/current"))     ; Omarchy 3
-  "Directory holding Omarchy's current theme assets.")
+                "~/.config/omarchy/current")))   ; Omarchy 3
 
 (defun omarchy-apply-theme ()
   "Load the colors of the current Omarchy theme as the `omarchy' Emacs theme."
   (interactive)
-  (let ((theme-dir (expand-file-name "theme" omarchy-current-dir)))
-    (add-to-list 'load-path theme-dir)
-    (add-to-list 'custom-theme-load-path "~/.config/emacs/themes")
-    (when (file-exists-p (expand-file-name "omarchy-colors.el" theme-dir))
-      (load-file (expand-file-name "omarchy-colors.el" theme-dir))
-      (mapc #'disable-theme custom-enabled-themes)
-      (dolist (theme '(omarchy omarchy-dark omarchy-light))
-        (put theme 'theme-settings nil)
-        (setq custom-known-themes (delq theme custom-known-themes)))
-      (load-file (locate-file "omarchy-theme" custom-theme-load-path '(".el")))
-      (enable-theme 'omarchy))))
+  (let* ((current (omarchy-current-dir))
+         (theme-dir (and current (expand-file-name "theme" current)))
+         (colors-file (and theme-dir
+                           (expand-file-name "omarchy-colors.el" theme-dir))))
+    (if (not (and colors-file (file-exists-p colors-file)))
+        (message "Omarchy colors not available; skipping theme load.")
+      (add-to-list 'load-path theme-dir)
+      ;; The theme file ships with Omarchy but lives next to this config.
+      (add-to-list 'custom-theme-load-path omarchy-theme-dir)
+      (let ((theme-file (locate-file "omarchy-theme"
+                                     custom-theme-load-path '(".el"))))
+        (if (not theme-file)
+            (message "No omarchy-theme.el found in %s" omarchy-theme-dir)
+          ;; omarchy-colors.el only sets the colors its template rendered.
+          ;; Unbind the semantic ones first so switching from a semantic theme
+          ;; to a legacy color0..15 theme cannot leave stale values behind.
+          (dolist (sym '(omarchy-color-muted omarchy-color-selection
+                         omarchy-color-dark-fg omarchy-color-light-fg
+                         omarchy-color-bright-fg omarchy-color-dark-bg
+                         omarchy-color-darker-bg omarchy-color-lighter-bg
+                         omarchy-color-orange))
+            (makunbound sym))
+          (load-file colors-file)
+          ;; Disable and forget the theme symbols so the `load-file' below
+          ;; rebuilds them instead of merging with the previous theme's faces.
+          (dolist (theme '(omarchy omarchy-dark omarchy-light))
+            (disable-theme theme)
+            (put theme 'theme-settings nil)
+            (setq custom-known-themes (delq theme custom-known-themes)))
+          (load-file theme-file)
+          (enable-theme 'omarchy))))))
 
 (omarchy-apply-theme)
 
 ;; Reload on theme change. Watch theme.name, not the theme directory:
-;; omarchy-theme-set replaces the directory, which drops inotify watches.
-(let ((name-file (expand-file-name "theme.name" omarchy-current-dir)))
-  (when (file-exists-p name-file)
-    (file-notify-add-watch name-file '(change)
-                           (lambda (_event) (omarchy-apply-theme)))))
+;; omarchy-theme-set does `rm -rf' + `mv' on theme/, which drops inotify
+;; watches, while theme.name is rewritten in place. Remove the previous watch
+;; first so reloading this file cannot stack watches.
+(let* ((current (omarchy-current-dir))
+       (name-file (and current (expand-file-name "theme.name" current))))
+  (when (and name-file (file-exists-p name-file))
+    (when omarchy-theme-watch
+      (ignore-errors (file-notify-rm-watch omarchy-theme-watch)))
+    (setq omarchy-theme-watch
+          (file-notify-add-watch name-file '(change)
+                                 (lambda (_event) (omarchy-apply-theme))))))
 
 ;; Font settings
 (set-frame-font "Liberation Mono 12" t)

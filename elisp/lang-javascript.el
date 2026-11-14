@@ -32,6 +32,14 @@
         web-mode-style-padding         2
         web-mode-script-padding        2))
 
+(defun my-js-flycheck-setup ()
+  "Enable Flycheck in the current JavaScript buffer and prefer ESLint.
+
+`flycheck-select-checker' does nothing unless `flycheck-mode' is on,
+which nothing else enabled for JavaScript buffers."
+  (flycheck-mode 1)
+  (flycheck-select-checker 'javascript-eslint))
+
 (use-package js2-mode
   :init
   (setq-default tab-width                     2
@@ -52,7 +60,7 @@
   :config
   (add-hook 'js-mode-hook 'js2-minor-mode)
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-  (add-hook 'js2-mode-hook
-            (lambda () (flycheck-select-checker "javascript-eslint"))))
+  (add-hook 'js2-mode-hook #'my-js-flycheck-setup)
+  (add-hook 'js-mode-hook #'my-js-flycheck-setup))
 
 (provide 'lang-javascript)
