@@ -81,7 +81,7 @@
 (use-package helm
   :config
   (helm-mode 1)
-  (set-face-attribute 'helm-selection nil :background "#FBFFC8" :foreground "#04134B")
+  (my-omarchy-helm-faces)
   (setq helm-split-window-in-side-p     t
         helm-split-window-default-side  'below
         helm-input-idle-delay           0.01
@@ -326,7 +326,10 @@
 
 ;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it.
 ;; https://github.com/Fuco1/smartparens
-(use-package smartparens)
+(use-package smartparens
+  :config
+  ;; Default pair definitions; the language layers only add their hooks.
+  (require 'smartparens-config))
 
 ;; Emacs package that displays available keybindings in popup
 ;; https://github.com/justbur/emacs-which-key

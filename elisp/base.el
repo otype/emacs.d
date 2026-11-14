@@ -80,10 +80,19 @@
       history-delete-duplicates           t
       savehist-save-minibuffer-history    1)
 
+;; Keep backups and auto-saves out of ~/.trash (where they look like deleted
+;; files) and out of working trees (where they show up in `git status').
+(defconst my-backup-dir (expand-file-name "backups/" user-emacs-directory))
+(defconst my-auto-save-dir (expand-file-name "auto-saves/" user-emacs-directory))
+(make-directory my-backup-dir t)
+(make-directory my-auto-save-dir t)
+
 ;; Backups enabled, use nil to disable
 (setq vc-make-backup-files                t
       create-lockfiles                    t
-      backup-directory-alist              `(("." . "~/.trash"))
+      backup-directory-alist              `(("." . ,my-backup-dir))
+      auto-save-file-name-transforms      `((".*" ,my-auto-save-dir t))
+      auto-save-list-file-prefix          (concat my-auto-save-dir ".saves-")
       make-backup-files                   t      ; backup of a file the first time it is saved.
       backup-by-copying                   t      ; don't clobber symlinks
       version-control                     t      ; version numbers for backup files
