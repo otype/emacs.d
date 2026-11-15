@@ -13,7 +13,10 @@
     <img src="https://img.shields.io/github/issues-pr-raw/otype/emacs.d.svg?style=flat-square&logo=github&logoColor=white" alt="GitHub pull requests">
   </a>
   <a href="https://github.com/otype/emacs.d/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/otype/emacs.d" alt="LICENSE">
+    <img src="https://img.shields.io/github/license/otype/emacs.d?style=flat-square" alt="LICENSE">
+  </a>
+  <a href="https://www.gnu.org/software/emacs/">
+    <img src="https://img.shields.io/badge/Emacs-30%2B-7F5AB6?style=flat-square&logo=gnuemacs&logoColor=white" alt="Emacs 30 or higher">
   </a>
 </p>
 
@@ -33,6 +36,7 @@
 - 🎨 **Looks:** [dashboard](https://github.com/emacs-dashboard/emacs-dashboard), [centaur-tabs](https://github.com/ema2159/centaur-tabs), [doom-modeline](https://seagle0128.github.io/doom-modeline/), [nerd-icons](https://github.com/rainstormstudio/nerd-icons.el), [pulsar](https://github.com/protesilaos/pulsar) (cursor highlight) and the current [Omarchy](https://omarchy.org) theme, which is followed live when you switch themes.
 - 🛠️ **Coding:** [magit](https://magit.vc/) (with [forge](https://magit.vc/manual/forge/)), and [lsp-mode](https://emacs-lsp.github.io/lsp-mode/) with [lsp-ui](https://github.com/emacs-lsp/lsp-ui) as the unified backend for completions, diagnostics, code actions and navigation, with [company](https://company-mode.github.io/) as the completion frontend. [apheleia](https://github.com/radian-software/apheleia) formats Python, JavaScript and HTML on save, and [claude-code-ide](https://github.com/manzaltu/claude-code-ide.el) brings Claude Code into Emacs (`C-c c`).
 - 📝 **Notes:** [org-mode](https://orgmode.org/) with [org-modern](https://github.com/minad/org-modern) and [org-roam](https://www.orgroam.com/).
+- ⌨️ **Editing:** [which-key](https://github.com/justbur/emacs-which-key) shows the available keys after a prefix, [expand-region](https://github.com/magnars/expand-region.el), [iedit](https://github.com/victorhge/iedit), [move-text](https://github.com/emacsfodder/move-text) and [mwim](https://github.com/alezost/mwim.el) speed up everyday editing, and [vterm](https://github.com/akermu/emacs-libvterm) gives you a real terminal inside Emacs.
 - 💻 **Languages**, configured one file each:
   - ✅ active: [Go](/elisp/lang-go.el), [JavaScript](/elisp/lang-javascript.el), [Lisp](/elisp/lang-lisp.el), [Python](/elisp/lang-python.el) (with [lsp-pyright](https://github.com/emacs-lsp/lsp-pyright)), [Rust](/elisp/lang-rust.el) and [Terraform](/elisp/lang-terraform.el)
   - 💤 available, disabled by default: [Elixir](/elisp/lang-elixir.el), [Haskell](/elisp/lang-haskell.el), [Java](/elisp/lang-java.el), [Ruby](/elisp/lang-ruby.el) and [Vala](/elisp/lang-vala.el)
@@ -132,6 +136,9 @@ Everything this configuration binds is listed in **[docs/keybindings.md](docs/ke
 | [`elisp/base*.el`](/elisp/) | Core settings, theme, packages, custom functions, global key bindings |
 | [`elisp/lang-*.el`](/elisp/) | One self-contained layer per language |
 | [`elisp/user.el`](/elisp/user.el) | Your name and email |
-| [`themes/`](/themes/) | The Omarchy theme file |
+| `themes/omarchy-theme.el` | Omarchy's Emacs theme file. Not in git (it is git-ignored): the Omarchy Emacs integration puts it next to this configuration and [`base-theme.el`](/elisp/base-theme.el) loads it |
 | [`docs/`](/docs/) | Documentation, e.g. the [key bindings reference](docs/keybindings.md) |
+| [`images/`](/images/) | The screenshots shown in the preview |
 | [`install.sh`](/install.sh) | The installer |
+| [`CLAUDE.md`](/CLAUDE.md) | Notes for Claude Code: architecture, how to reload and validate changes |
+| [`.githooks/`](/.githooks/) | A `pre-commit` hygiene check. Enable it per clone with `git config core.hooksPath .githooks` |
