@@ -91,6 +91,7 @@ recentf
 abbrev_defs
 forge-database.sqlite
 /projects
+/projects.eld
 /backups/
 /auto-saves/
 
