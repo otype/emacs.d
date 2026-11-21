@@ -1,16 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
-;; Cargo mode for Emacs. This package gives you a set of key combinations to perform Cargo
-;; tasks within your Rust projects.
-;; https://github.com/kwrooijen/cargo.el
-(use-package cargo
-  :config
-  (add-hook 'rustic-mode-hook 'cargo-minor-mode))
-
-;; This Flycheck extension configures Flycheck automatically for the current Cargo project.
-;; https://github.com/flycheck/flycheck-rust
-(use-package flycheck-rust
-  :config
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+;; Cargo commands come from rustic itself (`rustic-cargo-*', C-c C-c ...) and
+;; diagnostics from rust-analyzer via lsp-mode, so the separate cargo.el and
+;; flycheck-rust packages are not needed.
 
 ;; Rust development environment for Emacs
 ;; https://github.com/brotzeit/rustic

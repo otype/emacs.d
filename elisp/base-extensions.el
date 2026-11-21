@@ -63,6 +63,7 @@
 ;; This file documents Ediff, a comprehensive visual interface to Unix diff and patch utilities.
 ;; https://www.gnu.org/software/emacs/manual/html_node/ediff/
 (use-package ediff
+  :ensure nil
   :config
   (setq ediff-window-setup-function        'ediff-setup-windows-plain)
   (setq ediff-split-window-function        'split-window-horizontally)
@@ -95,7 +96,7 @@
   :config
   (helm-mode 1)
   (my-omarchy-helm-faces)
-  (setq helm-split-window-in-side-p     t
+  (setq helm-split-window-inside-p      t
         helm-split-window-default-side  'below
         helm-input-idle-delay           0.01
         helm-ff-skip-boring-files       t)
@@ -105,9 +106,9 @@
          ("M-y"     . helm-show-kill-ring)
          ("C-c h"   . helm-command-prefix)
          :map helm-command-map
-         (("a" . helm-projectile-ag)
+         (("a" . helm-projectile-rg)
           ("b" . helm-filtered-bookmarks)
-          ("d" . helm-do-ag)
+          ("d" . helm-do-grep-ag)
           ;; ("g" . helm-projectile-grep)
           ("g" . helm-browse-project)
           ("i" . helm-semantic-or-imenu)
@@ -121,11 +122,9 @@
          ("<tab>" . helm-execute-persistent-action)
          ("C-z"   . helm-execute-persistent-action)))
 
-;; helm-ag was removed from MELPA; use helm's built-in ag support instead.
-;; helm-do-grep-ag (bound in helm-command-map) provides equivalent functionality.
-(with-eval-after-load 'helm-grep
-  (setq helm-grep-ag-command "ag --line-numbers -S --hidden --color %s %s %s"
-        helm-grep-ag-pipe-cmd-switches '("--color")))
+;; helm-ag was removed from MELPA. helm's built-in helm-do-grep-ag and
+;; helm-projectile-rg use ripgrep when it is installed (helm's default for
+;; `helm-grep-ag-command'), falling back to ag.
 
 ;; helm for git-grep(1), an incremental git-grep(1).
 ;; https://github.com/yasuyk/helm-git-grep
@@ -266,8 +265,7 @@
 (use-package org-roam
   :after org
   :init
-  (setq org-roam-v2-ack                 t
-	org-roam-directory              (file-truename "~/org-roam-notes/")
+  (setq org-roam-directory              (file-truename "~/org-roam-notes/")
 	org-roam-completion-everywhere  t
 	org-roam-capture-templates
 	'(("p" "private" plain "%?" :target
@@ -329,8 +327,9 @@
 ;; this list through a command or the menu.
 ;; https://www.emacswiki.org/emacs/RecentFiles
 (use-package recentf
+  :ensure nil
   :config
-  (setq recentf-save-file (expand-file-name "~/.emacs.d/private/cache/recentf"))
+  (setq recentf-save-file (expand-file-name "private/cache/recentf" user-emacs-directory))
   (recentf-mode 1))
 
 ;; Minor mode for Emacs that deals with parens pairs and tries to be smart about it.
@@ -343,6 +342,7 @@
 ;; Emacs package that displays available keybindings in popup
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
+  :ensure nil ; built in since Emacs 30
   :config
   (which-key-mode))
 
