@@ -57,7 +57,7 @@
 - [git](https://git-scm.com/) and `curl`
 - Font [Liberation Mono](https://github.com/liberationfonts/liberation-fonts)
 - A [Nerd Font](https://www.nerdfonts.com/) for the icons: install one with your package manager, or run `M-x nerd-icons-install-fonts` in Emacs
-- [Ag - The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) (`rg`) for project search (Helm falls back to ag if it is missing)
 - Formatters for format-on-save (optional, per language):
   - [black](https://black.readthedocs.io/) — Python (`uv tool install black` or `pipx install black`)
   - [prettier](https://prettier.io/) — JavaScript and HTML (`npm install -g prettier`)
@@ -136,7 +136,7 @@ Everything this configuration binds is listed in **[docs/keybindings.md](docs/ke
 | [`elisp/base*.el`](/elisp/) | Core settings, theme, packages, custom functions, global key bindings |
 | [`elisp/lang-*.el`](/elisp/) | One self-contained layer per language |
 | [`elisp/user.el`](/elisp/user.el) | Your name and email |
-| `themes/omarchy-theme.el` | Omarchy's Emacs theme file. Not in git (it is git-ignored): the Omarchy Emacs integration puts it next to this configuration and [`base-theme.el`](/elisp/base-theme.el) loads it |
+| `themes/omarchy-theme.el` | Omarchy's Emacs theme file. Not in git (it is git-ignored): [`install.sh`](/install.sh) links it from the `omarchy-emacs` package (`/usr/share/omarchy-emacs/config/themes/`), and [`base-theme.el`](/elisp/base-theme.el) loads it |
 | [`docs/`](/docs/) | Documentation, e.g. the [key bindings reference](docs/keybindings.md) |
 | [`images/`](/images/) | The screenshots shown in the preview |
 | [`install.sh`](/install.sh) | The installer |

@@ -71,7 +71,7 @@ fi
 say "OK    $(emacs --version | head -n1)"
 
 # Optional pieces: warn only, never install system packages.
-command -v ag >/dev/null 2>&1 || warn "ag (The Silver Searcher) not found; helm-projectile-ag will not work"
+command -v rg >/dev/null 2>&1 || warn "rg (ripgrep) not found; helm-projectile-rg and helm-do-grep-ag will not work"
 if command -v fc-list >/dev/null 2>&1; then
   # Capture first: `fc-list | grep -q' would die of SIGPIPE under pipefail.
   fonts="$(fc-list 2>/dev/null || true)"
@@ -133,6 +133,27 @@ else
     say "CLONE $REPO_URL -> $DEST"
     FRESH=1
   fi
+fi
+
+# --- Omarchy theme -----------------------------------------------------------
+
+# base-theme.el loads themes/omarchy-theme.el from this directory, but the
+# omarchy-emacs package only installs it under ~/.config/emacs/themes. Without
+# the file Emacs silently stays on the default (light) theme. Link it from the
+# package, so package updates are picked up. Not an Omarchy host: nothing to do.
+OMARCHY_THEME_SRC="${OMARCHY_EMACS_THEME:-/usr/share/omarchy-emacs/config/themes/omarchy-theme.el}"
+OMARCHY_THEME_DST="$DEST/themes/omarchy-theme.el"
+if [ -f "$OMARCHY_THEME_SRC" ] && [ ! -e "$OMARCHY_THEME_DST" ]; then
+  changed
+  if [ "$CHECK" -eq 1 ]; then
+    say "DRIFT $OMARCHY_THEME_DST is missing and would be linked to $OMARCHY_THEME_SRC"
+  elif [ -d "$DEST" ]; then
+    mkdir -p "$DEST/themes"
+    ln -sf "$OMARCHY_THEME_SRC" "$OMARCHY_THEME_DST"
+    say "LINK  $OMARCHY_THEME_DST -> $OMARCHY_THEME_SRC"
+  fi
+elif [ -e "$OMARCHY_THEME_DST" ]; then
+  say "OK    Omarchy theme file present"
 fi
 
 # --- identity ----------------------------------------------------------------
