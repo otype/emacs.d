@@ -54,8 +54,9 @@
   ;; what to use when checking on-save. "check" is default, I prefer clippy
   (lsp-rust-analyzer-cargo-watch-command "clippy")
 
-  ;; Show inlay hints.
-  (lsp-rust-analyzer-server-display-inlay-hints t)
+  ;; Show inlay hints (generic lsp-mode switch; the rust-analyzer-specific
+  ;; variable of the same purpose no longer exists).
+  (lsp-inlay-hint-enable t)
 
   ;; Whether to show elided lifetime inlay hints.
   (lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")

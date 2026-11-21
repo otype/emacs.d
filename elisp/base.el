@@ -4,8 +4,6 @@
 ;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
-(package-initialize)
-
 ;; Bypass package-vc overwrite prompts if the checkout already exists
 (with-eval-after-load 'package-vc
   (defun my/package-vc--unpack-advice (orig-fun pkg-desc pkg-spec &optional rev)
@@ -21,10 +19,7 @@
   (advice-add 'package-vc--unpack :around #'my/package-vc--unpack-advice))
 
 ;; use-package to simplify the config file
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(require 'use-package)
+(require 'use-package) ; built in since Emacs 29
 
 (defconst private-dir (expand-file-name "private" user-emacs-directory))
 (defconst temp-dir (format "%s/cache" private-dir)
@@ -65,6 +60,10 @@
       ;; automatically open sym-linked files
       vc-follow-symlinks                  t
       find-file-visit-truename            t)
+
+;; Spaces, not tabs (Go sets indent-tabs-mode buffer-locally). This was
+;; previously set as a side effect of the js2-mode block; keep it explicit.
+(setq-default indent-tabs-mode nil)
 
 ;; Load custom file
 (load custom-file t)

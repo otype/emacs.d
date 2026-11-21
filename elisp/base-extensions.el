@@ -257,8 +257,8 @@
 ;; blocks.
 ;; https://github.com/minad/org-modern
 (use-package org-modern
-  :config
-  (with-eval-after-load 'org (global-org-modern-mode)))
+  :hook ((org-mode . org-modern-mode)
+         (org-agenda-finalize . org-modern-agenda)))
 
 ;; Org-roam is a plain-text knowledge management system. It brings some of Roam's more
 ;; powerful features into the Org-mode ecosystem.
