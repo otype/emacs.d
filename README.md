@@ -57,7 +57,7 @@
 - [git](https://git-scm.com/) and `curl`
 - Font [Liberation Mono](https://github.com/liberationfonts/liberation-fonts)
 - A [Nerd Font](https://www.nerdfonts.com/) for the icons: install one with your package manager, or run `M-x nerd-icons-install-fonts` in Emacs
-- [Ag - The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) (`rg`) for project search (Helm falls back to ag if it is missing)
 - Formatters for format-on-save (optional, per language):
   - [black](https://black.readthedocs.io/) — Python (`uv tool install black` or `pipx install black`)
   - [prettier](https://prettier.io/) — JavaScript and HTML (`npm install -g prettier`)
@@ -93,7 +93,7 @@ The installer is safe to run again: it fast-forwards an existing clone, leaves a
 | `--no-packages` | Skip the headless package installation; packages then install on the first start of Emacs |
 | `--name NAME`, `--email EMAIL` | Set `user-full-name` and `user-mail-address` instead of using `git config` |
 
-It only warns about missing extras (Liberation Mono, a Nerd Font, `ag`, language servers, `black`, `prettier`) and never installs system packages.
+It only warns about missing extras (Liberation Mono, a Nerd Font, `rg`, language servers, `black`, `prettier`) and never installs system packages. On an Omarchy host with the `omarchy-emacs` package it also links the Omarchy theme file (see [Project layout](#-project-layout)).
 
 After installing, enable more languages by uncommenting the `(require 'lang-…)` lines in [init.el](/init.el) (check each file in [/elisp/](/elisp/) for its dependencies), then start `emacs`.
 
@@ -132,12 +132,13 @@ Everything this configuration binds is listed in **[docs/keybindings.md](docs/ke
 
 | Path | Purpose |
 |---|---|
+| [`early-init.el`](/early-init.el) | Runs before `init.el` and the first frame: GC tuning during startup, no menu/tool bar flicker, larger LSP read buffer |
 | [`init.el`](/init.el) | Entry point: loads the layers below; language layers are switched on and off here |
 | [`elisp/base*.el`](/elisp/) | Core settings, theme, packages, custom functions, global key bindings |
 | [`elisp/lang-*.el`](/elisp/) | One self-contained layer per language |
 | [`elisp/user.el`](/elisp/user.el) | Your name and email |
-| `themes/omarchy-theme.el` | Omarchy's Emacs theme file. Not in git (it is git-ignored): the Omarchy Emacs integration puts it next to this configuration and [`base-theme.el`](/elisp/base-theme.el) loads it |
-| [`docs/`](/docs/) | Documentation, e.g. the [key bindings reference](docs/keybindings.md) |
+| `themes/omarchy-theme.el` | Omarchy's Emacs theme file. Not in git (it is git-ignored): [`install.sh`](/install.sh) links it from the `omarchy-emacs` package (`/usr/share/omarchy-emacs/config/themes/`), and [`base-theme.el`](/elisp/base-theme.el) loads it |
+| [`docs/`](/docs/) | Documentation: the [key bindings reference](docs/keybindings.md) and the [configuration analysis](docs/analysis-2026-11-22.md) with open improvement ideas |
 | [`images/`](/images/) | The screenshots shown in the preview |
 | [`install.sh`](/install.sh) | The installer |
 | [`CLAUDE.md`](/CLAUDE.md) | Notes for Claude Code: architecture, how to reload and validate changes |
