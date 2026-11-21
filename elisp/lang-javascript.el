@@ -45,15 +45,13 @@ Flycheck falls back to its default checker choice."
 
 (use-package js2-mode
   :init
-  (setq-default tab-width                     2
-                js2-basic-indent              2
+  (setq-default js2-basic-indent              2
                 js-indent-level               2
                 js2-auto-indent-p             t
                 js2-cleanup-whitespace        t
                 js2-concat-multiline-strings  'eol
                 js2-enter-indents-newline     t
                 js2-indent-on-enter-key       t
-                indent-tabs-mode              nil
                 js2-global-externs (list "window" "module" "require" "buster" "sinon" "assert" "refute"
                                          "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location"
                                          "__dirname" "console" "JSON" "jQuery" "$")
@@ -63,6 +61,8 @@ Flycheck falls back to its default checker choice."
   :config
   (add-hook 'js-mode-hook 'js2-minor-mode)
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  ;; JS-specific indentation: buffer-local, so other modes keep their defaults.
+  (add-hook 'js2-mode-hook (lambda () (setq-local tab-width 2)))
   (add-hook 'js2-mode-hook #'my-js-flycheck-setup)
   (add-hook 'js-mode-hook #'my-js-flycheck-setup))
 

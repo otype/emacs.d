@@ -16,9 +16,10 @@ A personal Emacs configuration (loaded from `~/.emacs.d`), built on `use-package
 
 **Load order is defined in `init.el`** and is significant — later files assume earlier ones are loaded:
 
+0. `early-init.el` (before everything, incl. the first frame) — GC threshold during startup, no menu/tool bar flicker, larger LSP process-output buffer.
 1. `elisp/user.el` — personal identity (name/email), loaded first.
 2. Base layers, in order: `base` → `base-theme` → `base-extensions`.
-   - `elisp/base.el`: package.el/MELPA bootstrap, `use-package` bootstrap, core Emacs settings (encoding, backups, `savehist`, `custom-file` location). Everything else depends on `use-package` being available after this loads.
+   - `elisp/base.el`: MELPA archive setup (`use-package` is built in since Emacs 29; packages are activated by Emacs before `init.el`), core Emacs settings (encoding, backups, `savehist`, `custom-file` location). Everything else depends on `use-package` being available after this loads.
    - `elisp/base-theme.el`: UI/theming packages (`doom-modeline`, `centaur-tabs`, `nerd-icons`), the Omarchy theme integration (`omarchy-apply-theme`, which loads `themes/omarchy-theme.el` and re-applies on theme switches) and frame-level settings (font, fringe, line numbers).
    - `elisp/base-extensions.el`: the bulk of the config — every non-language `use-package` block (helm, projectile, magit, lsp-mode, org, org-roam, etc.) lives here in one file (not sorted; add new blocks near related ones).
 3. `elisp/base-functions.el` / `elisp/base-global-keys.el` — custom interactive functions and global keybindings, loaded after extensions so they can reference packages like `org-roam`.
