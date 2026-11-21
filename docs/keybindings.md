@@ -35,9 +35,9 @@ under it in addition to the bindings below.
 | `C-x C-f` | `helm-find-files` |
 | `C-x b` | `helm-mini` (buffer switcher) |
 | `M-y` | `helm-show-kill-ring` |
-| `C-c h a` | `helm-projectile-ag` |
+| `C-c h a` | `helm-projectile-rg` |
 | `C-c h b` | `helm-filtered-bookmarks` |
-| `C-c h d` | `helm-do-ag` |
+| `C-c h d` | `helm-do-grep-ag` |
 | `C-c h g` | `helm-browse-project` |
 | `C-c h i` | `helm-semantic-or-imenu` |
 | `C-c h k` | `helm-show-kill-ring` |

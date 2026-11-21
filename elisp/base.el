@@ -44,7 +44,7 @@
       require-final-newline               t
       visible-bell                        nil
       ring-bell-function                  'ignore
-      custom-file                         "~/.emacs.d/.custom.el"
+      custom-file                         (expand-file-name ".custom.el" user-emacs-directory)
       ;; http://ergoemacs.org/emacs/emacs_stop_cursor_enter_prompt.html
       minibuffer-prompt-properties
       '(read-only t cursor-intangible t face minibuffer-prompt)
@@ -54,7 +54,6 @@
       highlight-nonselected-windows       nil
       ;; PATH
       exec-path                           (append exec-path '("/usr/local/bin/"))
-      select-enable-clipboard             t
       use-package-always-ensure           t
       inhibit-compacting-font-caches      t
       ;; automatically open sym-linked files
@@ -74,8 +73,8 @@
 
 ;; Save history
 (savehist-mode 1)
-(setq savehist-file                       "~/.emacs.d/savehist"
-      history-length                      t
+(setq savehist-file                       (expand-file-name "savehist" user-emacs-directory)
+      history-length                      1000
       history-delete-duplicates           t
       savehist-save-minibuffer-history    1)
 
@@ -106,7 +105,7 @@
 
 (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
-(fset 'yes-or-no-p 'y-or-n-p)
+(setq use-short-answers t)
 (global-auto-revert-mode t)
 
 ;; Delete trailing whitespace before save, except where it carries meaning
